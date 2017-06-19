@@ -33,6 +33,13 @@ virt_net = '_ANU'
 # FDSN network identifier
 FDSNnetwork = '7F(2013-2014)'
 
+# rough year of survey
+rough_year = 2013
+
+# tolerence (degrees) for latitude and longitude when working out if two stations should have the same name
+# i.e. 100m = 0.001 degrees - if two stations are seperated by less than this then they are the same station
+tol = 0.001
+
 # =========================================================================== #
 
 grid_file = join(data_path, 'AUS_Seismic_MT_grid/AUS_seismic_MT_grid.txt')
@@ -160,25 +167,23 @@ for service in service_dir_list:
         # get the logfile
         anu_logfile = glob.glob(join(station_path, '*.dat'))
 
+        # if the logfile doesnt exist then we have no idea on coordinates or station name
         if len(anu_logfile) == 0:
+            ASDF_log_file.write(station_path + '\t' + 'NoLogfile\n')
             continue
 
-        # logfile Unique ID
+        # logfile Unique ID so that they can be differentiated in ASDF auxillary data
         logfile_id = "UID" + make_fourdig(str(logfile_counter))
-        print(logfile_id)
+        # print(logfile_id)
 
         logfile_counter += 1
 
         # decode the logfile into dictionary
-        logfile_dict = decode_anulog(anu_logfile[0])
+        logfile_dict = decode_anulog(anu_logfile[0], year=rough_year)
 
         lat_list = logfile_dict['GPS']['LATITUDE']
         lng_list = logfile_dict['GPS']['LONGITUDE']
         alt_list = logfile_dict['GPS']['ALTITUDE']
-
-        print(station_name)
-
-        print(lat_list, lng_list)
 
 
         # remove outliers and then get mean
@@ -192,7 +197,7 @@ for service in service_dir_list:
         av_lng = np.mean(filter(lambda x: drop_outliers(x, np.mean(lng_list), np.std(lng_list)), lng_list))
         av_alt = np.mean(filter(lambda x: drop_outliers(x, np.mean(alt_list), np.std(alt_list)), alt_list))
 
-        print(av_lat, av_lng, av_alt)
+        # print(av_lat, av_lng, av_alt)
 
         # difference array between AUS Seismic GRID and av coordinates from logfile
         diff_array = np.absolute(lat_array - av_lat) + np.absolute(lon_array - av_lng)
@@ -204,7 +209,7 @@ for service in service_dir_list:
 
         found_match = False
 
-        # if the dictiaonry is empty, no stations have been added in yet
+        # if the dictionary is empty, no stations have been added in yet
         if not station_name_paras:
             new_station = aus_station
             station_name_paras[aus_station] = {'stored_lat': av_lat, 'stored_lng': av_lng, 'stored_alt': av_alt}
@@ -217,21 +222,21 @@ for service in service_dir_list:
         else:
             # check if the station has already been analysed
             for key in station_name_paras.keys():
-                print(aus_station, key, key[:-1])
+                # print(aus_station, key, key[:-1])
                 if aus_station == key[:-1] or aus_station == key:
-                    print("station in dict")
+                    # print("station in dict")
                     # check if it is within coordinates tolerance
                     # i.e. roughly within 100m same station
-                    if abs(av_lat - station_name_paras[key]['stored_lat']) <= 0.001 and abs(
-                                    av_lng - station_name_paras[key]['stored_lng']) <= 0.001:
-                        print('station matches')
+                    if abs(av_lat - station_name_paras[key]['stored_lat']) <= tol and abs(
+                                    av_lng - station_name_paras[key]['stored_lng']) <= tol:
+                        # print('station matches')
                         found_match = True
                         new_station = key
                         station_latitude = station_name_paras[key]['stored_lat']
                         station_longitude = station_name_paras[key]['stored_lng']
                         station_altitude = station_name_paras[key]['stored_alt']
                 else:
-                    print("station not in dict")
+                    # print("station not in dict")
                     # the station is not in the dictionary yet
                     new_station = aus_station
                     station_name_paras[aus_station] = {'stored_lat': av_lat, 'stored_lng': av_lng, 'stored_alt': av_alt}
@@ -241,32 +246,90 @@ for service in service_dir_list:
 
                     found_match = True
 
-        print(found_match)
+        # print(found_match)
 
         if not found_match:
             station_name_counter[aus_station] += 1
             new_station = aus_station + chr(ord('A') + (station_name_counter[aus_station] - 1))
-            print("no matching station", new_station)
+            # print("no matching station", new_station)
             station_name_paras[new_station] = {'stored_lat': av_lat, 'stored_lng': av_lng, 'stored_alt': av_alt}
             station_latitude = av_lat
             station_longitude = av_lng
             station_altitude = av_alt
 
-        print(new_station)
+        # print(new_station)
 
-        # add the logfile into auxillary data
+        # add the logfile information into auxillary data
         data_type = "LogfileData"
 
-        # path to logfile data in ASDF auxillary
-        path = FDSNnetwork + "_" + new_station + "/" + logfile_id + "/" + basename(service) + "/" + "Overview"
+        # path to logfile data in ASDF auxillary unique for each logfile for service interval
+        overview_path = FDSNnetwork[0:2] + "_" + new_station + "/" + logfile_id + "/" + "Overview"
+        temperature_path = FDSNnetwork[0:2] + "_" + new_station + "/" + logfile_id + "/" + "Temperature"
+        lock_time_path = FDSNnetwork[0:2] + "_" + new_station + "/" + logfile_id + "/" + "LockTime"
+        clock_drift_path = FDSNnetwork[0:2] + "_" + new_station + "/" + logfile_id + "/" + "ClockDrift"
+        battery_path = FDSNnetwork[0:2] + "_" + new_station + "/" + logfile_id + "/" + "Battery"
+        lat_path = FDSNnetwork[0:2] + "_" + new_station + "/" + logfile_id + "/" + "Latitude"
+        lng_path = FDSNnetwork[0:2] + "_" + new_station + "/" + logfile_id + "/" + "Longitude"
+        elev_path = FDSNnetwork[0:2] + "_" + new_station + "/" + logfile_id + "/" + "Elevation"
 
-        parameters = {'av_lat': av_lat, 'av_lng': av_lng, 'av_alt': av_alt}
+        # overview aux data:
+        parameters = {'BSN': logfile_dict['BSN'],
+                      'FWV': logfile_dict['FWV'],
+                      'SPR': logfile_dict['SPR'],
+                      'SMM': logfile_dict['SMM'],
+                      'SMS': logfile_dict['SMS'],
+                      'RCS': logfile_dict['RCS'],
+                      'RCE': logfile_dict['RCE'],
+                      'UDF': logfile_dict['UDF'],
+                      'av_lat': av_lat, 'av_lng': av_lng, 'av_elev': av_alt}
 
         # add the auxillary data
         ds.add_auxiliary_data(data=np.array([0]),
                               data_type=data_type,
-                              path=path,
+                              path=overview_path,
                               parameters=parameters)
+
+        # temperature aux data
+        ds.add_auxiliary_data(data=np.array(logfile_dict['GPS']['TEMPERATURE']),
+                              data_type=data_type,
+                              path=temperature_path,
+                              parameters={"units": "Degrees Celsius"})
+
+        # lock time auxillary data
+        ds.add_auxiliary_data(data=np.array(logfile_dict['GPS']['LOCK_TIME']),
+                              data_type=data_type,
+                              path=lock_time_path,
+                              parameters={"units": "UTC Time"})
+
+        # clock_drift auxillary data
+        ds.add_auxiliary_data(data=np.array(logfile_dict['GPS']['CLOCK']),
+                              data_type=data_type,
+                              path=clock_drift_path,
+                              parameters={"units": "micro Seconds"})
+
+        # battery voltage percentage auxillary data
+        ds.add_auxiliary_data(data=np.array(logfile_dict['GPS']['BATTERY']),
+                              data_type=data_type,
+                              path=battery_path,
+                              parameters={"units": "Voltage Percentage"})
+
+        # latitude auxillary data
+        ds.add_auxiliary_data(data=np.array(logfile_dict['GPS']['LATITUDE']),
+                              data_type=data_type,
+                              path=lat_path,
+                              parameters={"units": "Decimal Degrees (Geographic)"})
+
+        # longitude auxillary data
+        ds.add_auxiliary_data(data=np.array(logfile_dict['GPS']['LONGITUDE']),
+                              data_type=data_type,
+                              path=lng_path,
+                              parameters={"units": "Decimal Degrees (Geographic)"})
+
+        # elevation auxillary data
+        ds.add_auxiliary_data(data=np.array(logfile_dict['GPS']['ALTITUDE']),
+                              data_type=data_type,
+                              path=elev_path,
+                              parameters={"units": "Meters"})
 
         # get miniseed files
         seed_files = glob.glob(join(station_path, '*miniSEED/*'))  # '*miniSEED/*.mseed*'))
@@ -420,7 +483,7 @@ for station, value in station_inventory_dict.iteritems():
     # there is a problem, i.e. sampling rates change for a given station
     if not len(service_mismatch_list) == 0:
         for service_mismatch in service_mismatch_list:
-            ASDF_log_file.write("%s.%s_%s" % (FDSNnetwork, station, service_mismatch) + '\t' + "MismatchingChannels")
+            ASDF_log_file.write("%s.%s_%s" % (FDSNnetwork, station, service_mismatch) + '\t' + "MismatchingChannels\n")
 
 
     # get the start/end dates from dict
@@ -454,7 +517,7 @@ for key, (start, end) in station_start_end_dict.iteritems():
 
 
 # now make network level inventory
-network_inv = inventory.Network(code=FDSNnetwork, start_date=UTCDateTime(network_start_end[0]),
+network_inv = inventory.Network(code=FDSNnetwork[0:2], start_date=UTCDateTime(network_start_end[0]),
                                 end_date=UTCDateTime(network_start_end[1]),
                                 stations=station_inventories_list)
 
