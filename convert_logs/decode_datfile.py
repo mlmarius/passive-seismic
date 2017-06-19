@@ -71,6 +71,7 @@ def decode_gps(fp, bytes, print_bad_temperture, print_bad_gps, mylat, mylng,
 
 
     if good_year and strtime:
+        print(good_year)
         good_gps += 1
         mylat.append(lat)
         mylng.append(lng)
