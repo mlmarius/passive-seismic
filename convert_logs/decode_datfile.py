@@ -46,7 +46,7 @@ def decode_gps(fp, bytes, print_bad_temperture, print_bad_gps, mylat, mylng,
     day = struct.unpack('>i', block[0:4])[0]
     month = struct.unpack('>i', block[4:8])[0]
     year = struct.unpack('>i', block[8:12])[0]
-    good_year = True if abs(year-seedyear) <= 1 else False
+    good_year = True if abs(year-seedyear) <= 3 else False
 
     hour = struct.unpack('>i', block[12:16])[0]
     minute = struct.unpack('>i', block[16:20])[0]

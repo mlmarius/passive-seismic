@@ -31,10 +31,10 @@ data_path = '/g/data/ha3/Passive/'
 virt_net = '_ANU'
 
 # FDSN network identifier
-FDSNnetwork = '7F(2013-2014)'
+FDSNnetwork = '7G(2013-2015)'
 
 # rough year of survey
-rough_year = 2013
+rough_year = 2014
 
 # tolerence (degrees) for latitude and longitude when working out if two stations should have the same name
 # i.e. 100m = 0.001 degrees - if two stations are seperated by less than this then they are the same station
@@ -44,7 +44,7 @@ tol = 0.001
 
 grid_file = join(data_path, 'AUS_Seismic_MT_grid/AUS_seismic_MT_grid.txt')
 XML_path_out = join(data_path, virt_net, FDSNnetwork, 'network_metadata')
-path_DATA = join(data_path, virt_net, FDSNnetwork, 'raw_DATA_partial/')
+path_DATA = join(data_path, virt_net, FDSNnetwork, 'raw_DATA_test/')
 ASDF_path_out = join(data_path, virt_net, FDSNnetwork, 'ASDF')
 
 if not exists(XML_path_out):
@@ -179,7 +179,11 @@ for service in service_dir_list:
         logfile_counter += 1
 
         # decode the logfile into dictionary
-        logfile_dict = decode_anulog(anu_logfile[0], year=rough_year)
+        try:
+            logfile_dict = decode_anulog(anu_logfile[0], year=rough_year)
+        except:
+            # something went wrong with the decoding
+            ASDF_log_file.write(anu_logfile[0]+ '\t' + "DecodeError\n")
 
         lat_list = logfile_dict['GPS']['LATITUDE']
         lng_list = logfile_dict['GPS']['LONGITUDE']
@@ -191,11 +195,16 @@ for service in service_dir_list:
             if abs(x - mean) <= std_dev_one:
                 return x
 
+        try:
+            # now avearge the lists to get coords
+            av_lat = np.mean(filter(lambda x: drop_outliers(x, np.mean(lat_list), np.std(lat_list)), lat_list))
+            av_lng = np.mean(filter(lambda x: drop_outliers(x, np.mean(lng_list), np.std(lng_list)), lng_list))
+            av_alt = np.mean(filter(lambda x: drop_outliers(x, np.mean(alt_list), np.std(alt_list)), alt_list))
+        except RuntimeWarning:
+            # the decode sent back empty lists ignore station for now
+            ASDF_log_file.write(anu_logfile[0] + '\t' + "EmptyCoordinatesDecodeError\n")
+            continue
 
-        # now avearge the lists to get coords
-        av_lat = np.mean(filter(lambda x: drop_outliers(x, np.mean(lat_list), np.std(lat_list)), lat_list))
-        av_lng = np.mean(filter(lambda x: drop_outliers(x, np.mean(lng_list), np.std(lng_list)), lng_list))
-        av_alt = np.mean(filter(lambda x: drop_outliers(x, np.mean(alt_list), np.std(alt_list)), alt_list))
 
         # print(av_lat, av_lng, av_alt)
 
@@ -273,15 +282,17 @@ for service in service_dir_list:
         elev_path = FDSNnetwork[0:2] + "_" + new_station + "/" + logfile_id + "/" + "Elevation"
 
         # overview aux data:
-        parameters = {'BSN': logfile_dict['BSN'],
-                      'FWV': logfile_dict['FWV'],
-                      'SPR': logfile_dict['SPR'],
-                      'SMM': logfile_dict['SMM'],
-                      'SMS': logfile_dict['SMS'],
-                      'RCS': logfile_dict['RCS'],
-                      'RCE': logfile_dict['RCE'],
-                      'UDF': logfile_dict['UDF'],
+        parameters = {'BSN': str(logfile_dict['BSN']),
+                      'FWV': str(logfile_dict['FWV']),
+                      'SPR': str(logfile_dict['SPR']),
+                      'SMM': str(logfile_dict['SMM']),
+                      'SMS': str(logfile_dict['SMS']),
+                      'RCS': str(logfile_dict['RCS']),
+                      'RCE': str(logfile_dict['RCE']),
+                      'UDF': str(logfile_dict['UDF']),
                       'av_lat': av_lat, 'av_lng': av_lng, 'av_elev': av_alt}
+
+        # print(parameters)
 
         # add the auxillary data
         ds.add_auxiliary_data(data=np.array([0]),
