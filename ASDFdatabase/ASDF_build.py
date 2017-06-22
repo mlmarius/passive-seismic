@@ -28,23 +28,26 @@ code_start_time = time.time()
 data_path = '/g/data/ha3/Passive/'
 
 # IRIS Virtual Ntework name
-virt_net = '_ANU'
+virt_net = '_GA_ANUtest'
 
 # FDSN network identifier
-FDSNnetwork = '7G(2013-2015)'
+FDSNnetwork = 'XX'
 
 # rough year of survey
-rough_year = 2014
+rough_year = 2016
+
+# flag wether to assign new station names (based on Aus grid or not)
+assign_station_names = False
 
 # tolerence (degrees) for latitude and longitude when working out if two stations should have the same name
 # i.e. 100m = 0.001 degrees - if two stations are seperated by less than this then they are the same station
-tol = 0.001
+tol = 0.00003
 
 # =========================================================================== #
 
 grid_file = join(data_path, 'AUS_Seismic_MT_grid/AUS_seismic_MT_grid.txt')
 XML_path_out = join(data_path, virt_net, FDSNnetwork, 'network_metadata')
-path_DATA = join(data_path, virt_net, FDSNnetwork, 'raw_DATA_test/')
+path_DATA = join(data_path, virt_net, FDSNnetwork, 'raw_DATA/')
 ASDF_path_out = join(data_path, virt_net, FDSNnetwork, 'ASDF')
 
 if not exists(XML_path_out):
@@ -207,60 +210,69 @@ for service in service_dir_list:
 
 
         # print(av_lat, av_lng, av_alt)
+        if assign_station_names:
 
-        # difference array between AUS Seismic GRID and av coordinates from logfile
-        diff_array = np.absolute(lat_array - av_lat) + np.absolute(lon_array - av_lng)
-        min_index = np.argmin(diff_array)
+            # difference array between AUS Seismic GRID and av coordinates from logfile
+            diff_array = np.absolute(lat_array - av_lat) + np.absolute(lon_array - av_lng)
+            min_index = np.argmin(diff_array)
 
-        aus_station = AUS_grid_names[min_index]
-        aus_lat = AUS_grid_latitude[min_index]
-        aus_lng = AUS_grid_longitude[min_index]
+            aus_station = AUS_grid_names[min_index]
+            aus_lat = AUS_grid_latitude[min_index]
+            aus_lng = AUS_grid_longitude[min_index]
 
-        found_match = False
+            found_match = False
 
-        # if the dictionary is empty, no stations have been added in yet
-        if not station_name_paras:
-            new_station = aus_station
-            station_name_paras[aus_station] = {'stored_lat': av_lat, 'stored_lng': av_lng, 'stored_alt': av_alt}
-            station_latitude = av_lat
-            station_longitude = av_lng
-            station_altitude = av_alt
+            # if the dictionary is empty, no stations have been added in yet
+            if not station_name_paras:
+                new_station = aus_station
+                station_name_paras[aus_station] = {'stored_lat': av_lat, 'stored_lng': av_lng, 'stored_alt': av_alt}
+                station_latitude = av_lat
+                station_longitude = av_lng
+                station_altitude = av_alt
 
-            found_match = True
+                found_match = True
 
-        else:
-            # check if the station has already been analysed
-            for key in station_name_paras.keys():
-                # print(aus_station, key, key[:-1])
-                if aus_station == key[:-1] or aus_station == key:
-                    # print("station in dict")
-                    # check if it is within coordinates tolerance
-                    # i.e. roughly within 100m same station
-                    if abs(av_lat - station_name_paras[key]['stored_lat']) <= tol and abs(
-                                    av_lng - station_name_paras[key]['stored_lng']) <= tol:
-                        # print('station matches')
+            else:
+                # check if the station has already been analysed
+                for key in station_name_paras.keys():
+                    # print(aus_station, key, key[:-1])
+                    if aus_station == key[:-1] or aus_station == key:
+                        # print("station in dict")
+                        # check if it is within coordinates tolerance
+                        # i.e. roughly within 100m same station
+                        if abs(av_lat - station_name_paras[key]['stored_lat']) <= tol and abs(
+                                        av_lng - station_name_paras[key]['stored_lng']) <= tol:
+                            # print('station matches')
+                            found_match = True
+                            new_station = key
+                            station_latitude = station_name_paras[key]['stored_lat']
+                            station_longitude = station_name_paras[key]['stored_lng']
+                            station_altitude = station_name_paras[key]['stored_alt']
+                    else:
+                        # print("station not in dict")
+                        # the station is not in the dictionary yet
+                        new_station = aus_station
+                        station_name_paras[aus_station] = {'stored_lat': av_lat, 'stored_lng': av_lng, 'stored_alt': av_alt}
+                        station_latitude = av_lat
+                        station_longitude = av_lng
+                        station_altitude = av_alt
+
                         found_match = True
-                        new_station = key
-                        station_latitude = station_name_paras[key]['stored_lat']
-                        station_longitude = station_name_paras[key]['stored_lng']
-                        station_altitude = station_name_paras[key]['stored_alt']
-                else:
-                    # print("station not in dict")
-                    # the station is not in the dictionary yet
-                    new_station = aus_station
-                    station_name_paras[aus_station] = {'stored_lat': av_lat, 'stored_lng': av_lng, 'stored_alt': av_alt}
-                    station_latitude = av_lat
-                    station_longitude = av_lng
-                    station_altitude = av_alt
 
-                    found_match = True
+            # print(found_match)
 
-        # print(found_match)
+            if not found_match:
+                station_name_counter[aus_station] += 1
+                new_station = aus_station + chr(ord('A') + (station_name_counter[aus_station] - 1))
+                # print("no matching station", new_station)
+                station_name_paras[new_station] = {'stored_lat': av_lat, 'stored_lng': av_lng, 'stored_alt': av_alt}
+                station_latitude = av_lat
+                station_longitude = av_lng
+                station_altitude = av_alt
 
-        if not found_match:
-            station_name_counter[aus_station] += 1
-            new_station = aus_station + chr(ord('A') + (station_name_counter[aus_station] - 1))
-            # print("no matching station", new_station)
+
+        elif not assign_station_names:
+            new_station = station_name
             station_name_paras[new_station] = {'stored_lat': av_lat, 'stored_lng': av_lng, 'stored_alt': av_alt}
             station_latitude = av_lat
             station_longitude = av_lng
@@ -348,7 +360,7 @@ for service in service_dir_list:
         if len(seed_files) == 0:
             continue
 
-        print '\r Working on station: ', station_name
+        print '\r Working on station: ', station_name, ' ----> ', new_station
 
         # dictionary for channel_location (keys) so that we can create an inventory to location level later
         channel_loc_dict = {}
@@ -399,6 +411,8 @@ for service in service_dir_list:
                     # compare time to start and end times in dict and see if it is earlier/later
                     stored_starttime = station_start_end_dict[new_station][0]
                     stored_endtime = station_start_end_dict[new_station][1]
+                    if not starttime:
+                        continue
                     if starttime < stored_starttime:
                         station_start_end_dict[new_station][0] = starttime
                     elif endtime > stored_endtime:
@@ -501,16 +515,19 @@ for station, value in station_inventory_dict.iteritems():
     start_date = UTCDateTime(station_start_end_dict[station][0])
     end_date = UTCDateTime(station_start_end_dict[station][1])
 
+
     site = inventory.Site(name=station)
 
     # make the station_level inventory
-    station = inventory.Station(code=station, creation_date=start_date, termination_date=end_date,
+    station = inventory.Station(code=station, start_date=start_date, end_date=end_date,
+                                creation_date=start_date, termination_date=end_date,
                                 site=site,
                                 latitude=value[0][0][0].latitude,
                                 longitude=value[0][0][0].longitude,
                                 elevation=value[0][0][0].elevation,
                                 vault="Transportable Array",
                                 channels=value[0][0])
+
 
     station_inventories_list.append(station)
 
@@ -520,6 +537,7 @@ for key, (start, end) in station_start_end_dict.iteritems():
     if not network_start_end:
         network_start_end = [start, end]
         continue
+
 
     if start < network_start_end[0]:
         network_start_end[0] = start
