@@ -31,17 +31,17 @@ data_path = '/g/data/ha3/Passive/'
 virt_net = '_GA_ANUtest'
 
 # FDSN network identifier
-FDSNnetwork = 'XX'
+FDSNnetwork = 'X5'
 
 # rough year of survey
 rough_year = 2016
 
-# flag wether to assign new station names (based on Aus grid or not)
+# flag weather to assign new station names (based on Aus grid or not)
 assign_station_names = False
 
 # tolerence (degrees) for latitude and longitude when working out if two stations should have the same name
 # i.e. 100m = 0.001 degrees - if two stations are seperated by less than this then they are the same station
-tol = 0.00003
+tol = 0.001
 
 # =========================================================================== #
 
