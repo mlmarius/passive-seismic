@@ -25,7 +25,3 @@ echo "Starting autopick..."; seiscomp exec scautopick --playback -I $1 $FLAGS --
 
 echo "Finished waveform processing - wait for finishing event processing"; wait $pid
 echo "Finished event processing"
-
-
-
-
