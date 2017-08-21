@@ -30,7 +30,7 @@ scdb --plugins dbsqlite3 \
 # Import the configuration
 scdb --plugins dbsqlite3 \
     -d sqlite3://$HOME/sc3-playback/test.db \
-    -i ${HOME}/sc3-playback/configuration.xml
+    -i ${HOME}/sc3-playback/config.xml
 
 # run the container as a daemon
 sudo docker run -d --name sc3-ch2 -p 9999:22 \
