@@ -9,9 +9,11 @@ sudo yum-config-manager \
 sudo yum makecache fast
 sudo yum -y install docker-ce
 sudo systemctl start docker
+
+# clone and build docker image
 git clone https://github.com/basaks/sc3-playback.git
 cd cd $PWD/sc3-playback/tests/ && \
-    sudo docker build -rm -t sc3 .
+    sudo docker build -t sc3 .
 
 # copy db from base machine
 sqlite3 -batch -init $SEISCOMP_ROOT/share/db/sqlite3.sql \
