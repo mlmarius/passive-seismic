@@ -7,12 +7,12 @@ sudo yum install -y yum-utils
 sudo yum-config-manager \
     --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 sudo yum makecache fast
-sudo yum -y install docker-ce
+sudo yum install -y docker-ce
 sudo systemctl start docker
 
 # clone and build docker image
 git clone https://github.com/basaks/sc3-playback.git
-cd cd $PWD/sc3-playback/tests/ && \
+cd ${HOME}/sc3-playback/tests/ && \
     sudo docker build -t sc3 .
 
 # copy db from base machine
@@ -20,7 +20,7 @@ sqlite3 -batch -init $SEISCOMP_ROOT/share/db/sqlite3.sql \
     ${HOME}/sc3-playback/test.db .exit
 
 # dump inventory and config xml
-cd sc3-playback && \
+cd ${HOME}/sc3-playback && \
     scxmldump -fI -o inventory.xml -d ${DBFLAG} && \
     scxmldump -fC -o config.xml -d ${DBFLAG}
 
@@ -35,7 +35,7 @@ scdb --plugins dbsqlite3 \
     -i ${HOME}/sc3-playback/config.xml
 
 # run the container as a daemon
-sudo docker run -d --name sc3-ch2 -p 9999:22 \
+sudo docker run -d --name sc3-ch -p 9999:22 \
     -v ${HOME}/sc3-playback/:/home/sysop/sc3-playback sc3
 
 # Run using
