@@ -36,6 +36,7 @@ scdb --plugins dbsqlite3 \
 
 # run the container as a daemon
 sudo docker run -d --name sc3-ch -p 9999:22 \
+    -e USER_ID=`id -u` -e GROUP_ID=`id -g` \
     -v ${HOME}/sc3-playback/:/home/sysop/sc3-playback sc3
 
 # Run using
