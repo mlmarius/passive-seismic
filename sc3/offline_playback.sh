@@ -4,7 +4,7 @@ if [ "$#"  -lt 2 ]; then
     exit 0;
 fi
 
-set -x; seiscomp stop; seiscomp start spread scamaster
+set -x; seiscomp stop; seiscomp start spread scmaster
 
 DBFLAG="mysql://sysop:sysop@localhost/seiscomp3"
 CONFIGFLAGS="--verbosity=4"
