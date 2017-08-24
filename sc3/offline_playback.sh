@@ -9,7 +9,7 @@ set -x; seiscomp stop; seiscomp start spread scmaster
 DBFLAG="mysql://sysop:sysop@localhost/seiscomp3"
 CONFIGFLAGS="--verbosity=4"
 
-FLAGS="$CONFIGFLAGS $DBFLAG"
+FLAGS="$CONFIGFLAGS -d $DBFLAG"
 
 echo "Cleaning Database"; seiscomp exec scdbstrip $FLAGS --days 0
 echo "Starting autoloc..."; seiscomp exec scautoloc $FLAGS --playback --start-stop-msg=1 --auto-shutdown=1 --shutdown-master-module=scautopick &
