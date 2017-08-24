@@ -1,0 +1,1045 @@
+centos@ip-172-31-2-15:~$ scautopick -eb --playback -I au.bhz.seed -d mysql://sysop:sysop@localhost/seiscomp3 --debug > picks.xml
+04:03:28 [debug] Adding plugin path: .
+04:03:28 [debug] Adding plugin path: /home/centos/.seiscomp3/plugins
+04:03:28 [debug] Adding plugin path: /opt/seiscomp3/lib/plugins
+04:03:28 [debug] Adding plugin path: /opt/seiscomp3/lib
+04:03:28 [debug] Adding plugin path: /opt/seiscomp3/share/plugins
+04:03:28 [debug] Adding plugin path: /home/centos/lib
+04:03:28 [debug] Adding plugin path: /home/centos/SLBM_Root.3.0.5.Linux/lib
+04:03:28 [debug] Adding plugin path: /opt/seiscomp3/lib
+04:03:28 [debug] Adding plugin path: /opt/seiscomp3/share/plugins/scautopick
+04:03:28 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/dbmysql.so
+04:03:28 [info] Plugin dbmysql registered
+04:03:28 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/rsas.so
+04:03:28 [info] Plugin rsas registered
+04:03:28 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/saic.so
+04:03:28 [info] Plugin saic registered
+04:03:28 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/mapprojections.so
+04:03:28 [info] Plugin mapprojections registered
+04:03:28 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/spickdbg.so
+04:03:28 [info] Plugin spickdbg registered
+04:03:28 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/mbtiles.so
+04:03:28 [info] Plugin mbtiles registered
+04:03:28 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/locnll.so
+04:03:28 [info] Plugin locnll registered
+04:03:28 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/hypo71.so
+04:03:28 [info] Plugin hypo71 registered
+04:03:28 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/mlh.so
+04:03:28 [info] Plugin mlh registered
+04:03:28 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/mlr.so
+04:03:28 [info] Plugin mlr registered
+04:03:28 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/md.so
+04:03:28 [info] Plugin md registered
+04:03:28 [info] 
+Plugins:
+--------
+ [1]
+  description: MySQL database driver
+       author: GFZ Potsdam <seiscomp-devel@gfz-potsdam.de>
+      version: 0.9.2
+          API: 10.0.0
+ [2]
+  description: CAPS RecordStream interface
+       author: Jan Becker, gempa GmbH
+      version: 0.9.0
+          API: 10.0.0
+ [3]
+  description: S-AIC method to pick S-phases
+       author: gempa GmbH
+      version: 0.4.0
+          API: 10.0.0
+ [4]
+  description: Spherical, mercator and kavrayskiy map projections
+       author: Jan Becker, gempa GmbH
+      version: 0.10.0
+          API: 10.0.0
+ [5]
+  description: S picker debug plugin
+       author: Jan Becker, gempa GmbH
+      version: 0.4.0
+          API: 10.0.0
+ [6]
+  description: Map plugin to load map tiles according to MBTiles specification
+       author: Jan Becker, gempa GmbH
+      version: 1.3.0
+          API: 10.0.0
+ [7]
+  description: Locator implementation using NonLinLoc by Anthony Lomax (http://alomax.free.fr/nlloc/)
+       author: Jan Becker, gempa GmbH
+      version: 0.7.2
+          API: 10.0.0
+ [8]
+  description: HYPO71 seismic hypocenter locator plugin
+       author: IPGP <www.ipgp.fr>
+      version: 0.1.1
+          API: 10.0.0
+ [9]
+  description: MLh magnitude method (max of both horizontal compontents)
+       author: gempa GmbH, modified by Stefan Heimers at the SED
+      version: 0.0.7
+          API: 10.0.0
+ [10]
+  description: MLr GNS magnitude, J. Ristau method
+       author: Derived from MLh magnitude & Sc3 Tutorial methods, J.Salichon, GNS Science New Zealand, J.Becker, Gempa
+      version: 0.0.1
+          API: 10.0.0
+ [11]
+  description: Md duration magnitude plugin
+       author: IPGP <www.ipgp.fr>
+      version: 0.1.2
+          API: 10.0.0
+
+04:03:28 [info] Connect to messaging
+04:03:28 [debug] Trying to connect to scautopick@localhost with primary group = PICK
+04:03:28 [info] Connecting to server: localhost
+04:03:28 [info] Connected to message server: localhost
+04:03:28 [info] Joining MASTER_GROUP group
+04:03:28 [info] Sending connect message to server: localhost
+04:03:28 [info] Server version is 'Jakarta 2017.124'
+04:03:28 [info] Outgoing messages are encoded to match schema version 0.9
+04:03:28 [info] user "scautopick" connected successfully to localhost
+04:03:28 [info] Setting message encoding to binary
+04:03:28 [info] Joining group: CONFIG
+04:03:28 [info] Connect to database
+04:03:28 [info] Read database service parameters from configfile
+04:03:28 [info] Trying to connect to mysql://sysop:sysop@localhost/seiscomp3
+04:03:28 [debug] Connected to sysop:******@localhost:3306/seiscomp3 (Localhost via UNIX socket)
+04:03:28 [info] Connected successfully
+04:03:28 [debug] Found database version v0.9
+04:03:28 [info] Loading complete inventory
+04:03:28 [info] Finished loading complete inventory
+04:03:28 [info] Loading configuration module
+04:03:28 [info] Finished loading configuration module
+04:03:28 [debug] trying to open stream file://au.bhz.seed
+04:03:28 [info] Adding detection channel AK.BESE..BHZ
+04:03:28 [info] Adding detection channel AK.FYU..BHZ
+04:03:28 [info] Adding detection channel AK.JIS..BHZ
+04:03:28 [info] Adding detection channel AK.MESA..BHZ
+04:03:28 [info] Adding detection channel AK.NIKH..BHZ
+04:03:28 [info] Adding detection channel AK.SPIA..BHZ
+04:03:28 [info] Adding detection channel AK.TNA..BHZ
+04:03:28 [info] Adding detection channel AK.UNV..BHZ
+04:03:28 [info] Adding detection channel AT.AKUT..BHZ
+04:03:28 [info] Adding detection channel AT.CRAG..BHZ
+04:03:28 [info] Adding detection channel AT.OHAK..BHZ
+04:03:28 [info] Adding detection channel AT.SDPT..BHZ
+04:03:28 [info] Adding detection channel AT.SMY..BHZ
+04:03:28 [info] Adding detection channel AU.ARMA..BHZ
+04:03:28 [info] Adding detection channel AU.ARPS..SHZ
+04:03:28 [info] Adding detection channel AU.AS31..BHZ
+04:03:28 [info] Adding detection channel AU.BBOO..BHZ
+04:03:28 [info] Adding detection channel AU.BLDU..BHZ
+04:03:28 [info] Adding detection channel AU.BN1H.00.SHZ
+04:03:28 [info] Adding detection channel AU.BN2S.00.SHZ
+04:03:28 [info] Adding detection channel AU.BRAT.00.SHZ
+04:03:28 [info] Adding detection channel AU.BW1H.00.SHZ
+04:03:28 [info] Adding detection channel AU.BW2S.00.SHZ
+04:03:28 [info] Adding detection channel AU.CARL.00.SHZ
+04:03:28 [info] Adding detection channel AU.CMSA..BHZ
+04:03:28 [info] Adding detection channel AU.CN1H.00.SHZ
+04:03:28 [info] Adding detection channel AU.CN2S.00.SHZ
+04:03:28 [info] Adding detection channel AU.CNB..BHZ
+04:03:28 [info] Adding detection channel AU.COEN..BHZ
+04:03:28 [info] Adding detection channel AU.CORO.00.SHZ
+04:03:28 [info] Adding detection channel AU.CTA..BHZ
+04:03:28 [info] Adding detection channel AU.DLN.00.SHZ
+04:03:28 [info] Adding detection channel AU.DPH.00.SHZ
+04:03:28 [info] Adding detection channel AU.DRS.00.SHZ
+04:03:28 [info] Adding detection channel AU.EIDS..BHZ
+04:03:28 [info] Adding detection channel AU.FITZ..BHZ
+04:03:28 [info] Adding detection channel AU.FORT..BHZ
+04:03:28 [info] Adding detection channel AU.GC1S.00.SHZ
+04:03:28 [info] Adding detection channel AU.GC2F.00.SHZ
+04:03:28 [info] Adding detection channel AU.GD1S.00.SHZ
+04:03:28 [info] Adding detection channel AU.GEES.00.SHZ
+04:03:28 [info] Adding detection channel AU.GEXS.00.SHZ
+04:03:28 [info] Adding detection channel AU.GHSS.00.SHZ
+04:03:28 [info] Adding detection channel AU.GIRL..BHZ
+04:03:28 [info] Adding detection channel AU.GLAD.00.SHZ
+04:03:28 [info] Adding detection channel AU.GVL.00.SHZ
+04:03:28 [info] Adding detection channel AU.HTT..BHZ
+04:03:28 [info] Adding detection channel AU.INKA..BHZ
+04:03:28 [info] Adding detection channel AU.KDU..BHZ
+04:03:28 [info] Adding detection channel AU.KLBR..SHZ
+04:03:28 [info] Adding detection channel AU.KMBL..BHZ
+04:03:28 [info] Adding detection channel AU.KNRA..BHZ
+04:03:28 [info] Adding detection channel AU.LCRK..BHZ
+04:03:28 [info] Adding detection channel AU.LHI..BHZ
+04:03:28 [info] Adding detection channel AU.MANU..BHZ
+04:03:28 [info] Adding detection channel AU.MAW..BHZ
+04:03:28 [info] Adding detection channel AU.MCQ..BHZ
+04:03:28 [info] Adding detection channel AU.MEEK..BHZ
+04:03:28 [info] Adding detection channel AU.MGCD..SHZ
+04:03:28 [info] Adding detection channel AU.MILA..BHZ
+04:03:28 [info] Adding detection channel AU.MLBS.00.SHZ
+04:03:28 [info] Adding detection channel AU.MOO..BHZ
+04:03:28 [info] Adding detection channel AU.MORW..BHZ
+04:03:28 [info] Adding detection channel AU.MTKN.00.SHZ
+04:03:28 [info] Adding detection channel AU.MTN..BHZ
+04:03:28 [info] Adding detection channel AU.MTSU..SHZ
+04:03:28 [info] Adding detection channel AU.MULG..BHZ
+04:03:28 [info] Adding detection channel AU.MUN..BHZ
+04:03:28 [info] Adding detection channel AU.NAPP..SHZ
+04:03:28 [info] Adding detection channel AU.NFK..BHZ
+04:03:28 [info] Adding detection channel AU.NIUE..BHZ
+04:03:28 [info] Adding detection channel AU.NTLH.00.SHZ
+04:03:28 [info] Adding detection channel AU.NTLS.00.SHZ
+04:03:28 [info] Adding detection channel AU.NWAO..BHZ
+04:03:28 [info] Adding detection channel AU.OOD..BHZ
+04:03:28 [info] Adding detection channel AU.PSA00.00.BHZ
+04:03:28 [info] Adding detection channel AU.PSAC1.00.BHZ
+04:03:28 [info] Adding detection channel AU.PTPS.00.SHZ
+04:03:28 [info] Adding detection channel AU.QIS..BHZ
+04:03:28 [info] Adding detection channel AU.QLP..BHZ
+04:03:28 [info] Adding detection channel AU.RABL..BHZ
+04:03:28 [info] Adding detection channel AU.RIV..BHZ
+04:03:28 [info] Adding detection channel AU.RK1H.00.SHZ
+04:03:28 [info] Adding detection channel AU.RK2S.00.SHZ
+04:03:28 [info] Adding detection channel AU.RKGY..SHZ
+04:03:28 [info] Adding detection channel AU.RMQ..SHZ
+04:03:28 [info] Adding detection channel AU.STKA..BHZ
+04:03:28 [info] Adding detection channel AU.SYDH.00.SHZ
+04:03:28 [info] Adding detection channel AU.SYDS.00.SHZ
+04:03:28 [info] Adding detection channel AU.TOO..BHZ
+04:03:28 [info] Adding detection channel AU.TV1H.00.SHZ
+04:03:28 [info] Adding detection channel AU.TV2S.00.SHZ
+04:03:28 [info] Adding detection channel AU.TW1H.00.SHZ
+04:03:28 [info] Adding detection channel AU.TWOA.00.SHZ
+04:03:28 [info] Adding detection channel AU.WB0..BHZ
+04:03:28 [info] Adding detection channel AU.WB2..BHZ
+04:03:28 [info] Adding detection channel AU.WHYH.00.SHZ
+04:03:28 [info] Adding detection channel AU.WOLH.00.SHZ
+04:03:28 [info] Adding detection channel AU.WR0..BHZ
+04:03:28 [info] Adding detection channel AU.WRKA..BHZ
+04:03:28 [info] Adding detection channel AU.XMI..BHZ
+04:03:28 [info] Adding detection channel AU.XMIS..BHZ
+04:03:28 [info] Adding detection channel AU.YNG..BHZ
+04:03:28 [info] Adding detection channel CN.BBB..BHZ
+04:03:28 [info] Adding detection channel CN.DAWY..BHZ
+04:03:28 [info] Adding detection channel CN.INK..BHZ
+04:03:28 [info] Adding detection channel CN.PNT..BHZ
+04:03:28 [info] Adding detection channel CN.WALA..BHZ
+04:03:28 [info] Adding detection channel CN.WHY..BHZ
+04:03:28 [info] Adding detection channel CN.YKAW1..BHZ
+04:03:28 [info] Adding detection channel CU.GTBY.00.BHZ
+04:03:28 [info] Adding detection channel G.AIS.00.BHZ
+04:03:28 [info] Adding detection channel G.CAN.00.BHZ
+04:03:28 [info] Adding detection channel G.CRZF.00.BHZ
+04:03:28 [info] Adding detection channel G.DZM.00.BHZ
+04:03:28 [info] Adding detection channel G.FOMA.00.BHZ
+04:03:28 [info] Adding detection channel G.MPG.00.BHZ
+04:03:28 [info] Adding detection channel G.PAF.00.BHZ
+04:03:28 [info] Adding detection channel G.PPTF.00.BHZ
+04:03:28 [info] Adding detection channel G.RER.00.BHZ
+04:03:28 [info] Adding detection channel G.SANVU.00.BHZ
+04:03:28 [info] Adding detection channel G.TAOE.00.BHZ
+04:03:28 [info] Adding detection channel GE.BKB..BHZ
+04:03:28 [info] Adding detection channel GE.BKNI..BHZ
+04:03:28 [info] Adding detection channel GE.BNDI..BHZ
+04:03:28 [info] Adding detection channel GE.CISI..BHZ
+04:03:28 [info] Adding detection channel GE.DAMY..BHZ
+04:03:28 [info] Adding detection channel GE.EIL..BHZ
+04:03:28 [info] Adding detection channel GE.FAKI..BHZ
+04:03:28 [info] Adding detection channel GE.GENI..BHZ
+04:03:28 [info] Adding detection channel GE.GSI..BHZ
+04:03:28 [info] Adding detection channel GE.HALK..BHZ
+04:03:28 [info] Adding detection channel GE.HMDM..BHZ
+04:03:28 [info] Adding detection channel GE.JAGI..BHZ
+04:03:28 [info] Adding detection channel GE.KAAM..BHZ
+04:03:28 [info] Adding detection channel GE.KBU..BHZ
+04:03:28 [info] Adding detection channel GE.LHMI..BHZ
+04:03:28 [info] Adding detection channel GE.LUWI..BHZ
+04:03:28 [info] Adding detection channel GE.MALK..BHZ
+04:03:28 [info] Adding detection channel GE.MMRI..BHZ
+04:03:28 [info] Adding detection channel GE.MNAI..BHZ
+04:03:28 [info] Adding detection channel GE.PMBI..BHZ
+04:03:28 [info] Adding detection channel GE.SANI..BHZ
+04:03:28 [info] Adding detection channel GE.SAUI..BHZ
+04:03:28 [info] Adding detection channel GE.SBV..BHZ
+04:03:28 [info] Adding detection channel GE.SMRI..BHZ
+04:03:28 [info] Adding detection channel GE.SNAA..BHZ
+04:03:28 [info] Adding detection channel GE.SOCY..BHZ
+04:03:28 [info] Adding detection channel GE.SOEI..BHZ
+04:03:28 [info] Adding detection channel GE.TNTI..BHZ
+04:03:28 [info] Adding detection channel GE.TOLI..BHZ
+04:03:28 [info] Adding detection channel GE.UGM..BHZ
+04:03:28 [info] Adding detection channel GE.VOI..BHZ
+04:03:28 [info] Adding detection channel GE.YOGI..BHZ
+04:03:28 [info] Adding detection channel GT.CPUP.00.BHZ
+04:03:28 [info] Adding detection channel GT.DBIC.00.BHZ
+04:03:28 [info] Adding detection channel GT.LBTB.00.BHZ
+04:03:28 [info] Adding detection channel GT.LPAZ.00.BHZ
+04:03:28 [info] Adding detection channel GT.PLCA.00.BHZ
+04:03:28 [info] Adding detection channel GT.VNDA.00.BHZ
+04:03:28 [info] Adding detection channel HK.HKPS.00.BHZ
+04:03:28 [info] Adding detection channel IA.AAI..BHZ
+04:03:28 [info] Adding detection channel IA.BAKI..BHZ
+04:03:28 [info] Adding detection channel IA.BSI..BHZ
+04:03:28 [info] Adding detection channel IA.KSI..BHZ
+04:03:28 [info] Adding detection channel IA.LEM..BHZ
+04:03:28 [info] Adding detection channel IA.MMPI..BHZ
+04:03:28 [info] Adding detection channel IA.PCI..BHZ
+04:03:28 [info] Adding detection channel IA.PPI..BHZ
+04:03:28 [info] Adding detection channel IA.SWI..BHZ
+04:03:28 [info] Adding detection channel IA.TLE..BHZ
+04:03:28 [info] Adding detection channel IA.WSI..BHZ
+04:03:28 [info] Adding detection channel IC.BJT.00.BHZ
+04:03:28 [info] Adding detection channel IC.HIA.00.BHZ
+04:03:28 [info] Adding detection channel IC.LSA.00.BHZ
+04:03:28 [info] Adding detection channel IC.MDJ.00.BHZ
+04:03:28 [info] Adding detection channel IC.QIZ.00.BHZ
+04:03:28 [info] Adding detection channel II.AAK.00.BHZ
+04:03:28 [info] Adding detection channel II.ABPO.00.BHZ
+04:03:28 [info] Adding detection channel II.ARU.00.BHZ
+04:03:28 [info] Adding detection channel II.ASCN.00.BHZ
+04:03:28 [info] Adding detection channel II.BFO.00.BHZ
+04:03:28 [info] Adding detection channel II.BORG.00.BHZ
+04:03:28 [info] Adding detection channel II.BRVK.00.BHZ
+04:03:28 [info] Adding detection channel II.CMLA.00.BHZ
+04:03:28 [info] Adding detection channel II.COCO.00.BHZ
+04:03:28 [info] Adding detection channel II.DGAR.00.BHZ
+04:03:28 [info] Adding detection channel II.EFI.00.BHZ
+04:03:28 [info] Adding detection channel II.ERM.00.BHZ
+04:03:28 [info] Adding detection channel II.ESK.00.BHZ
+04:03:28 [info] Adding detection channel II.FFC.00.BHZ
+04:03:28 [info] Adding detection channel II.HOPE.00.BHZ
+04:03:28 [info] Adding detection channel II.JTS.00.BHZ
+04:03:28 [info] Adding detection channel II.KAPI.00.BHZ
+04:03:28 [info] Adding detection channel II.KDAK.00.BHZ
+04:03:28 [info] Adding detection channel II.KIV.00.BHZ
+04:03:28 [info] Adding detection channel II.KURK.00.BHZ
+04:03:28 [info] Adding detection channel II.KWAJ.00.BHZ
+04:03:28 [info] Adding detection channel II.MBAR.00.BHZ
+04:03:28 [info] Adding detection channel II.MSEY.00.BHZ
+04:03:28 [info] Adding detection channel II.MSVF.00.BHZ
+04:03:28 [info] Adding detection channel II.NIL.00.BHZ
+04:03:28 [info] Adding detection channel II.NNA.00.BHZ
+04:03:28 [info] Adding detection channel II.OBN.00.BHZ
+04:03:28 [info] Adding detection channel II.PALK.00.BHZ
+04:03:28 [info] Adding detection channel II.PFO.00.BHZ
+04:03:28 [info] Adding detection channel II.RAYN.00.BHZ
+04:03:28 [info] Adding detection channel II.RPN.00.BHZ
+04:03:28 [info] Adding detection channel II.SHEL.00.BHZ
+04:03:28 [info] Adding detection channel II.SUR.00.BHZ
+04:03:28 [info] Adding detection channel II.TAU.00.BHZ
+04:03:28 [info] Adding detection channel II.TLY.00.BHZ
+04:03:28 [info] Adding detection channel II.UOSS.00.BHZ
+04:03:28 [info] Adding detection channel II.WRAB.00.BHZ
+04:03:28 [info] Adding detection channel IN.MNC..HHZ
+04:03:28 [info] Adding detection channel IN.PBA..HHZ
+04:03:28 [info] Adding detection channel IN.SHL..HHZ
+04:03:28 [info] Adding detection channel IU.ADK.00.BHZ
+04:03:28 [info] Adding detection channel IU.AFI.00.BHZ
+04:03:28 [info] Adding detection channel IU.ANTO.00.BHZ
+04:03:28 [info] Adding detection channel IU.BBSR.00.BHZ
+04:03:28 [info] Adding detection channel IU.BILL.00.BHZ
+04:03:28 [info] Adding detection channel IU.CASY.00.BHZ
+04:03:28 [info] Adding detection channel IU.COLA.00.BHZ
+04:03:28 [info] Adding detection channel IU.COR.00.BHZ
+04:03:28 [info] Adding detection channel IU.CTAO.00.BHZ
+04:03:28 [info] Adding detection channel IU.DAV.00.BHZ
+04:03:28 [info] Adding detection channel IU.DWPF.00.BHZ
+04:03:28 [info] Adding detection channel IU.FUNA.00.BHZ
+04:03:28 [info] Adding detection channel IU.FURI.00.BHZ
+04:03:28 [info] Adding detection channel IU.GNI.00.BHZ
+04:03:28 [info] Adding detection channel IU.GUMO.00.BHZ
+04:03:28 [info] Adding detection channel IU.HNR.00.BHZ
+04:03:28 [info] Adding detection channel IU.INCN.00.BHZ
+04:03:28 [info] Adding detection channel IU.JOHN.00.BHZ
+04:03:28 [info] Adding detection channel IU.KBL.00.BHZ
+04:03:28 [info] Adding detection channel IU.KIEV.00.BHZ
+04:03:28 [info] Adding detection channel IU.KIP.00.BHZ
+04:03:28 [info] Adding detection channel IU.LCO.00.BHZ
+04:03:28 [info] Adding detection channel IU.LSZ.00.BHZ
+04:03:28 [info] Adding detection channel IU.LVC.00.BHZ
+04:03:28 [info] Adding detection channel IU.MA2.00.BHZ
+04:03:28 [info] Adding detection channel IU.MAJO.00.BHZ
+04:03:28 [info] Adding detection channel IU.MBWA.00.BHZ
+04:03:28 [info] Adding detection channel IU.MIDW.00.BHZ
+04:03:28 [info] Adding detection channel IU.PAYG.00.BHZ
+04:03:28 [info] Adding detection channel IU.PET.00.BHZ
+04:03:28 [info] Adding detection channel IU.PMSA.00.BHZ
+04:03:28 [info] Adding detection channel IU.POHA.00.BHZ
+04:03:28 [info] Adding detection channel IU.PTCN.00.BHZ
+04:03:28 [info] Adding detection channel IU.PTGA.00.BHZ
+04:03:28 [info] Adding detection channel IU.QSPA.00.BHZ
+04:03:28 [info] Adding detection channel IU.RAO.00.BHZ
+04:03:28 [info] Adding detection channel IU.RAR.00.BHZ
+04:03:28 [info] Adding detection channel IU.RCBR.00.BHZ
+04:03:28 [info] Adding detection channel IU.SAML.00.BHZ
+04:03:28 [info] Adding detection channel IU.SBA.00.BHZ
+04:03:28 [info] Adding detection channel IU.SDV.00.BHZ
+04:03:28 [info] Adding detection channel IU.SJG.00.BHZ
+04:03:28 [info] Adding detection channel IU.SLBS.00.BHZ
+04:03:28 [info] Adding detection channel IU.SNZO.00.BHZ
+04:03:28 [info] Adding detection channel IU.SSPA.00.BHZ
+04:03:28 [info] Adding detection channel IU.TARA.00.BHZ
+04:03:28 [info] Adding detection channel IU.TATO.00.BHZ
+04:03:28 [info] Adding detection channel IU.TEIG.00.BHZ
+04:03:28 [info] Adding detection channel IU.TRQA.00.BHZ
+04:03:28 [info] Adding detection channel IU.ULN.00.BHZ
+04:03:28 [info] Adding detection channel IU.WAKE.00.BHZ
+04:03:28 [info] Adding detection channel IU.XMAS.00.BHZ
+04:03:28 [info] Adding detection channel IU.YSS.00.BHZ
+04:03:28 [info] Adding detection channel KZ.ABKAR..BHZ
+04:03:28 [info] Adding detection channel KZ.MKAR..BHZ
+04:03:28 [info] Adding detection channel MN.WDD..BHZ
+04:03:28 [info] Adding detection channel MS.BTDF..BHZ
+04:03:28 [info] Adding detection channel MY.KKM..BHZ
+04:03:28 [info] Adding detection channel MY.KSM..BHZ
+04:03:28 [info] Adding detection channel MY.KUM..BHZ
+04:03:28 [info] Adding detection channel NZ.APZ.10.HHZ
+04:03:28 [info] Adding detection channel NZ.CTZ.10.HHZ
+04:03:28 [info] Adding detection channel NZ.DCZ.10.HHZ
+04:03:28 [info] Adding detection channel NZ.ODZ.10.HHZ
+04:03:28 [info] Adding detection channel NZ.OUZ.10.HHZ
+04:03:28 [info] Adding detection channel PL.OJC..BHZ
+04:03:28 [info] Adding detection channel PS.PATS..BHZ
+04:03:28 [info] Adding detection channel PS.PSI..BHZ
+04:03:28 [info] Adding detection channel TW.YHNB..BHZ
+04:03:28 [info] Adding detection channel US.BOZ..BHZ
+04:03:28 [info] Adding detection channel US.EGMT..BHZ
+04:03:28 [info] Adding detection channel US.HAWA..BHZ
+04:03:28 [info] Adding detection channel US.KVTX..BHZ
+04:03:28 [info] Adding detection channel US.OGNE..BHZ
+04:03:28 [info] Adding detection channel US.WMOK..BHZ
+04:03:28 [info] Adding detection channel UW.OMAK..BHZ
+04:03:28 [info] 293 stations added
+04:03:28 [info] 
+Amplitudes to calculate:
+ * MLv: OK
+ * mB: OK
+ * mb: OK
+
+04:03:28 [info] Starting record acquisition
+04:03:28 [info] Starting message thread
+04:03:28 [debug] AU.NIUE..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.NIUE..BHZ, current size: 1/1, object count: 40913
+04:03:28 [debug] Added proc 0x33489d0
+04:03:28 [debug] Number of processors: 1
+04:03:28 [debug] AU.PSAC1.00.BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.PSAC1.00.BHZ, current size: 2/2, object count: 40946
+04:03:28 [debug] Added proc 0x334a670
+04:03:28 [debug] Number of processors: 2
+04:03:28 [debug] AU.FITZ..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.FITZ..BHZ, current size: 3/3, object count: 40979
+04:03:28 [debug] Added proc 0x334b910
+04:03:28 [debug] Number of processors: 3
+04:03:28 [debug] AU.NFK..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.NFK..BHZ, current size: 4/4, object count: 41012
+04:03:28 [debug] Added proc 0x334cb70
+04:03:28 [debug] Number of processors: 4
+04:03:28 [debug] AU.PSA00.00.BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.PSA00.00.BHZ, current size: 5/5, object count: 41045
+04:03:28 [debug] Added proc 0x334dde0
+04:03:28 [debug] Number of processors: 5
+04:03:28 [debug] AU.YNG..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.YNG..BHZ, current size: 6/6, object count: 41078
+04:03:28 [debug] Added proc 0x334f050
+04:03:28 [debug] Number of processors: 6
+04:03:28 [debug] AU.GIRL..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.GIRL..BHZ, current size: 7/7, object count: 41111
+04:03:28 [debug] Added proc 0x33502b0
+04:03:28 [debug] Number of processors: 7
+04:03:28 [debug] AU.MEEK..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.MEEK..BHZ, current size: 8/8, object count: 41145
+04:03:28 [debug] Added proc 0x3351540
+04:03:28 [debug] Number of processors: 8
+04:03:28 [debug] AU.MULG..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.MULG..BHZ, current size: 9/9, object count: 41178
+04:03:28 [debug] Added proc 0x3352840
+04:03:28 [debug] Number of processors: 9
+04:03:28 [debug] AU.MORW..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.MORW..BHZ, current size: 10/10, object count: 41211
+04:03:28 [debug] Added proc 0x3353ab0
+04:03:28 [debug] Number of processors: 10
+04:03:28 [debug] AU.MANU..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.MANU..BHZ, current size: 11/11, object count: 41244
+04:03:28 [debug] Added proc 0x3354d20
+04:03:28 [debug] Number of processors: 11
+04:03:28 [debug] AU.MCQ..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.MCQ..BHZ, current size: 12/12, object count: 41277
+04:03:28 [debug] Added proc 0x3355f90
+04:03:28 [debug] Number of processors: 12
+04:03:28 [debug] AU.MOO..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.MOO..BHZ, current size: 13/13, object count: 41310
+04:03:28 [debug] Added proc 0x3357350
+04:03:28 [debug] Number of processors: 13
+04:03:28 [debug] AU.BBOO..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.BBOO..BHZ, current size: 14/14, object count: 41343
+04:03:28 [debug] Added proc 0x3358520
+04:03:28 [debug] Number of processors: 14
+04:03:28 [debug] AU.FORT..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.FORT..BHZ, current size: 15/15, object count: 41376
+04:03:28 [debug] Added proc 0x33597a0
+04:03:28 [debug] Number of processors: 15
+04:03:28 [debug] AU.OOD..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.OOD..BHZ, current size: 16/16, object count: 41409
+04:03:28 [debug] Added proc 0x335aa20
+04:03:28 [debug] Number of processors: 16
+04:03:28 [debug] AU.CMSA..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.CMSA..BHZ, current size: 17/17, object count: 41442
+04:03:28 [debug] Added proc 0x335bd40
+04:03:28 [debug] Number of processors: 17
+04:03:28 [debug] AU.RIV..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.RIV..BHZ, current size: 18/18, object count: 41475
+04:03:28 [debug] Added proc 0x335cfa0
+04:03:28 [debug] Number of processors: 18
+04:03:28 [debug] AU.KNRA..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.KNRA..BHZ, current size: 19/19, object count: 41507
+04:03:28 [debug] Added proc 0x335e220
+04:03:28 [debug] Number of processors: 19
+04:03:28 [debug] AU.CNB..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.CNB..BHZ, current size: 20/20, object count: 41540
+04:03:28 [debug] Added proc 0x335f4c0
+04:03:28 [debug] Number of processors: 20
+04:03:28 [debug] AU.XMI..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.XMI..BHZ, current size: 21/21, object count: 41573
+04:03:28 [debug] Added proc 0x3360730
+04:03:28 [debug] Number of processors: 21
+04:03:28 [debug] AU.XMIS..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.XMIS..BHZ, current size: 22/22, object count: 41606
+04:03:28 [debug] Added proc 0x33619c0
+04:03:28 [debug] Number of processors: 22
+04:03:28 [debug] AU.QLP..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.QLP..BHZ, current size: 23/23, object count: 41638
+04:03:28 [debug] Added proc 0x3362c40
+04:03:28 [debug] Number of processors: 23
+04:03:28 [debug] AU.BLDU..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.BLDU..BHZ, current size: 24/24, object count: 41671
+04:03:28 [debug] Added proc 0x3364000
+04:03:28 [debug] Number of processors: 24
+04:03:28 [debug] AU.WRKA..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.WRKA..BHZ, current size: 25/25, object count: 41704
+04:03:28 [debug] Added proc 0x33651d0
+04:03:28 [debug] Number of processors: 25
+04:03:28 [debug] AU.CTA..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.CTA..BHZ, current size: 26/26, object count: 41737
+04:03:28 [debug] Added proc 0x3366370
+04:03:28 [debug] Number of processors: 26
+04:03:28 [debug] AU.COEN..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.COEN..BHZ, current size: 27/27, object count: 41770
+04:03:28 [debug] Added proc 0x3367740
+04:03:28 [debug] Number of processors: 27
+04:03:28 [debug] AU.KDU..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.KDU..BHZ, current size: 28/28, object count: 41803
+04:03:28 [debug] Added proc 0x33689b0
+04:03:28 [debug] Number of processors: 28
+04:03:28 [debug] AU.NWAO..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.NWAO..BHZ, current size: 29/29, object count: 41836
+04:03:28 [debug] Added proc 0x3369b60
+04:03:28 [debug] Number of processors: 29
+04:03:28 [debug] AU.HTT..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.HTT..BHZ, current size: 30/30, object count: 41875
+04:03:28 [debug] Added proc 0x336ad70
+04:03:28 [debug] Number of processors: 30
+04:03:28 [debug] AU.KMBL..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.KMBL..BHZ, current size: 31/31, object count: 41908
+04:03:28 [debug] Added proc 0x336c1a0
+04:03:28 [debug] Number of processors: 31
+04:03:28 [debug] AU.EIDS..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.EIDS..BHZ, current size: 32/32, object count: 41941
+04:03:28 [debug] Added proc 0x336d410
+04:03:28 [debug] Number of processors: 32
+04:03:28 [debug] AU.LHI..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.LHI..BHZ, current size: 33/33, object count: 41973
+04:03:28 [debug] Added proc 0x336e680
+04:03:28 [debug] Number of processors: 33
+04:03:28 [debug] AU.STKA..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.STKA..BHZ, current size: 34/34, object count: 42006
+04:03:28 [debug] Added proc 0x336f8f0
+04:03:28 [debug] Number of processors: 34
+04:03:28 [debug] AU.INKA..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.INKA..BHZ, current size: 35/35, object count: 42039
+04:03:28 [debug] Added proc 0x3370b60
+04:03:28 [debug] Number of processors: 35
+04:03:28 [debug] AU.MUN..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.MUN..BHZ, current size: 36/36, object count: 42075
+04:03:28 [debug] Added proc 0x3371dd0
+04:03:28 [debug] Number of processors: 36
+04:03:28 [debug] AU.MILA..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.MILA..BHZ, current size: 37/37, object count: 42108
+04:03:28 [debug] Added proc 0x3373040
+04:03:28 [debug] Number of processors: 37
+04:03:28 [debug] AU.LCRK..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.LCRK..BHZ, current size: 38/38, object count: 42144
+04:03:28 [debug] Added proc 0x3374350
+04:03:28 [debug] Number of processors: 38
+04:03:28 [debug] AU.MAW..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.MAW..BHZ, current size: 39/39, object count: 42177
+04:03:28 [debug] Added proc 0x33755b0
+04:03:28 [debug] Number of processors: 39
+04:03:28 [debug] AU.TOO..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.TOO..BHZ, current size: 40/40, object count: 42208
+04:03:28 [debug] Added proc 0x3376970
+04:03:28 [debug] Number of processors: 40
+04:03:28 [debug] AU.QIS..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.QIS..BHZ, current size: 41/41, object count: 42241
+04:03:28 [debug] Added proc 0x3377b50
+04:03:28 [debug] Number of processors: 41
+04:03:28 [debug] AU.ARMA..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.ARMA..BHZ, current size: 42/42, object count: 42280
+04:03:28 [debug] Added proc 0x3378dc0
+04:03:28 [debug] Number of processors: 42
+04:03:28 [debug] [AU.NWAO..BHZ] detected gap of 14.574999 secs or 583 samples (NOT handled): status = waiting for data
+04:03:28 [debug] AU.WB2..BHZ: created detector
+04:03:28 [debug] Added processor on stream AU.WB2..BHZ, current size: 43/43, object count: 42599
+04:03:28 [debug] Added proc 0x337a950
+04:03:28 [debug] Number of processors: 43
+04:03:28 [debug] [AU.FITZ..BHZ] detected gap of 2.274999 secs or 91 samples (handled)
+04:03:28 [debug] [AU.NWAO..BHZ] detected gap of 9.249999 secs or 370 samples (NOT handled): status = waiting for data
+04:03:28 [debug] [AU.WB2..BHZ] detected gap of 6.799999 secs or 272 samples (NOT handled): status = waiting for data
+04:03:28 [debug] [AU.CTA..BHZ] detected gap of 13.624999 secs or 545 samples (NOT handled): status = waiting for data
+04:03:28 [debug] [AU.NWAO..BHZ] detected gap of 7.749999 secs or 310 samples (NOT handled): status = waiting for data
+04:03:28 [debug] [AU.WB2..BHZ] detected gap of 27.649999 secs or 1106 samples (NOT handled): status = waiting for data
+04:03:28 [debug] [AU.WB2..BHZ] detected gap of 18.024999 secs or 721 samples (NOT handled): status = waiting for data
+04:03:28 [debug] [AU.WB2..BHZ] detected gap of 18.424999 secs or 737 samples (NOT handled): status = waiting for data
+04:03:28 [debug] [AU.NWAO..BHZ] detected gap of 8.824999 secs or 353 samples (NOT handled): status = waiting for data
+04:03:28 [debug] [AU.NWAO..BHZ] detected gap of 9.599999 secs or 384 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 8.274999 secs or 331 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.FITZ..BHZ] detected gap of 16.699999 secs or 668 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 8.424999 secs or 337 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.NWAO..BHZ] detected gap of 9.074999 secs or 363 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.MANU..BHZ] trigger on = 2017-08-24T01:03:58.194538Z, amp = 3.093501
+04:03:29 [debug] AU.MANU..BHZ: created picker AIC
+04:03:29 [debug] Added processor on stream AU.MANU..BHZ, current size: 44/44, object count: 45459
+04:03:29 [debug] Added proc 0x337be60
+04:03:29 [debug] No valid pickID set (pick has not been sent), cancel sending 'snr' amplitude
+04:03:29 [debug] [AU.MANU..BHZ] trigger off = 2017-08-24T01:04:00.744538Z, amp = 1.479997
+04:03:29 [debug] [] duration = 2.55
+04:03:29 [debug] AIC: created filter ITAPER(10)>>(BW(4,0.7,2)^2+BW(4,4,8)^2)^0.5
+04:03:29 [debug] Picker::process repick result: dt=0.350  snr=10.00
+04:03:29 [debug] AU.MANU..BHZ: emit P pick 20170824.010357.74-AIC-AU.MANU..BHZ
+04:03:29 [debug] AU.MANU..BHZ: created secondary picker S-AIC (rec ref: 4)
+04:03:29 [debug] check for expired procs (got 0 in list)
+04:03:29 [debug] AU.MANU..BHZ: registered proc 0x3382850
+04:03:29 [debug] Number of processors: 44
+04:03:29 [debug] Number of processors: 44
+04:03:29 [debug] Number of processors: 44
+04:03:29 [debug] Number of processors: 44
+04:03:29 [debug] AU.MANU..BHZ:Picker: OK
+04:03:29 [debug] Removed proc 0x337be60
+04:03:29 [debug] Removed processor from stream AU.MANU..BHZ
+04:03:29 [debug] Removed processor from station AU.MANU
+04:03:29 [debug] Added processor on stream AU.MANU..BHN, current size: 44/44, object count: 45588
+04:03:29 [debug] Added proc 0x3382850
+04:03:29 [debug] Added processor on stream AU.MANU..BHE, current size: 45/44, object count: 45587
+04:03:29 [debug] Added proc 0x3382850
+04:03:29 [debug] Added processor on stream AU.MANU..BHZ, current size: 46/45, object count: 45586
+04:03:29 [debug] Added proc 0x337fc20
+04:03:29 [debug] Added processor on stream AU.MANU..BHZ, current size: 47/46, object count: 45588
+04:03:29 [debug] Added proc 0x3380260
+04:03:29 [debug] Added processor on stream AU.MANU..BHZ, current size: 48/47, object count: 45587
+04:03:29 [debug] Added proc 0x3380750
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 28.674999 secs or 1147 samples (NOT handled): status = waiting for data
+04:03:29 [debug] Emit amplitude 20170824.010357.74-AIC-AU.MANU..BHZ.mb, proc = 0x3380750, mb
+04:03:29 [debug] AU.MANU..BHZ:AmplitudeProcessor_mb: OK
+04:03:29 [debug] Removed proc 0x3380750
+04:03:29 [debug] Removed processor from stream AU.MANU..BHZ
+04:03:29 [debug] Removed processor from station AU.MANU
+04:03:29 [debug] Emit amplitude 20170824.010357.74-AIC-AU.MANU..BHZ.mB, proc = 0x3380260, mB
+04:03:29 [debug] AU.MANU..BHZ:AmplitudeProcessor_mB: OK
+04:03:29 [debug] Removed proc 0x3380260
+04:03:29 [debug] Removed processor from stream AU.MANU..BHZ
+04:03:29 [debug] Removed processor from station AU.MANU
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 19.324999 secs or 773 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.COEN..BHZ] detected gap of 10.000000 secs or 400 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.LCRK..BHZ] detected gap of 9.999999 secs or 400 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.KMBL..BHZ] detected gap of 9.999999 secs or 400 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.MORW..BHZ] detected gap of 9.999999 secs or 400 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 8.049999 secs or 322 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 28.299999 secs or 1132 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.MAW..BHZ] detected gap of 24.574999 secs or 983 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.COEN..BHZ] trigger on = 2017-08-24T01:06:26.494538Z, amp = 3.584956
+04:03:29 [debug] AU.COEN..BHZ: created picker AIC
+04:03:29 [debug] No valid pickID set (pick has not been sent), cancel sending 'snr' amplitude
+04:03:29 [debug] [AU.COEN..BHZ] trigger off = 2017-08-24T01:06:30.469538Z, amp = 1.499626
+04:03:29 [debug] [] duration = 3.98
+04:03:29 [debug] Added processor on stream AU.COEN..BHZ, current size: 47/46, object count: 46532
+04:03:29 [debug] Added proc 0x33761e0
+04:03:29 [debug] AIC: created filter ITAPER(10)>>(BW(4,0.7,2)^2+BW(4,4,8)^2)^0.5
+04:03:29 [debug] Picker::process repick result: dt=0.625  snr=18.27
+04:03:29 [debug] AU.COEN..BHZ: emit P pick 20170824.010626.31-AIC-AU.COEN..BHZ
+04:03:29 [debug] AU.COEN..BHZ: created secondary picker S-AIC (rec ref: 4)
+04:03:29 [debug] Added processor on stream AU.COEN..BHN, current size: 48/47, object count: 46569
+04:03:29 [debug] Added proc 0x339aa20
+04:03:29 [debug] Added processor on stream AU.COEN..BHE, current size: 49/47, object count: 46569
+04:03:29 [debug] Added proc 0x339aa20
+04:03:29 [debug] check for expired procs (got 0 in list)
+04:03:29 [debug] AU.COEN..BHZ: registered proc 0x339aa20
+04:03:29 [debug] Number of processors: 49
+04:03:29 [debug] Added processor on stream AU.COEN..BHZ, current size: 50/48, object count: 46574
+04:03:29 [debug] Added proc 0x339ae30
+04:03:29 [debug] Number of processors: 50
+04:03:29 [debug] Added processor on stream AU.COEN..BHZ, current size: 51/49, object count: 46582
+04:03:29 [debug] Added proc 0x3380750
+04:03:29 [debug] Number of processors: 51
+04:03:29 [debug] Added processor on stream AU.COEN..BHZ, current size: 52/50, object count: 46587
+04:03:29 [debug] Added proc 0x339b260
+04:03:29 [debug] Number of processors: 52
+04:03:29 [debug] AU.COEN..BHZ:Picker: OK
+04:03:29 [debug] Removed proc 0x33761e0
+04:03:29 [debug] Removed processor from stream AU.COEN..BHZ
+04:03:29 [debug] Removed processor from station AU.COEN
+04:03:29 [debug] Emit amplitude 20170824.010357.74-AIC-AU.MANU..BHZ.MLv, proc = 0x337fc20, MLv
+04:03:29 [debug] AU.MANU..BHZ:AmplitudeProcessor_MLv: OK
+04:03:29 [debug] Removed proc 0x337fc20
+04:03:29 [debug] Removed processor from stream AU.MANU..BHZ
+04:03:29 [debug] Removed processor from station AU.MANU
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 6.499999 secs or 260 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.MANU..BHZ] trigger on = 2017-08-24T01:06:54.594538Z, amp = 3.018303
+04:03:29 [debug] Time to last pick = 176.40 sec, last amplitude = 5.01, minimum amplitude = 3.00
+04:03:29 [debug] Deferred sending disabled, pick already reached minimum amplitude: 3.02 >= 3.00
+04:03:29 [debug] AU.MANU..BHZ: created picker AIC
+04:03:29 [debug] Added processor on stream AU.MANU..BHZ, current size: 51/49, object count: 46583
+04:03:29 [debug] Added proc 0x33761e0
+04:03:29 [debug] Emit amplitude 20170824.010626.31-AIC-AU.COEN..BHZ.mb, proc = 0x339b260, mb
+04:03:29 [debug] AU.COEN..BHZ:AmplitudeProcessor_mb: OK
+04:03:29 [debug] Removed proc 0x339b260
+04:03:29 [debug] Removed processor from stream AU.COEN..BHZ
+04:03:29 [debug] Removed processor from station AU.COEN
+04:03:29 [debug] No valid pickID set (pick has not been sent), cancel sending 'snr' amplitude
+04:03:29 [debug] [AU.MANU..BHZ] trigger off = 2017-08-24T01:06:56.719538Z, amp = 1.492699
+04:03:29 [debug] [] duration = 2.12
+04:03:29 [debug] AIC: created filter ITAPER(10)>>(BW(4,0.7,2)^2+BW(4,4,8)^2)^0.5
+04:03:29 [debug] Picker::process repick result: dt=-1.150  snr=4.12
+04:03:29 [debug] AU.MANU..BHZ: emit P pick 20170824.010652.64-AIC-AU.MANU..BHZ
+04:03:29 [debug] AU.MANU..BHZ: created secondary picker S-AIC (rec ref: 4)
+04:03:29 [debug] check for expired procs (got 1 in list)
+04:03:29 [debug] Remove expired proc 0x3382850
+04:03:29 [info] Remove expired running processor SecondaryPicker on AU.MANU..BHZ
+04:03:29 [debug]   -> status: OK
+04:03:29 [debug] AU.MANU..BHZ: registered proc 0x337fc20
+04:03:29 [debug] Number of processors: 50
+04:03:29 [debug] Number of processors: 50
+04:03:29 [debug] Number of processors: 50
+04:03:29 [debug] Number of processors: 50
+04:03:29 [debug] AU.MANU..BHZ:Picker: OK
+04:03:29 [debug] Removed proc 0x3382850
+04:03:29 [debug] Removed processor from stream AU.MANU..BHE
+04:03:29 [debug] Removed proc 0x3382850
+04:03:29 [debug] Removed processor from stream AU.MANU..BHN
+04:03:29 [debug] Removed processor from station AU.MANU
+04:03:29 [debug] Removed proc 0x33761e0
+04:03:29 [debug] Removed processor from stream AU.MANU..BHZ
+04:03:29 [debug] Removed processor from station AU.MANU
+04:03:29 [debug] Added processor on stream AU.MANU..BHN, current size: 48/47, object count: 46593
+04:03:29 [debug] Added proc 0x337fc20
+04:03:29 [debug] Added processor on stream AU.MANU..BHE, current size: 49/47, object count: 46592
+04:03:29 [debug] Added proc 0x337fc20
+04:03:29 [debug] Added processor on stream AU.MANU..BHZ, current size: 50/48, object count: 46591
+04:03:29 [debug] Added proc 0x339b260
+04:03:29 [debug] Added processor on stream AU.MANU..BHZ, current size: 51/49, object count: 46593
+04:03:29 [debug] Added proc 0x33813b0
+04:03:29 [debug] Added processor on stream AU.MANU..BHZ, current size: 52/50, object count: 46592
+04:03:29 [debug] Added proc 0x3381790
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 17.974999 secs or 719 samples (NOT handled): status = waiting for data
+04:03:29 [debug] Emit amplitude 20170824.010652.64-AIC-AU.MANU..BHZ.mb, proc = 0x3381790, mb
+04:03:29 [debug] AU.MANU..BHZ:AmplitudeProcessor_mb: OK
+04:03:29 [debug] Removed proc 0x3381790
+04:03:29 [debug] Removed processor from stream AU.MANU..BHZ
+04:03:29 [debug] Removed processor from station AU.MANU
+04:03:29 [debug] Emit amplitude 20170824.010626.31-AIC-AU.COEN..BHZ.mB, proc = 0x3380750, mB
+04:03:29 [debug] AU.COEN..BHZ:AmplitudeProcessor_mB: OK
+04:03:29 [debug] Removed proc 0x3380750
+04:03:29 [debug] Removed processor from stream AU.COEN..BHZ
+04:03:29 [debug] Removed processor from station AU.COEN
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 18.074999 secs or 723 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.MCQ..BHZ] trigger on = 2017-08-24T01:07:42.744538Z, amp = 3.016509
+04:03:29 [debug] AU.MCQ..BHZ: created picker AIC
+04:03:29 [debug] No valid pickID set (pick has not been sent), cancel sending 'snr' amplitude
+04:03:29 [debug] [AU.MCQ..BHZ] trigger off = 2017-08-24T01:07:44.994538Z, amp = 1.491645
+04:03:29 [debug] [] duration = 2.25
+04:03:29 [debug] Added processor on stream AU.MCQ..BHZ, current size: 51/49, object count: 46570
+04:03:29 [debug] Added proc 0x33761e0
+04:03:29 [debug] AIC: created filter ITAPER(10)>>(BW(4,0.7,2)^2+BW(4,4,8)^2)^0.5
+04:03:29 [debug] Picker::process repick result: dt=-4.825  snr=4.80
+04:03:29 [debug] AU.MCQ..BHZ: emit P pick 20170824.010737.11-AIC-AU.MCQ..BHZ
+04:03:29 [debug] AU.MCQ..BHZ: created secondary picker S-AIC (rec ref: 4)
+04:03:29 [debug] Added processor on stream AU.MCQ..BHN, current size: 52/50, object count: 46607
+04:03:29 [debug] Added proc 0x3382850
+04:03:29 [debug] Added processor on stream AU.MCQ..BHE, current size: 53/50, object count: 46607
+04:03:29 [debug] Added proc 0x3382850
+04:03:29 [debug] check for expired procs (got 0 in list)
+04:03:29 [debug] AU.MCQ..BHZ: registered proc 0x3382850
+04:03:29 [debug] Number of processors: 53
+04:03:29 [debug] Added processor on stream AU.MCQ..BHZ, current size: 54/51, object count: 46612
+04:03:29 [debug] Added proc 0x3381790
+04:03:29 [debug] Number of processors: 54
+04:03:29 [debug] Added processor on stream AU.MCQ..BHZ, current size: 55/52, object count: 46620
+04:03:29 [debug] Added proc 0x3380750
+04:03:29 [debug] Number of processors: 55
+04:03:29 [debug] Added processor on stream AU.MCQ..BHZ, current size: 56/53, object count: 46625
+04:03:29 [debug] Added proc 0x3381c00
+04:03:29 [debug] Number of processors: 56
+04:03:29 [debug] AU.MCQ..BHZ:Picker: OK
+04:03:29 [debug] Removed proc 0x33761e0
+04:03:29 [debug] Removed processor from stream AU.MCQ..BHZ
+04:03:29 [debug] Removed processor from station AU.MCQ
+04:03:29 [debug] Emit amplitude 20170824.010652.64-AIC-AU.MANU..BHZ.mB, proc = 0x33813b0, mB
+04:03:29 [debug] AU.MANU..BHZ:AmplitudeProcessor_mB: OK
+04:03:29 [debug] Removed proc 0x33813b0
+04:03:29 [debug] Removed processor from stream AU.MANU..BHZ
+04:03:29 [debug] Removed processor from station AU.MANU
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 8.324999 secs or 333 samples (NOT handled): status = waiting for data
+04:03:29 [debug] Emit amplitude 20170824.010737.11-AIC-AU.MCQ..BHZ.mb, proc = 0x3381c00, mb
+04:03:29 [debug] AU.MCQ..BHZ:AmplitudeProcessor_mb: OK
+04:03:29 [debug] Removed proc 0x3381c00
+04:03:29 [debug] Removed processor from stream AU.MCQ..BHZ
+04:03:29 [debug] Removed processor from station AU.MCQ
+04:03:29 [debug] Amplitude mB computation for stream AU.MCQ..BHZ failed because of low SNR (1.14 < 3.00)
+04:03:29 [debug] AU.MCQ..BHZ:AmplitudeProcessor_mB: SNR 1.14311 too low
+04:03:29 [debug] Removed proc 0x3380750
+04:03:29 [debug] Removed processor from stream AU.MCQ..BHZ
+04:03:29 [debug] Removed processor from station AU.MCQ
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 17.749999 secs or 710 samples (NOT handled): status = waiting for data
+04:03:29 [debug] Emit amplitude 20170824.010626.31-AIC-AU.COEN..BHZ.MLv, proc = 0x339ae30, MLv
+04:03:29 [debug] AU.COEN..BHZ:AmplitudeProcessor_MLv: OK
+04:03:29 [debug] Removed proc 0x339ae30
+04:03:29 [debug] Removed processor from stream AU.COEN..BHZ
+04:03:29 [debug] Removed processor from station AU.COEN
+04:03:29 [debug] [AU.CTA..BHZ] detected gap of 14.074999 secs or 563 samples (NOT handled): status = waiting for data
+04:03:29 [debug] Emit amplitude 20170824.010652.64-AIC-AU.MANU..BHZ.MLv, proc = 0x339b260, MLv
+04:03:29 [debug] AU.MANU..BHZ:AmplitudeProcessor_MLv: OK
+04:03:29 [debug] Removed proc 0x339b260
+04:03:29 [debug] Removed processor from stream AU.MANU..BHZ
+04:03:29 [debug] Removed processor from station AU.MANU
+04:03:29 [debug] [AU.CTA..BHZ] detected gap of 13.549999 secs or 542 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.MILA..BHZ] trigger on = 2017-08-24T01:09:24.619538Z, amp = 3.027729
+04:03:29 [debug] AU.MILA..BHZ: created picker AIC
+04:03:29 [debug] No valid pickID set (pick has not been sent), cancel sending 'snr' amplitude
+04:03:29 [debug] [AU.MILA..BHZ] trigger off = 2017-08-24T01:09:26.944538Z, amp = 1.482397
+04:03:29 [debug] [] duration = 2.33
+04:03:29 [debug] Added processor on stream AU.MILA..BHZ, current size: 51/48, object count: 46558
+04:03:29 [debug] Added proc 0x33761e0
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 28.499999 secs or 1140 samples (NOT handled): status = waiting for data
+04:03:29 [debug] AIC: created filter ITAPER(10)>>(BW(4,0.7,2)^2+BW(4,4,8)^2)^0.5
+04:03:29 [debug] Picker::process repick result: dt=-0.375  snr=4.56
+04:03:29 [debug] AU.MILA..BHZ: emit P pick 20170824.010923.44-AIC-AU.MILA..BHZ
+04:03:29 [debug] AU.MILA..BHZ: created secondary picker S-AIC (rec ref: 4)
+04:03:29 [debug] check for expired procs (got 0 in list)
+04:03:29 [debug] AU.MILA..BHZ: registered proc 0x3381f00
+04:03:29 [debug] Number of processors: 51
+04:03:29 [debug] Number of processors: 51
+04:03:29 [debug] Number of processors: 51
+04:03:29 [debug] Number of processors: 51
+04:03:29 [debug] AU.MILA..BHZ:Picker: OK
+04:03:29 [debug] Removed proc 0x33761e0
+04:03:29 [debug] Removed processor from stream AU.MILA..BHZ
+04:03:29 [debug] Removed processor from station AU.MILA
+04:03:29 [debug] Added processor on stream AU.MILA..BH1, current size: 51/48, object count: 46594
+04:03:29 [debug] Added proc 0x3381f00
+04:03:29 [debug] Added processor on stream AU.MILA..BH2, current size: 52/48, object count: 46593
+04:03:29 [debug] Added proc 0x3381f00
+04:03:29 [debug] Added processor on stream AU.MILA..BHZ, current size: 53/49, object count: 46592
+04:03:29 [debug] Added proc 0x3380e30
+04:03:29 [debug] Added processor on stream AU.MILA..BHZ, current size: 54/50, object count: 46594
+04:03:29 [debug] Added proc 0x33812e0
+04:03:29 [debug] Added processor on stream AU.MILA..BHZ, current size: 55/51, object count: 46593
+04:03:29 [debug] Added proc 0x3399d10
+04:03:29 [debug] [AU.CTA..BHZ] detected gap of 12.899999 secs or 516 samples (NOT handled): status = waiting for data
+04:03:29 [debug] Emit amplitude 20170824.010923.44-AIC-AU.MILA..BHZ.mb, proc = 0x3399d10, mb
+04:03:29 [debug] AU.MILA..BHZ:AmplitudeProcessor_mb: OK
+04:03:29 [debug] Removed proc 0x3399d10
+04:03:29 [debug] Removed processor from stream AU.MILA..BHZ
+04:03:29 [debug] Removed processor from station AU.MILA
+04:03:29 [debug] [AU.MAW..BHZ] detected gap of 22.124999 secs or 885 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 7.799999 secs or 312 samples (NOT handled): status = waiting for data
+04:03:29 [debug] Emit amplitude 20170824.010737.11-AIC-AU.MCQ..BHZ.MLv, proc = 0x3381790, MLv
+04:03:29 [debug] AU.MCQ..BHZ:AmplitudeProcessor_MLv: OK
+04:03:29 [debug] Removed proc 0x3381790
+04:03:29 [debug] Removed processor from stream AU.MCQ..BHZ
+04:03:29 [debug] Removed processor from station AU.MCQ
+04:03:29 [debug] Amplitude mB computation for stream AU.MILA..BHZ failed because of low SNR (1.81 < 3.00)
+04:03:29 [debug] AU.MILA..BHZ:AmplitudeProcessor_mB: SNR 1.81124 too low
+04:03:29 [debug] Removed proc 0x33812e0
+04:03:29 [debug] Removed processor from stream AU.MILA..BHZ
+04:03:29 [debug] Removed processor from station AU.MILA
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 28.474999 secs or 1139 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.YNG..BHZ] trigger on = 2017-08-24T01:10:37.769538Z, amp = 3.002356
+04:03:29 [debug] AU.YNG..BHZ: created picker AIC
+04:03:29 [debug] No valid pickID set (pick has not been sent), cancel sending 'snr' amplitude
+04:03:29 [debug] [AU.YNG..BHZ] trigger off = 2017-08-24T01:10:39.644538Z, amp = 1.489573
+04:03:29 [debug] [] duration = 1.88
+04:03:29 [debug] Added processor on stream AU.YNG..BHZ, current size: 53/49, object count: 46523
+04:03:29 [debug] Added proc 0x33812e0
+04:03:29 [debug] AIC: created filter ITAPER(10)>>(BW(4,0.7,2)^2+BW(4,4,8)^2)^0.5
+04:03:29 [debug] Picker::process repick result: dt=-1.375  snr=3.37
+04:03:29 [debug] AU.YNG..BHZ: emit P pick 20170824.011035.59-AIC-AU.YNG..BHZ
+04:03:29 [debug] AU.YNG..BHZ: created secondary picker S-AIC (rec ref: 4)
+04:03:29 [debug] Added processor on stream AU.YNG..BHN, current size: 54/50, object count: 46560
+04:03:29 [debug] Added proc 0x3394370
+04:03:29 [debug] Added processor on stream AU.YNG..BHE, current size: 55/50, object count: 46560
+04:03:29 [debug] Added proc 0x3394370
+04:03:29 [debug] check for expired procs (got 0 in list)
+04:03:29 [debug] AU.YNG..BHZ: registered proc 0x3394370
+04:03:29 [debug] Number of processors: 55
+04:03:29 [debug] Added processor on stream AU.YNG..BHZ, current size: 56/51, object count: 46565
+04:03:29 [debug] Added proc 0x3395e80
+04:03:29 [debug] Number of processors: 56
+04:03:29 [debug] Added processor on stream AU.YNG..BHZ, current size: 57/52, object count: 46573
+04:03:29 [debug] Added proc 0x33962f0
+04:03:29 [debug] Number of processors: 57
+04:03:29 [debug] Added processor on stream AU.YNG..BHZ, current size: 58/53, object count: 46578
+04:03:29 [debug] Added proc 0x3396930
+04:03:29 [debug] Number of processors: 58
+04:03:29 [debug] AU.YNG..BHZ:Picker: OK
+04:03:29 [debug] Removed proc 0x33812e0
+04:03:29 [debug] Removed processor from stream AU.YNG..BHZ
+04:03:29 [debug] Removed processor from station AU.YNG
+04:03:29 [debug] [AU.CTA..BHZ] detected gap of 15.274999 secs or 611 samples (NOT handled): status = waiting for data
+04:03:29 [debug] Emit amplitude 20170824.011035.59-AIC-AU.YNG..BHZ.mb, proc = 0x3396930, mb
+04:03:29 [debug] AU.YNG..BHZ:AmplitudeProcessor_mb: OK
+04:03:29 [debug] Removed proc 0x3396930
+04:03:29 [debug] Removed processor from stream AU.YNG..BHZ
+04:03:29 [debug] Removed processor from station AU.YNG
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 17.774999 secs or 711 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.CTA..BHZ] detected gap of 13.874999 secs or 555 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.NWAO..BHZ] detected gap of 9.024999 secs or 361 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 8.899999 secs or 356 samples (NOT handled): status = waiting for data
+04:03:29 [debug] Emit amplitude 20170824.011035.59-AIC-AU.YNG..BHZ.mB, proc = 0x33962f0, mB
+04:03:29 [debug] AU.YNG..BHZ:AmplitudeProcessor_mB: OK
+04:03:29 [debug] Removed proc 0x33962f0
+04:03:29 [debug] Removed processor from stream AU.YNG..BHZ
+04:03:29 [debug] Removed processor from station AU.YNG
+04:03:29 [debug] [AU.CTA..BHZ] detected gap of 11.874999 secs or 475 samples (NOT handled): status = waiting for data
+04:03:29 [debug] Emit amplitude 20170824.010923.44-AIC-AU.MILA..BHZ.MLv, proc = 0x3380e30, MLv
+04:03:29 [debug] AU.MILA..BHZ:AmplitudeProcessor_MLv: OK
+04:03:29 [debug] Removed proc 0x3380e30
+04:03:29 [debug] Removed processor from stream AU.MILA..BHZ
+04:03:29 [debug] Removed processor from station AU.MILA
+04:03:29 [debug] [AU.WRKA..BHZ] trigger on = 2017-08-24T01:11:55.269538Z, amp = 3.018600
+04:03:29 [debug] AU.WRKA..BHZ: created picker AIC
+04:03:29 [debug] Added processor on stream AU.WRKA..BHZ, current size: 55/50, object count: 46531
+04:03:29 [debug] Added proc 0x33962f0
+04:03:29 [debug] [AU.NWAO..BHZ] detected gap of 8.974999 secs or 359 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 19.074999 secs or 763 samples (NOT handled): status = waiting for data
+04:03:29 [debug] No valid pickID set (pick has not been sent), cancel sending 'snr' amplitude
+04:03:29 [debug] [AU.WRKA..BHZ] trigger off = 2017-08-24T01:11:57.544538Z, amp = 1.470503
+04:03:29 [debug] [] duration = 2.27
+04:03:29 [debug] AIC: created filter ITAPER(10)>>(BW(4,0.7,2)^2+BW(4,4,8)^2)^0.5
+04:03:29 [debug] Picker::process repick result: dt=-1.050  snr=3.91
+04:03:29 [debug] AU.WRKA..BHZ: emit P pick 20170824.011153.41-AIC-AU.WRKA..BHZ
+04:03:29 [debug] AU.WRKA..BHZ: created secondary picker S-AIC (rec ref: 4)
+04:03:29 [debug] check for expired procs (got 0 in list)
+04:03:29 [debug] AU.WRKA..BHZ: registered proc 0x3396da0
+04:03:29 [debug] Number of processors: 55
+04:03:29 [debug] Number of processors: 55
+04:03:29 [debug] Number of processors: 55
+04:03:29 [debug] Number of processors: 55
+04:03:29 [debug] AU.WRKA..BHZ:Picker: OK
+04:03:29 [debug] Removed proc 0x33962f0
+04:03:29 [debug] Removed processor from stream AU.WRKA..BHZ
+04:03:29 [debug] Removed processor from station AU.WRKA
+04:03:29 [debug] Added processor on stream AU.WRKA..BHN, current size: 55/50, object count: 46611
+04:03:29 [debug] Added proc 0x3396da0
+04:03:29 [debug] Added processor on stream AU.WRKA..BHE, current size: 56/50, object count: 46610
+04:03:29 [debug] Added proc 0x3396da0
+04:03:29 [debug] Added processor on stream AU.WRKA..BHZ, current size: 57/51, object count: 46609
+04:03:29 [debug] Added proc 0x3398f90
+04:03:29 [debug] Added processor on stream AU.WRKA..BHZ, current size: 58/52, object count: 46611
+04:03:29 [debug] Added proc 0x33994e0
+04:03:29 [debug] Added processor on stream AU.WRKA..BHZ, current size: 59/53, object count: 46610
+04:03:29 [debug] Added proc 0x33999c0
+04:03:29 [debug] [AU.GIRL..BHZ] trigger on = 2017-08-24T01:12:11.094541Z, amp = 3.005879
+04:03:29 [debug] AU.GIRL..BHZ: created picker AIC
+04:03:29 [debug] Added processor on stream AU.GIRL..BHZ, current size: 60/54, object count: 46620
+04:03:29 [debug] Added proc 0x3399d70
+04:03:29 [debug] No valid pickID set (pick has not been sent), cancel sending 'snr' amplitude
+04:03:29 [debug] [AU.GIRL..BHZ] trigger off = 2017-08-24T01:12:15.544539Z, amp = 1.491168
+04:03:29 [debug] [] duration = 4.45
+04:03:29 [debug] AIC: created filter ITAPER(10)>>(BW(4,0.7,2)^2+BW(4,4,8)^2)^0.5
+04:03:29 [debug] Picker::process repick result: dt=-1.025  snr=6.76
+04:03:29 [debug] AU.GIRL..BHZ: emit P pick 20170824.011209.26-AIC-AU.GIRL..BHZ
+04:03:29 [debug] AU.GIRL..BHZ: created secondary picker S-AIC (rec ref: 4)
+04:03:29 [debug] check for expired procs (got 0 in list)
+04:03:29 [debug] AU.GIRL..BHZ: registered proc 0x3397e50
+04:03:29 [debug] Number of processors: 60
+04:03:29 [debug] Number of processors: 60
+04:03:29 [debug] Number of processors: 60
+04:03:29 [debug] Number of processors: 60
+04:03:29 [debug] AU.GIRL..BHZ:Picker: OK
+04:03:29 [debug] Removed proc 0x3399d70
+04:03:29 [debug] Removed processor from stream AU.GIRL..BHZ
+04:03:29 [debug] Removed processor from station AU.GIRL
+04:03:29 [debug] Added processor on stream AU.GIRL..BHN, current size: 60/54, object count: 46665
+04:03:29 [debug] Added proc 0x3397e50
+04:03:29 [debug] Added processor on stream AU.GIRL..BHE, current size: 61/54, object count: 46664
+04:03:29 [debug] Added proc 0x3397e50
+04:03:29 [debug] Added processor on stream AU.GIRL..BHZ, current size: 62/55, object count: 46663
+04:03:29 [debug] Added proc 0x3393090
+04:03:29 [debug] Added processor on stream AU.GIRL..BHZ, current size: 63/56, object count: 46665
+04:03:29 [debug] Added proc 0x33935c0
+04:03:29 [debug] Added processor on stream AU.GIRL..BHZ, current size: 64/57, object count: 46664
+04:03:29 [debug] Added proc 0x33939a0
+04:03:29 [debug] Emit amplitude 20170824.011153.41-AIC-AU.WRKA..BHZ.mb, proc = 0x33999c0, mb
+04:03:29 [debug] AU.WRKA..BHZ:AmplitudeProcessor_mb: OK
+04:03:29 [debug] Removed proc 0x33999c0
+04:03:29 [debug] Removed processor from stream AU.WRKA..BHZ
+04:03:29 [debug] Removed processor from station AU.WRKA
+04:03:29 [debug] [AU.NWAO..BHZ] detected gap of 9.099999 secs or 364 samples (NOT handled): status = waiting for data
+04:03:29 [debug] Emit amplitude 20170824.011209.26-AIC-AU.GIRL..BHZ.mb, proc = 0x33939a0, mb
+04:03:29 [debug] AU.GIRL..BHZ:AmplitudeProcessor_mb: OK
+04:03:29 [debug] Removed proc 0x33939a0
+04:03:29 [debug] Removed processor from stream AU.GIRL..BHZ
+04:03:29 [debug] Removed processor from station AU.GIRL
+04:03:29 [debug] [AU.NWAO..BHZ] detected gap of 9.549999 secs or 382 samples (NOT handled): status = waiting for data
+04:03:29 [debug] Amplitude mB computation for stream AU.WRKA..BHZ failed because of low SNR (1.36 < 3.00)
+04:03:29 [debug] AU.WRKA..BHZ:AmplitudeProcessor_mB: SNR 1.36394 too low
+04:03:29 [debug] Removed proc 0x33994e0
+04:03:29 [debug] Removed processor from stream AU.WRKA..BHZ
+04:03:29 [debug] Removed processor from station AU.WRKA
+04:03:29 [debug] Emit amplitude 20170824.011035.59-AIC-AU.YNG..BHZ.MLv, proc = 0x3395e80, MLv
+04:03:29 [debug] AU.YNG..BHZ:AmplitudeProcessor_MLv: OK
+04:03:29 [debug] Removed proc 0x3395e80
+04:03:29 [debug] Removed processor from stream AU.YNG..BHZ
+04:03:29 [debug] Removed processor from station AU.YNG
+04:03:29 [debug] Amplitude mB computation for stream AU.GIRL..BHZ failed because of low SNR (1.42 < 3.00)
+04:03:29 [debug] AU.GIRL..BHZ:AmplitudeProcessor_mB: SNR 1.41821 too low
+04:03:29 [debug] Removed proc 0x33935c0
+04:03:29 [debug] Removed processor from stream AU.GIRL..BHZ
+04:03:29 [debug] Removed processor from station AU.GIRL
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 27.849999 secs or 1114 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.NWAO..BHZ] detected gap of 9.499999 secs or 380 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.FITZ..BHZ] detected gap of 2.149999 secs or 86 samples (handled)
+04:03:29 [debug] [AU.NWAO..BHZ] detected gap of 9.449999 secs or 378 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 7.424999 secs or 297 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.FITZ..BHZ] detected gap of 3.399999 secs or 136 samples (handled)
+04:03:29 [debug] [AU.FITZ..BHZ] trigger on = 2017-08-24T01:13:50.95Z, amp = 3.013595
+04:03:29 [debug] AU.FITZ..BHZ: created picker AIC
+04:03:29 [debug] No valid pickID set (pick has not been sent), cancel sending 'snr' amplitude
+04:03:29 [debug] [AU.FITZ..BHZ] trigger off = 2017-08-24T01:13:53.7Z, amp = 1.489462
+04:03:29 [debug] [] duration = 2.75
+04:03:29 [debug] Added processor on stream AU.FITZ..BHZ, current size: 60/53, object count: 46767
+04:03:29 [debug] Added proc 0x3395e80
+04:03:29 [debug] [AU.FITZ..BHZ] detected gap of 2.149999 secs or 86 samples (NOT handled): status = terminated
+04:03:29 [debug] AU.FITZ..BHZ:Picker: OK
+04:03:29 [debug] Removed proc 0x3395e80
+04:03:29 [debug] Removed processor from stream AU.FITZ..BHZ
+04:03:29 [debug] Removed processor from station AU.FITZ
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 8.974999 secs or 359 samples (NOT handled): status = waiting for data
+04:03:29 [debug] Emit amplitude 20170824.011153.41-AIC-AU.WRKA..BHZ.MLv, proc = 0x3398f90, MLv
+04:03:29 [debug] AU.WRKA..BHZ:AmplitudeProcessor_MLv: OK
+04:03:29 [debug] Removed proc 0x3398f90
+04:03:29 [debug] Removed processor from stream AU.WRKA..BHZ
+04:03:29 [debug] Removed processor from station AU.WRKA
+04:03:29 [debug] Emit amplitude 20170824.011209.26-AIC-AU.GIRL..BHZ.MLv, proc = 0x3393090, MLv
+04:03:29 [debug] AU.GIRL..BHZ:AmplitudeProcessor_MLv: OK
+04:03:29 [debug] Removed proc 0x3393090
+04:03:29 [debug] Removed processor from stream AU.GIRL..BHZ
+04:03:29 [debug] Removed processor from station AU.GIRL
+04:03:29 [debug] [AU.FITZ..BHZ] detected gap of 5.399999 secs or 216 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.NWAO..BHZ] detected gap of 8.524999 secs or 341 samples (NOT handled): status = waiting for data
+04:03:29 [debug] [AU.WB2..BHZ] detected gap of 17.599999 secs or 704 samples (NOT handled): status = waiting for data
+04:03:29 [info] End of stream detected
+04:03:29 [info] Finished acquisition
+04:03:29 [info] Sending close event after finishing acquisition
+04:03:29 [info] Close event received, returning
+04:03:29 [info] Waiting for message thread
+04:03:29 [debug] Connection has been closed while reading from network
+04:03:29 [info] Leaving message thread
+04:03:29 [info] Message thread finished
+04:03:29 [info] Disconnecting from database
+04:03:29 [debug] Leaving ::done
+04:03:29 [info] Waiting for record thread
+
