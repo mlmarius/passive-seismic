@@ -1,0 +1,1245 @@
+$ scautoloc --ep picks.xml --inventory-db inventory.xml --config-db config.xml --debug > origins.xml
+
+00:49:35 [debug] Adding plugin path: .
+00:49:35 [debug] Adding plugin path: /home/centos/.seiscomp3/plugins
+00:49:35 [debug] Adding plugin path: /opt/seiscomp3/lib/plugins
+00:49:35 [debug] Adding plugin path: /opt/seiscomp3/lib
+00:49:35 [debug] Adding plugin path: /opt/seiscomp3/share/plugins
+00:49:35 [debug] Adding plugin path: /home/centos/lib
+00:49:35 [debug] Adding plugin path: /home/centos/SLBM_Root.3.0.5.Linux/lib
+00:49:35 [debug] Adding plugin path: /opt/seiscomp3/lib
+00:49:35 [debug] Adding plugin path: /opt/seiscomp3/share/plugins/scautoloc
+00:49:35 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/dbmysql.so
+00:49:35 [info] Plugin dbmysql registered
+00:49:35 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/rsas.so
+00:49:35 [info] Plugin rsas registered
+00:49:35 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/saic.so
+00:49:35 [info] Plugin saic registered
+00:49:35 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/mapprojections.so
+00:49:35 [info] Plugin mapprojections registered
+00:49:35 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/spickdbg.so
+00:49:35 [info] Plugin spickdbg registered
+00:49:35 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/mbtiles.so
+00:49:35 [info] Plugin mbtiles registered
+00:49:35 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/locnll.so
+00:49:35 [info] Plugin locnll registered
+00:49:35 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/hypo71.so
+00:49:35 [info] Plugin hypo71 registered
+00:49:35 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/mlh.so
+00:49:35 [info] Plugin mlh registered
+00:49:35 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/mlr.so
+00:49:35 [info] Plugin mlr registered
+00:49:35 [debug] Trying to open plugin at /opt/seiscomp3/share/plugins/md.so
+00:49:35 [info] Plugin md registered
+00:49:35 [info]
+Plugins:
+--------
+ [1]
+  description: MySQL database driver
+       author: GFZ Potsdam <seiscomp-devel@gfz-potsdam.de>
+      version: 0.9.2
+          API: 10.0.0
+ [2]
+  description: CAPS RecordStream interface
+       author: Jan Becker, gempa GmbH
+      version: 0.9.0
+          API: 10.0.0
+ [3]
+  description: S-AIC method to pick S-phases
+       author: gempa GmbH
+      version: 0.4.0
+          API: 10.0.0
+ [4]
+  description: Spherical, mercator and kavrayskiy map projections
+       author: Jan Becker, gempa GmbH
+      version: 0.10.0
+          API: 10.0.0
+ [5]
+  description: S picker debug plugin
+       author: Jan Becker, gempa GmbH
+      version: 0.4.0
+          API: 10.0.0
+ [6]
+  description: Map plugin to load map tiles according to MBTiles specification
+       author: Jan Becker, gempa GmbH
+      version: 1.3.0
+          API: 10.0.0
+ [7]
+  description: Locator implementation using NonLinLoc by Anthony Lomax (http://alomax.free.fr/nlloc/)
+       author: Jan Becker, gempa GmbH
+      version: 0.7.2
+          API: 10.0.0
+ [8]
+  description: HYPO71 seismic hypocenter locator plugin
+       author: IPGP <www.ipgp.fr>
+      version: 0.1.1
+          API: 10.0.0
+ [9]
+  description: MLh magnitude method (max of both horizontal compontents)
+       author: gempa GmbH, modified by Stefan Heimers at the SED
+      version: 0.0.7
+          API: 10.0.0
+ [10]
+  description: MLr GNS magnitude, J. Ristau method
+       author: Derived from MLh magnitude & Sc3 Tutorial methods, J.Salichon, GNS Science New Zealand, J.Becker, Gempa
+      version: 0.0.1
+          API: 10.0.0
+ [11]
+  description: Md duration magnitude plugin
+       author: IPGP <www.ipgp.fr>
+      version: 0.1.2
+          API: 10.0.0
+
+00:49:35 [info] Loading complete inventory from /home/centos/sc3-playback/inventory.xml
+00:49:36 [info] Finished loading complete inventory
+00:49:36 [info] Starting Autoloc
+00:49:36 [info] Configuration:
+00:49:36 [info] defaultDepth                     10
+00:49:36 [info] defaultDepthStickiness           0.5
+00:49:36 [info] tryDefaultDepth                  true
+00:49:36 [info] adoptManualDepth                 false
+00:49:36 [info] minimumDepth                     5
+00:49:36 [info] minPhaseCount                    6
+00:49:36 [info] minScore                         8.0
+00:49:36 [info] minPickSNR                       3.0
+00:49:36 [info] maxResidual                      7.0 s
+00:49:36 [info] goodRMS                          1.5 s
+00:49:36 [info] maxRMS                           3.5 s
+00:49:36 [info] minStaCountIgnorePKP             15
+00:49:36 [info] maxAge                           21600 s
+00:49:36 [info] publicationIntervalTimeSlope     0.50
+00:49:36 [info] publicationIntervalTimeIntercept 0.0
+00:49:36 [info] publicationIntervalPickCount     20
+00:49:36 [info] reportAllPhases                  false
+00:49:36 [info] pickLogFile                      /home/centos/.seiscomp3/log/autoloc-picklog
+00:49:36 [info] dynamicPickThresholdInterval     3600
+00:49:36 [info] offline                          true
+00:49:36 [info] test                             false
+00:49:36 [info] playback                         true
+00:49:36 [info] useManualOrigins                 false
+00:49:36 [info] locatorProfile
+00:49:36 [info] XXL feature is not enabled
+00:49:36 [debug] Reading gridfile /opt/seiscomp3/share/scautoloc/grid.conf
+00:49:36 [debug] read 2120 grid lines
+00:49:36 [debug] Reading station locations from DB
+00:49:36 [debug] Initialized station GE.BNDI
+00:49:36 [debug] Initialized station GE.GENI
+00:49:36 [debug] Initialized station GE.HALK
+00:49:36 [debug] Initialized station GE.MALK
+00:49:36 [debug] Initialized station GE.SANI
+00:49:36 [debug] Initialized station GE.SBV
+00:49:36 [debug] Initialized station GE.VOI
+00:49:36 [debug] Initialized station IA.AAI
+00:49:36 [debug] Initialized station IA.BAKI
+00:49:36 [debug] Initialized station IA.BSI
+00:49:36 [debug] Initialized station IA.KSI
+00:49:36 [debug] Initialized station IA.LEM
+00:49:36 [debug] Initialized station IA.MMPI
+00:49:36 [debug] Initialized station IA.PCI
+00:49:36 [debug] Initialized station IA.PPI
+00:49:36 [debug] Initialized station IA.SWI
+00:49:36 [debug] Initialized station IA.WSI
+00:49:36 [debug] Initialized station NZ.APZ
+00:49:36 [debug] Initialized station NZ.DCZ
+00:49:36 [debug] Initialized station AK.BESE
+00:49:36 [debug] Initialized station AK.FYU
+00:49:36 [debug] Initialized station AK.JIS
+00:49:36 [debug] Initialized station AK.MESA
+00:49:36 [debug] Initialized station AK.NIKH
+00:49:36 [debug] Initialized station AK.SPIA
+00:49:36 [debug] Initialized station AK.TNA
+00:49:36 [debug] Initialized station AK.UNV
+00:49:36 [debug] Initialized station AT.AKUT
+00:49:36 [debug] Initialized station AT.CRAG
+00:49:36 [debug] Initialized station AT.OHAK
+00:49:36 [debug] Initialized station AT.SDPT
+00:49:36 [debug] Initialized station AT.SMY
+00:49:36 [debug] Initialized station AU.ARMA
+00:49:36 [debug] Initialized station AU.ARPS
+00:49:36 [debug] Initialized station AU.BBOO
+00:49:36 [debug] Initialized station AU.BLDU
+00:49:36 [debug] Initialized station AU.BN1H
+00:49:36 [debug] Initialized station AU.BN2S
+00:49:36 [debug] Initialized station AU.BRAT
+00:49:36 [debug] Initialized station AU.BW1H
+00:49:36 [debug] Initialized station AU.BW2S
+00:49:36 [debug] Initialized station AU.CARL
+00:49:36 [debug] Initialized station AU.CMSA
+00:49:36 [debug] Initialized station AU.CN1H
+00:49:36 [debug] Initialized station AU.CN2S
+00:49:36 [debug] Initialized station AU.CNB
+00:49:36 [debug] Initialized station AU.COEN
+00:49:36 [debug] Initialized station AU.CORO
+00:49:36 [debug] Initialized station AU.DLN
+00:49:36 [debug] Initialized station AU.DPH
+00:49:36 [debug] Initialized station AU.DRS
+00:49:36 [debug] Initialized station AU.EIDS
+00:49:36 [debug] Initialized station AU.FORT
+00:49:36 [debug] Initialized station AU.GC1S
+00:49:36 [debug] Initialized station AU.GC2F
+00:49:36 [debug] Initialized station AU.GD1S
+00:49:36 [debug] Initialized station AU.GEXS
+00:49:36 [debug] Initialized station AU.GHSS
+00:49:36 [debug] Initialized station AU.GIRL
+00:49:36 [debug] Initialized station AU.GLAD
+00:49:36 [debug] Initialized station AU.GVL
+00:49:36 [debug] Initialized station AU.HTT
+00:49:36 [debug] Initialized station AU.INKA
+00:49:36 [debug] Initialized station AU.KDU
+00:49:36 [debug] Initialized station AU.KLBR
+00:49:36 [debug] Initialized station AU.KMBL
+00:49:36 [debug] Initialized station AU.KNRA
+00:49:36 [debug] Initialized station AU.LCRK
+00:49:36 [debug] Initialized station AU.LHI
+00:49:36 [debug] Initialized station AU.MANU
+00:49:36 [debug] Initialized station AU.MCQ
+00:49:36 [debug] Initialized station AU.MEEK
+00:49:36 [debug] Initialized station AU.MGCD
+00:49:36 [debug] Initialized station AU.MILA
+00:49:36 [debug] Initialized station AU.MLBS
+00:49:36 [debug] Initialized station AU.MOO
+00:49:36 [debug] Initialized station AU.MORW
+00:49:36 [debug] Initialized station AU.MTKN
+00:49:36 [debug] Initialized station AU.MTN
+00:49:36 [debug] Initialized station AU.MTSU
+00:49:36 [debug] Initialized station AU.MULG
+00:49:36 [debug] Initialized station AU.MUN
+00:49:36 [debug] Initialized station AU.NAPP
+00:49:36 [debug] Initialized station AU.NFK
+00:49:36 [debug] Initialized station AU.NIUE
+00:49:36 [debug] Initialized station AU.NTLH
+00:49:36 [debug] Initialized station AU.NTLS
+00:49:36 [debug] Initialized station AU.OOD
+00:49:36 [debug] Initialized station AU.PSA00
+00:49:36 [debug] Initialized station AU.PSAA1
+00:49:36 [debug] Initialized station AU.PSAA2
+00:49:36 [debug] Initialized station AU.PSAA3
+00:49:36 [debug] Initialized station AU.PSAB1
+00:49:36 [debug] Initialized station AU.PSAB2
+00:49:36 [debug] Initialized station AU.PSAB3
+00:49:36 [debug] Initialized station AU.PSAC1
+00:49:36 [debug] Initialized station AU.PSAC2
+00:49:36 [debug] Initialized station AU.PSAC3
+00:49:36 [debug] Initialized station AU.PSAD1
+00:49:36 [debug] Initialized station AU.PSAD2
+00:49:36 [debug] Initialized station AU.PSAD3
+00:49:36 [debug] Initialized station AU.PTPS
+00:49:36 [debug] Initialized station AU.QIS
+00:49:36 [debug] Initialized station AU.QLP
+00:49:36 [debug] Initialized station AU.RABL
+00:49:36 [debug] Initialized station AU.RIV
+00:49:36 [debug] Initialized station AU.RK1H
+00:49:36 [debug] Initialized station AU.RK2S
+00:49:36 [debug] Initialized station AU.RKGY
+00:49:36 [debug] Initialized station AU.RMQ
+00:49:36 [debug] Initialized station AU.SYDH
+00:49:36 [debug] Initialized station AU.SYDS
+00:49:36 [debug] Initialized station AU.TOO
+00:49:36 [debug] Initialized station AU.TV1H
+00:49:36 [debug] Initialized station AU.TV2S
+00:49:36 [debug] Initialized station AU.TW1H
+00:49:36 [debug] Initialized station AU.TWOA
+00:49:36 [debug] Initialized station AU.WB0
+00:49:36 [debug] Initialized station AU.WHYH
+00:49:36 [debug] Initialized station AU.WOLH
+00:49:36 [debug] Initialized station AU.WR0
+00:49:36 [debug] Initialized station AU.WRKA
+00:49:36 [debug] Initialized station AU.XMI
+00:49:36 [debug] Initialized station AU.XMIS
+00:49:36 [debug] Initialized station AU.YNG
+00:49:36 [debug] Initialized station CN.BBB
+00:49:36 [debug] Initialized station CN.DAWY
+00:49:36 [debug] Initialized station CN.INK
+00:49:36 [debug] Initialized station CN.PNT
+00:49:36 [debug] Initialized station CN.WALA
+00:49:36 [debug] Initialized station CN.WHY
+00:49:36 [debug] Initialized station CN.YKAW1
+00:49:36 [debug] Initialized station CU.GTBY
+00:49:36 [debug] Initialized station G.AIS
+00:49:36 [debug] Initialized station G.CAN
+00:49:36 [debug] Initialized station G.CRZF
+00:49:36 [debug] Initialized station G.DZM
+00:49:36 [debug] Initialized station G.FOMA
+00:49:36 [debug] Initialized station G.MPG
+00:49:36 [debug] Initialized station G.PAF
+00:49:36 [debug] Initialized station G.PPTF
+00:49:36 [debug] Initialized station G.RER
+00:49:36 [debug] Initialized station G.SANVU
+00:49:36 [debug] Initialized station G.TAOE
+00:49:36 [debug] Initialized station GE.BKB
+00:49:36 [debug] Initialized station GE.BKNI
+00:49:36 [debug] Initialized station GE.CISI
+00:49:36 [debug] Initialized station GE.DAMY
+00:49:36 [debug] Initialized station GE.EIL
+00:49:36 [debug] Initialized station GE.FAKI
+00:49:36 [debug] Initialized station GE.GSI
+00:49:36 [debug] Initialized station GE.HMDM
+00:49:36 [debug] Initialized station GE.JAGI
+00:49:36 [debug] Initialized station GE.KAAM
+00:49:36 [debug] Initialized station GE.KBU
+00:49:36 [debug] Initialized station GE.LHMI
+00:49:36 [debug] Initialized station GE.LUWI
+00:49:36 [debug] Initialized station GE.MMRI
+00:49:36 [debug] Initialized station GE.MNAI
+00:49:36 [debug] Initialized station GE.PMBI
+00:49:36 [debug] Initialized station GE.SAUI
+00:49:36 [debug] Initialized station GE.SMRI
+00:49:36 [debug] Initialized station GE.SNAA
+00:49:36 [debug] Initialized station GE.SOCY
+00:49:36 [debug] Initialized station GE.SOEI
+00:49:36 [debug] Initialized station GE.TNTI
+00:49:36 [debug] Initialized station GE.TOLI
+00:49:36 [debug] Initialized station GE.UGM
+00:49:36 [debug] Initialized station GT.CPUP
+00:49:36 [debug] Initialized station GT.DBIC
+00:49:36 [debug] Initialized station GT.LBTB
+00:49:36 [debug] Initialized station GT.LPAZ
+00:49:36 [debug] Initialized station GT.PLCA
+00:49:36 [debug] Initialized station GT.VNDA
+00:49:36 [debug] Initialized station HK.HKPS
+00:49:36 [debug] Initialized station IC.BJT
+00:49:36 [debug] Initialized station IC.HIA
+00:49:36 [debug] Initialized station IC.LSA
+00:49:36 [debug] Initialized station IC.MDJ
+00:49:36 [debug] Initialized station IC.QIZ
+00:49:36 [debug] Initialized station II.AAK
+00:49:36 [debug] Initialized station II.ABPO
+00:49:36 [debug] Initialized station II.ARU
+00:49:36 [debug] Initialized station II.ASCN
+00:49:36 [debug] Initialized station II.BFO
+00:49:36 [debug] Initialized station II.BORG
+00:49:36 [debug] Initialized station II.BRVK
+00:49:36 [debug] Initialized station II.CMLA
+00:49:36 [debug] Initialized station II.COCO
+00:49:36 [debug] Initialized station II.DGAR
+00:49:36 [debug] Initialized station II.EFI
+00:49:36 [debug] Initialized station II.ERM
+00:49:36 [debug] Initialized station II.ESK
+00:49:36 [debug] Initialized station II.FFC
+00:49:36 [debug] Initialized station II.HOPE
+00:49:36 [debug] Initialized station II.JTS
+00:49:36 [debug] Initialized station II.KAPI
+00:49:36 [debug] Initialized station II.KDAK
+00:49:36 [debug] Initialized station II.KIV
+00:49:36 [debug] Initialized station II.KURK
+00:49:36 [debug] Initialized station II.KWAJ
+00:49:36 [debug] Initialized station II.MBAR
+00:49:36 [debug] Initialized station II.MSEY
+00:49:36 [debug] Initialized station II.MSVF
+00:49:36 [debug] Initialized station II.NIL
+00:49:36 [debug] Initialized station II.NNA
+00:49:36 [debug] Initialized station II.OBN
+00:49:36 [debug] Initialized station II.PALK
+00:49:36 [debug] Initialized station II.PFO
+00:49:36 [debug] Initialized station II.RAYN
+00:49:36 [debug] Initialized station II.RPN
+00:49:36 [debug] Initialized station II.SHEL
+00:49:36 [debug] Initialized station II.SUR
+00:49:36 [debug] Initialized station II.TAU
+00:49:36 [debug] Initialized station II.TLY
+00:49:36 [debug] Initialized station II.UOSS
+00:49:36 [debug] Initialized station II.WRAB
+00:49:36 [debug] Initialized station IN.MNC
+00:49:36 [debug] Initialized station IN.PBA
+00:49:36 [debug] Initialized station IN.SHL
+00:49:36 [debug] Initialized station IU.ADK
+00:49:36 [debug] Initialized station IU.AFI
+00:49:36 [debug] Initialized station IU.ANTO
+00:49:36 [debug] Initialized station IU.BBSR
+00:49:36 [debug] Initialized station IU.BILL
+00:49:36 [debug] Initialized station IU.CASY
+00:49:36 [debug] Initialized station IU.COLA
+00:49:36 [debug] Initialized station IU.COR
+00:49:36 [debug] Initialized station IU.CTAO
+00:49:36 [debug] Initialized station IU.DAV
+00:49:36 [debug] Initialized station IU.DWPF
+00:49:36 [debug] Initialized station IU.FUNA
+00:49:36 [debug] Initialized station IU.FURI
+00:49:36 [debug] Initialized station IU.GNI
+00:49:36 [debug] Initialized station IU.GUMO
+00:49:36 [debug] Initialized station IU.HNR
+00:49:36 [debug] Initialized station IU.INCN
+00:49:36 [debug] Initialized station IU.JOHN
+00:49:36 [debug] Initialized station IU.KBL
+00:49:36 [debug] Initialized station IU.KIEV
+00:49:36 [debug] Initialized station IU.KIP
+00:49:36 [debug] Initialized station IU.LCO
+00:49:36 [debug] Initialized station IU.LSZ
+00:49:36 [debug] Initialized station IU.LVC
+00:49:36 [debug] Initialized station IU.MA2
+00:49:36 [debug] Initialized station IU.MAJO
+00:49:36 [debug] Initialized station IU.MBWA
+00:49:36 [debug] Initialized station IU.MIDW
+00:49:36 [debug] Initialized station IU.PAYG
+00:49:36 [debug] Initialized station IU.PET
+00:49:36 [debug] Initialized station IU.PMSA
+00:49:36 [debug] Initialized station IU.POHA
+00:49:36 [debug] Initialized station IU.PTCN
+00:49:36 [debug] Initialized station IU.PTGA
+00:49:36 [debug] Initialized station IU.QSPA
+00:49:36 [debug] Initialized station IU.RAO
+00:49:36 [debug] Initialized station IU.RAR
+00:49:36 [debug] Initialized station IU.RCBR
+00:49:36 [debug] Initialized station IU.SAML
+00:49:36 [debug] Initialized station IU.SBA
+00:49:36 [debug] Initialized station IU.SDV
+00:49:36 [debug] Initialized station IU.SJG
+00:49:36 [debug] Initialized station IU.SLBS
+00:49:36 [debug] Initialized station IU.SNZO
+00:49:36 [debug] Initialized station IU.SSPA
+00:49:36 [debug] Initialized station IU.TARA
+00:49:36 [debug] Initialized station IU.TATO
+00:49:36 [debug] Initialized station IU.TEIG
+00:49:36 [debug] Initialized station IU.TRQA
+00:49:36 [debug] Initialized station IU.ULN
+00:49:36 [debug] Initialized station IU.WAKE
+00:49:36 [debug] Initialized station IU.XMAS
+00:49:36 [debug] Initialized station IU.YSS
+00:49:36 [debug] Initialized station KZ.ABKAR
+00:49:36 [debug] Initialized station KZ.MKAR
+00:49:36 [debug] Initialized station MN.WDD
+00:49:36 [debug] Initialized station MS.BTDF
+00:49:36 [debug] Initialized station MY.KKM
+00:49:36 [debug] Initialized station MY.KSM
+00:49:36 [debug] Initialized station MY.KUM
+00:49:36 [debug] Initialized station NZ.CTZ
+00:49:36 [debug] Initialized station NZ.ODZ
+00:49:36 [debug] Initialized station NZ.OUZ
+00:49:36 [debug] Initialized station PL.OJC
+00:49:36 [debug] Initialized station PS.PATS
+00:49:36 [debug] Initialized station PS.PSI
+00:49:36 [debug] Initialized station S.AUALB
+00:49:36 [debug] Initialized station S.AUAYR
+00:49:36 [debug] Initialized station S.AUBRN
+00:49:36 [debug] Initialized station S.AUBSH
+00:49:36 [debug] Initialized station S.AUBUS
+00:49:36 [debug] Initialized station S.AUCAR
+00:49:36 [debug] Initialized station S.AUCAS
+00:49:36 [debug] Initialized station S.AUCSH
+00:49:36 [debug] Initialized station S.AUDAR
+00:49:36 [debug] Initialized station S.AUDCS
+00:49:36 [debug] Initialized station S.AUDHS
+00:49:36 [debug] Initialized station S.AUHAR
+00:49:36 [debug] Initialized station S.AUHPC
+00:49:36 [debug] Initialized station S.AUJCS
+00:49:36 [debug] Initialized station S.AUKAL
+00:49:36 [debug] Initialized station S.AUKAR
+00:49:36 [debug] Initialized station S.AUKAT
+00:49:36 [debug] Initialized station S.AUKHS
+00:49:36 [debug] Initialized station S.AUKSC
+00:49:36 [debug] Initialized station S.AUKUL
+00:49:36 [debug] Initialized station S.AULHS
+00:49:36 [debug] Initialized station S.AULRC
+00:49:36 [debug] Initialized station S.AUMAG
+00:49:36 [debug] Initialized station S.AUMAR
+00:49:36 [debug] Initialized station S.AUMAZ
+00:49:36 [debug] Initialized station S.AUMBR
+00:49:36 [debug] Initialized station S.AUMHS
+00:49:36 [debug] Initialized station S.AUMOU
+00:49:36 [debug] Initialized station S.AUMTC
+00:49:36 [debug] Initialized station S.AUMTS
+00:49:36 [debug] Initialized station S.AUMUL
+00:49:36 [debug] Initialized station S.AUNHS
+00:49:36 [debug] Initialized station S.AUNRC
+00:49:36 [debug] Initialized station S.AUPHS
+00:49:36 [debug] Initialized station S.AURMK
+00:49:36 [debug] Initialized station S.AUROX
+00:49:36 [debug] Initialized station S.AURSC
+00:49:36 [debug] Initialized station S.AUSIS
+00:49:36 [debug] Initialized station S.AUSMG
+00:49:36 [debug] Initialized station S.AUSSC
+00:49:36 [debug] Initialized station S.AUTAR
+00:49:36 [debug] Initialized station S.AUTKS
+00:49:36 [debug] Initialized station S.AUTOO
+00:49:36 [debug] Initialized station S.AUUHS
+00:49:36 [debug] Initialized station S.AUWSH
+00:49:36 [debug] Initialized station TW.YHNB
+00:49:36 [debug] Initialized station US.BOZ
+00:49:36 [debug] Initialized station US.EGMT
+00:49:36 [debug] Initialized station US.HAWA
+00:49:36 [debug] Initialized station US.KVTX
+00:49:36 [debug] Initialized station US.OGNE
+00:49:36 [debug] Initialized station US.WMOK
+00:49:36 [debug] Initialized station UW.OMAK
+00:49:36 [debug] Initialized station AU.AS01
+00:49:36 [debug] Initialized station AU.AS02
+00:49:36 [debug] Initialized station AU.AS03
+00:49:36 [debug] Initialized station AU.AS04
+00:49:36 [debug] Initialized station AU.AS05
+00:49:36 [debug] Initialized station AU.AS06
+00:49:36 [debug] Initialized station AU.AS07
+00:49:36 [debug] Initialized station AU.AS08
+00:49:36 [debug] Initialized station AU.AS09
+00:49:36 [debug] Initialized station AU.AS10
+00:49:36 [debug] Initialized station AU.AS11
+00:49:36 [debug] Initialized station AU.AS12
+00:49:36 [debug] Initialized station AU.AS13
+00:49:36 [debug] Initialized station AU.AS14
+00:49:36 [debug] Initialized station AU.AS15
+00:49:36 [debug] Initialized station AU.AS16
+00:49:36 [debug] Initialized station AU.AS17
+00:49:36 [debug] Initialized station AU.AS18
+00:49:36 [debug] Initialized station AU.AS19
+00:49:36 [debug] Initialized station AU.AS31
+00:49:36 [debug] Initialized station AU.CTA
+00:49:36 [debug] Initialized station AU.FITZ
+00:49:36 [debug] Initialized station AU.MAW
+00:49:36 [debug] Initialized station AU.NWAO
+00:49:36 [debug] Initialized station AU.STKA
+00:49:36 [debug] Initialized station AU.WB1
+00:49:36 [debug] Initialized station AU.WB10
+00:49:36 [debug] Initialized station AU.WB2
+00:49:36 [debug] Initialized station AU.WB3
+00:49:36 [debug] Initialized station AU.WB4
+00:49:36 [debug] Initialized station AU.WB5
+00:49:36 [debug] Initialized station AU.WB6
+00:49:36 [debug] Initialized station AU.WB7
+00:49:36 [debug] Initialized station AU.WB8
+00:49:36 [debug] Initialized station AU.WB9
+00:49:36 [debug] Initialized station AU.WC1
+00:49:36 [debug] Initialized station AU.WC2
+00:49:36 [debug] Initialized station AU.WC3
+00:49:36 [debug] Initialized station AU.WC4
+00:49:36 [debug] Initialized station AU.WR1
+00:49:36 [debug] Initialized station AU.WR10
+00:49:36 [debug] Initialized station AU.WR2
+00:49:36 [debug] Initialized station AU.WR3
+00:49:36 [debug] Initialized station AU.WR4
+00:49:36 [debug] Initialized station AU.WR5
+00:49:36 [debug] Initialized station AU.WR6
+00:49:36 [debug] Initialized station AU.WR7
+00:49:36 [debug] Initialized station AU.WR8
+00:49:36 [debug] Initialized station AU.WR9
+00:49:36 [debug] Finished reading station locations from DB
+00:49:36 [debug] Reading station configs from file '/opt/seiscomp3/share/scautoloc/station.conf'
+00:49:36 [debug] Station AK BESE  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AK FYU   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AK JIS   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AK MESA  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AK NIKH  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AK SPIA  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AK TNA   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AK UNV   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AT AKUT  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AT CRAG  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AT OHAK  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AT SDPT  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AT SMY   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU ARMA  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU ARPS  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU AS01  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU AS02  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU AS03  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU AS04  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU AS05  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU AS06  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU AS07  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU AS08  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU AS09  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU AS10  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU AS11  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU AS12  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU AS13  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU AS14  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU AS15  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU AS16  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU AS17  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU AS18  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU AS19  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU AS31  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU BBOO  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU BLDU  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU BN1H  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU BN2S  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU BRAT  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU BW1H  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU BW2S  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU CARL  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU CMSA  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU CN1H  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU CN2S  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU CNB   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU COEN  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU CORO  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU CTA   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU DLN   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU DPH   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU DRS   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU EIDS  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU FITZ  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU FORT  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU GC1S  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU GC2F  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU GD1S  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU GEXS  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU GHSS  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU GIRL  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU GLAD  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU GVL   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU HTT   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU INKA  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU KDU   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU KLBR  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU KMBL  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU KNRA  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU LCRK  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU LHI   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU MANU  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU MAW   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU MCQ   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU MEEK  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU MGCD  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU MILA  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU MLBS  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU MOO   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU MORW  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU MTKN  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU MTN   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU MTSU  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU MULG  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU MUN   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU NAPP  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU NFK   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU NIUE  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU NTLH  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU NTLS  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU NWAO  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU OOD   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU PSA00 pattern AU PSA00 config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU PSAA1 pattern AU PSAA1 config: usage=1 maxnucdist=1
+00:49:36 [debug] Station AU PSAA2 pattern AU PSAA2 config: usage=1 maxnucdist=1
+00:49:36 [debug] Station AU PSAA3 pattern AU PSAA3 config: usage=1 maxnucdist=1
+00:49:36 [debug] Station AU PSAB1 pattern AU PSAB1 config: usage=1 maxnucdist=1
+00:49:36 [debug] Station AU PSAB2 pattern AU PSAB2 config: usage=1 maxnucdist=1
+00:49:36 [debug] Station AU PSAB3 pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU PSAC1 pattern AU PSAC1 config: usage=1 maxnucdist=1
+00:49:36 [debug] Station AU PSAC2 pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU PSAC3 pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU PSAD1 pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU PSAD2 pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU PSAD3 pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU PTPS  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU QIS   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU QLP   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU RABL  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU RIV   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU RK1H  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU RK2S  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU RKGY  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU RMQ   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU STKA  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU SYDH  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU SYDS  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU TOO   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU TV1H  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU TV2S  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU TW1H  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU TWOA  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WB0   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WB1   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WB10  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WB2   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WB3   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WB4   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WB5   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WB6   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WB7   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WB8   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WB9   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WC1   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WC2   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WC3   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WC4   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WHYH  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WOLH  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WR0   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WR1   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WR10  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WR2   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WR3   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WR4   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WR5   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WR6   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WR7   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WR8   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WR9   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU WRKA  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU XMI   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU XMIS  pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station AU YNG   pattern AU *     config: usage=1 maxnucdist=60
+00:49:36 [debug] Station CN BBB   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station CN DAWY  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station CN INK   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station CN PNT   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station CN WALA  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station CN WHY   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station CN YKAW1 pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station CU GTBY  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station G AIS    pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station G CAN    pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station G CRZF   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station G DZM    pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station G FOMA   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station G MPG    pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station G PAF    pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station G PPTF   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station G RER    pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station G SANVU  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station G TAOE   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE BKB   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE BKNI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE BNDI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE CISI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE DAMY  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE EIL   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE FAKI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE GENI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE GSI   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE HALK  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE HMDM  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE JAGI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE KAAM  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE KBU   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE LHMI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE LUWI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE MALK  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE MMRI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE MNAI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE PMBI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE SANI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE SAUI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE SBV   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE SMRI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE SNAA  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE SOCY  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE SOEI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE TNTI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE TOLI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE UGM   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GE VOI   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GT CPUP  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GT DBIC  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GT LBTB  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GT LPAZ  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GT PLCA  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station GT VNDA  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station HK HKPS  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IA AAI   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IA BAKI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IA BSI   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IA KSI   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IA LEM   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IA MMPI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IA PCI   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IA PPI   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IA SWI   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IA WSI   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IC BJT   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IC HIA   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IC LSA   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IC MDJ   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IC QIZ   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II AAK   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II ABPO  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II ARU   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II ASCN  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II BFO   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II BORG  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II BRVK  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II CMLA  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II COCO  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II DGAR  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II EFI   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II ERM   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II ESK   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II FFC   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II HOPE  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II JTS   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II KAPI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II KDAK  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II KIV   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II KURK  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II KWAJ  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II MBAR  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II MSEY  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II MSVF  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II NIL   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II NNA   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II OBN   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II PALK  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II PFO   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II RAYN  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II RPN   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II SHEL  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II SUR   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II TAU   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II TLY   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II UOSS  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station II WRAB  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IN MNC   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IN PBA   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IN SHL   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU ADK   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU AFI   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU ANTO  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU BBSR  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU BILL  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU CASY  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU COLA  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU COR   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU CTAO  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU DAV   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU DWPF  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU FUNA  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU FURI  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU GNI   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU GUMO  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU HNR   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU INCN  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU JOHN  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU KBL   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU KIEV  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU KIP   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU LCO   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU LSZ   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU LVC   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU MA2   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU MAJO  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU MBWA  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU MIDW  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU PAYG  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU PET   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU PMSA  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU POHA  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU PTCN  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU PTGA  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU QSPA  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU RAO   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU RAR   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU RCBR  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU SAML  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU SBA   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU SDV   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU SJG   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU SLBS  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU SNZO  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU SSPA  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU TARA  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU TATO  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU TEIG  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU TRQA  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU ULN   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU WAKE  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU XMAS  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station IU YSS   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station KZ ABKAR pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station KZ MKAR  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station MN WDD   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station MS BTDF  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station MY KKM   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station MY KSM   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station MY KUM   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station NZ APZ   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station NZ CTZ   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station NZ DCZ   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station NZ ODZ   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station NZ OUZ   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station PL OJC   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station PS PATS  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station PS PSI   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUALB  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUAYR  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUBRN  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUBSH  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUBUS  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUCAR  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUCAS  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUCSH  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUDAR  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUDCS  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUDHS  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUHAR  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUHPC  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUJCS  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUKAL  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUKAR  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUKAT  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUKHS  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUKSC  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUKUL  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AULHS  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AULRC  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUMAG  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUMAR  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUMAZ  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUMBR  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUMHS  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUMOU  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUMTC  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUMTS  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUMUL  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUNHS  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUNRC  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUPHS  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AURMK  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUROX  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AURSC  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUSIS  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUSMG  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUSSC  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUTAR  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUTKS  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUTOO  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUUHS  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station S AUWSH  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station TW YHNB  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station US BOZ   pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station US EGMT  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station US HAWA  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station US KVTX  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station US OGNE  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station US WMOK  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [debug] Station UW OMAK  pattern * *      config: usage=1 maxnucdist=60
+00:49:36 [info] finished reading event parameters from XML
+00:49:36 [info]   number of picks:      45
+00:49:36 [info]   number of amplitudes: 143
+00:49:36 [info]   number of origins:    0
+00:49:36 [debug] adding  Pick         20170824.052611.19-AIC-AU.TWOA.00.SHZ
+00:49:36 [debug] process pick 20170824.052611.19-AIC-AU.TWOA.00.SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052611.19-AIC-AU.TWOA.00.SHZ.snr
+00:49:36 [debug] adding  Pick         20170824.052609.19-AIC-AU.GHSS.00.SHZ
+00:49:36 [debug] process pick 20170824.052609.19-AIC-AU.GHSS.00.SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052609.19-AIC-AU.GHSS.00.SHZ.snr
+00:49:36 [debug] adding  Pick         20170824.052603.58-AIC-AU.TW1H.00.SHZ
+00:49:36 [debug] process pick 20170824.052603.58-AIC-AU.TW1H.00.SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052603.58-AIC-AU.TW1H.00.SHZ.snr
+00:49:36 [debug] adding  Pick         20170824.052603.08-AIC-AU.RK2S.00.SHZ
+00:49:36 [debug] process pick 20170824.052603.08-AIC-AU.RK2S.00.SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052603.08-AIC-AU.RK2S.00.SHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.052603.08-AIC-AU.RK2S.00.SHZ.mb
+00:49:36 [info] Logging picks to file /home/centos/.seiscomp3/log/autoloc-picklog.2017-08-25
+00:49:36 [info] 2017-08-24 05:26:03.0 AU RK2S   SHZ 00   22.8     16.902  0.6 A 20170824.052603.08-AIC-AU.RK2S.00.SHZ
+00:49:36 [info] process pick 20170824.052603.08-AIC-AU.RK2S.00.SHZ
+00:49:36 [debug] GridSearch: setting up station AU.RK2S
+00:49:36 [debug] adding  Pick         20170824.052630.11-AIC-AU.MANU..BHZ
+00:49:36 [debug] process pick 20170824.052630.11-AIC-AU.MANU..BHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052630.11-AIC-AU.MANU..BHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.052609.19-AIC-AU.GHSS.00.SHZ.mb
+00:49:36 [info] 2017-08-24 05:26:09.1 AU GHSS   SHZ 00    4.3    462.078  0.5 A 20170824.052609.19-AIC-AU.GHSS.00.SHZ
+00:49:36 [info] process pick 20170824.052609.19-AIC-AU.GHSS.00.SHZ
+00:49:36 [debug] GridSearch: setting up station AU.GHSS
+00:49:36 [debug] adding  Amplitude    20170824.052611.19-AIC-AU.TWOA.00.SHZ.mb
+00:49:36 [info] 2017-08-24 05:26:11.1 AU TWOA   SHZ 00   16.8    155.445  0.8 A 20170824.052611.19-AIC-AU.TWOA.00.SHZ
+00:49:36 [info] process pick 20170824.052611.19-AIC-AU.TWOA.00.SHZ
+00:49:36 [debug] GridSearch: setting up station AU.TWOA
+00:49:36 [debug] adding  Amplitude    20170824.052630.11-AIC-AU.MANU..BHZ.mb
+00:49:36 [info] 2017-08-24 05:26:30.1 AU MANU   BHZ __    3.7    719.867  1.6 A 20170824.052630.11-AIC-AU.MANU..BHZ
+00:49:36 [info] process pick 20170824.052630.11-AIC-AU.MANU..BHZ
+00:49:36 [debug] GridSearch: setting up station AU.MANU
+00:49:36 [debug] adding  Pick         20170824.052653.21-S-AIC-AU.MANU..BHN
+00:49:36 [debug] process pick 20170824.052653.21-S-AIC-AU.MANU..BHN A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052603.58-AIC-AU.TW1H.00.SHZ.mb
+00:49:36 [info] 2017-08-24 05:26:03.5 AU TW1H   SHZ 00    6.0     19.235  0.7 A 20170824.052603.58-AIC-AU.TW1H.00.SHZ
+00:49:36 [info] process pick 20170824.052603.58-AIC-AU.TW1H.00.SHZ
+00:49:36 [debug] GridSearch: setting up station AU.TW1H
+00:49:36 [debug] adding  Amplitude    20170824.052611.19-AIC-AU.TWOA.00.SHZ.mB
+00:49:36 [debug] adding  Pick         20170824.052701.56-AIC-AU.CORO.00.SHZ
+00:49:36 [debug] process pick 20170824.052701.56-AIC-AU.CORO.00.SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052701.56-AIC-AU.CORO.00.SHZ.snr
+00:49:36 [debug] adding  Pick         20170824.052721.81-AIC-AU.PSA00.00.BHZ
+00:49:36 [debug] process pick 20170824.052721.81-AIC-AU.PSA00.00.BHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052721.81-AIC-AU.PSA00.00.BHZ.snr
+00:49:36 [debug] adding  Pick         20170824.052721.06-AIC-AU.PSAC1.00.BHZ
+00:49:36 [debug] process pick 20170824.052721.06-AIC-AU.PSAC1.00.BHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052721.06-AIC-AU.PSAC1.00.BHZ.snr
+00:49:36 [debug] adding  Pick         20170824.052703.63-AIC-AU.TW1H.00.SHZ
+00:49:36 [debug] process pick 20170824.052703.63-AIC-AU.TW1H.00.SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052703.63-AIC-AU.TW1H.00.SHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.052703.63-AIC-AU.TW1H.00.SHZ.mb
+00:49:36 [info] 2017-08-24 05:27:03.6 AU TW1H   SHZ 00    8.8     21.731  1.1 A 20170824.052703.63-AIC-AU.TW1H.00.SHZ
+00:49:36 [info] process pick 20170824.052703.63-AIC-AU.TW1H.00.SHZ
+00:49:36 [debug] adding  Pick         20170824.052737.01-AIC-AU.MANU..BHZ
+00:49:36 [debug] process pick 20170824.052737.01-AIC-AU.MANU..BHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052737.01-AIC-AU.MANU..BHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.052701.56-AIC-AU.CORO.00.SHZ.mb
+00:49:36 [info] 2017-08-24 05:27:01.5 AU CORO   SHZ 00    6.0     21.225  0.3 A 20170824.052701.56-AIC-AU.CORO.00.SHZ
+00:49:36 [info] process pick 20170824.052701.56-AIC-AU.CORO.00.SHZ
+00:49:36 [debug] GridSearch: setting up station AU.CORO
+00:49:36 [debug] adding  Pick         20170824.052734.26-AIC-AU.PSA00.00.BHZ
+00:49:36 [debug] process pick 20170824.052734.26-AIC-AU.PSA00.00.BHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052734.26-AIC-AU.PSA00.00.BHZ.snr
+00:49:36 [debug] adding  Pick         20170824.052737.43-AIC-AU.WOLH.00.SHZ
+00:49:36 [debug] process pick 20170824.052737.43-AIC-AU.WOLH.00.SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052737.43-AIC-AU.WOLH.00.SHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.052721.06-AIC-AU.PSAC1.00.BHZ.mb
+00:49:36 [info] 2017-08-24 05:27:21.0 AU PSAC1  BHZ 00    6.8    197.865  1.1 A 20170824.052721.06-AIC-AU.PSAC1.00.BHZ
+00:49:36 [info] process pick 20170824.052721.06-AIC-AU.PSAC1.00.BHZ
+00:49:36 [debug] GridSearch: setting up station AU.PSAC1
+00:49:36 [debug] adding  Pick         20170824.052735.91-AIC-AU.PSAC1.00.BHZ
+00:49:36 [debug] process pick 20170824.052735.91-AIC-AU.PSAC1.00.BHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052735.91-AIC-AU.PSAC1.00.BHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.052721.81-AIC-AU.PSA00.00.BHZ.mb
+00:49:36 [info] 2017-08-24 05:27:21.8 AU PSA00  BHZ 00    9.2    174.393  0.8 A 20170824.052721.81-AIC-AU.PSA00.00.BHZ
+00:49:36 [info] process pick 20170824.052721.81-AIC-AU.PSA00.00.BHZ
+00:49:36 [debug] GridSearch: setting up station AU.PSA00
+00:49:36 [debug] adding  Pick         20170824.052749.69-S-AIC-AU.MANU..BHN
+00:49:36 [debug] process pick 20170824.052749.69-S-AIC-AU.MANU..BHN A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052701.56-AIC-AU.CORO.00.SHZ.mB
+00:49:36 [debug] adding  Amplitude    20170824.052737.43-AIC-AU.WOLH.00.SHZ.mb
+00:49:36 [info] 2017-08-24 05:27:37.4 AU WOLH   SHZ 00    4.4     69.197  0.6 A 20170824.052737.43-AIC-AU.WOLH.00.SHZ
+00:49:36 [info] process pick 20170824.052737.43-AIC-AU.WOLH.00.SHZ
+00:49:36 [debug] GridSearch: setting up station AU.WOLH
+00:49:36 [debug] adding  Amplitude    20170824.052734.26-AIC-AU.PSA00.00.BHZ.mb
+00:49:36 [debug] _tooManyRecentPicks: 20170824.052734.26-AIC-AU.PSA00.00.BHZ   XX 6.61 < 8.27
+00:49:36 [debug] adding  Amplitude    20170824.052737.01-AIC-AU.MANU..BHZ.mb
+00:49:36 [info] 2017-08-24 05:27:37.0 AU MANU   BHZ __   14.0   2423.196  1.3 A 20170824.052737.01-AIC-AU.MANU..BHZ
+00:49:36 [info] process pick 20170824.052737.01-AIC-AU.MANU..BHZ
+00:49:36 [debug] adding  Amplitude    20170824.052735.91-AIC-AU.PSAC1.00.BHZ.mb
+00:49:36 [info] 2017-08-24 05:27:35.9 AU PSAC1  BHZ 00    7.3    197.825  1.1 A 20170824.052735.91-AIC-AU.PSAC1.00.BHZ
+00:49:36 [info] process pick 20170824.052735.91-AIC-AU.PSAC1.00.BHZ
+00:49:36 [debug] adding  Amplitude    20170824.052721.06-AIC-AU.PSAC1.00.BHZ.mB
+00:49:36 [debug] adding  Amplitude    20170824.052721.81-AIC-AU.PSA00.00.BHZ.mB
+00:49:36 [debug] adding  Pick         20170824.052817.14-AIC-AU.TV2S.00.SHZ
+00:49:36 [debug] process pick 20170824.052817.14-AIC-AU.TV2S.00.SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052817.14-AIC-AU.TV2S.00.SHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.052734.26-AIC-AU.PSA00.00.BHZ.mB
+00:49:36 [debug] adding  Amplitude    20170824.052603.08-AIC-AU.RK2S.00.SHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.052603.58-AIC-AU.TW1H.00.SHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.052737.01-AIC-AU.MANU..BHZ.mB
+00:49:36 [debug] adding  Amplitude    20170824.052735.91-AIC-AU.PSAC1.00.BHZ.mB
+00:49:36 [debug] adding  Amplitude    20170824.052611.19-AIC-AU.TWOA.00.SHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.052609.19-AIC-AU.GHSS.00.SHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.052737.43-AIC-AU.WOLH.00.SHZ.mB
+00:49:36 [debug] adding  Amplitude    20170824.052817.14-AIC-AU.TV2S.00.SHZ.mb
+00:49:36 [info] 2017-08-24 05:28:17.1 AU TV2S   SHZ 00    6.6      6.254  0.3 A 20170824.052817.14-AIC-AU.TV2S.00.SHZ
+00:49:36 [info] process pick 20170824.052817.14-AIC-AU.TV2S.00.SHZ
+00:49:36 [debug] GridSearch: setting up station AU.TV2S
+00:49:36 [debug] adding  Amplitude    20170824.052630.11-AIC-AU.MANU..BHZ.MLv
+00:49:36 [debug] adding  Pick         20170824.052852.54-AIC-AU.GVL.00.SHZ
+00:49:36 [debug] process pick 20170824.052852.54-AIC-AU.GVL.00.SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052852.54-AIC-AU.GVL.00.SHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.052817.14-AIC-AU.TV2S.00.SHZ.mB
+00:49:36 [debug] adding  Pick         20170824.052854.49-AIC-AU.TV2S.00.SHZ
+00:49:36 [debug] process pick 20170824.052854.49-AIC-AU.TV2S.00.SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052854.49-AIC-AU.TV2S.00.SHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.052852.54-AIC-AU.GVL.00.SHZ.mb
+00:49:36 [info] 2017-08-24 05:28:52.5 AU GVL    SHZ 00    3.9      3.767  0.3 A 20170824.052852.54-AIC-AU.GVL.00.SHZ
+00:49:36 [info] process pick 20170824.052852.54-AIC-AU.GVL.00.SHZ
+00:49:36 [debug] GridSearch: setting up station AU.GVL
+00:49:36 [debug] adding  Amplitude    20170824.052854.49-AIC-AU.TV2S.00.SHZ.mb
+00:49:36 [info] 2017-08-24 05:28:54.4 AU TV2S   SHZ 00    7.3     37.282  0.3 A 20170824.052854.49-AIC-AU.TV2S.00.SHZ
+00:49:36 [info] process pick 20170824.052854.49-AIC-AU.TV2S.00.SHZ
+00:49:36 [debug] adding  Amplitude    20170824.052701.56-AIC-AU.CORO.00.SHZ.MLv
+00:49:36 [debug] adding  Pick         20170824.052933.94-AIC-AU.KNRA..BHZ
+00:49:36 [debug] process pick 20170824.052933.94-AIC-AU.KNRA..BHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052933.94-AIC-AU.KNRA..BHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.052703.63-AIC-AU.TW1H.00.SHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.052721.06-AIC-AU.PSAC1.00.BHZ.MLv
+00:49:36 [debug] adding  Pick         20170824.052941.40-AIC-AU.GD1S.00.SHZ
+00:49:36 [debug] process pick 20170824.052941.40-AIC-AU.GD1S.00.SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052941.40-AIC-AU.GD1S.00.SHZ.snr
+00:49:36 [debug] adding  Pick         20170824.052946.36-AIC-AU.MANU..BHZ
+00:49:36 [debug] process pick 20170824.052946.36-AIC-AU.MANU..BHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.052946.36-AIC-AU.MANU..BHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.052854.49-AIC-AU.TV2S.00.SHZ.mB
+00:49:36 [debug] adding  Amplitude    20170824.052721.81-AIC-AU.PSA00.00.BHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.052852.54-AIC-AU.GVL.00.SHZ.mB
+00:49:36 [debug] adding  Amplitude    20170824.052734.26-AIC-AU.PSA00.00.BHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.052933.94-AIC-AU.KNRA..BHZ.mb
+00:49:36 [info] 2017-08-24 05:29:33.9 AU KNRA   BHZ __    9.1      8.990  1.7 A 20170824.052933.94-AIC-AU.KNRA..BHZ
+00:49:36 [info] process pick 20170824.052933.94-AIC-AU.KNRA..BHZ
+00:49:36 [debug] GridSearch: setting up station AU.KNRA
+00:49:36 [debug] adding  Amplitude    20170824.052737.01-AIC-AU.MANU..BHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.052735.91-AIC-AU.PSAC1.00.BHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.052737.43-AIC-AU.WOLH.00.SHZ.MLv
+00:49:36 [debug] adding  Pick         20170824.053008.21-AIC-AU.PSA00.00.BHZ
+00:49:36 [debug] process pick 20170824.053008.21-AIC-AU.PSA00.00.BHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053008.21-AIC-AU.PSA00.00.BHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.052941.40-AIC-AU.GD1S.00.SHZ.mb
+00:49:36 [info] 2017-08-24 05:29:41.4 AU GD1S   SHZ 00    3.7     59.634  0.3 A 20170824.052941.40-AIC-AU.GD1S.00.SHZ
+00:49:36 [info] process pick 20170824.052941.40-AIC-AU.GD1S.00.SHZ
+00:49:36 [debug] GridSearch: setting up station AU.GD1S
+00:49:36 [debug] adding  Pick         20170824.053008.91-AIC-AU.PSAC1.00.BHZ
+00:49:36 [debug] process pick 20170824.053008.91-AIC-AU.PSAC1.00.BHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053008.91-AIC-AU.PSAC1.00.BHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.052946.36-AIC-AU.MANU..BHZ.mb
+00:49:36 [info] 2017-08-24 05:29:46.3 AU MANU   BHZ __    4.5    756.804  1.7 A 20170824.052946.36-AIC-AU.MANU..BHZ
+00:49:36 [info] process pick 20170824.052946.36-AIC-AU.MANU..BHZ
+00:49:36 [debug] adding  Pick         20170824.053011.04-S-AIC-AU.MANU..BHN
+00:49:36 [debug] process pick 20170824.053011.04-S-AIC-AU.MANU..BHN A   waiting for amplitude
+00:49:36 [debug] adding  Pick         20170824.053013.03-AIC-AU.BN2S.00.SHZ
+00:49:36 [debug] process pick 20170824.053013.03-AIC-AU.BN2S.00.SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053013.03-AIC-AU.BN2S.00.SHZ.snr
+00:49:36 [debug] adding  Pick         20170824.053020.56-AIC-AU.PSA00.00.BHZ
+00:49:36 [debug] process pick 20170824.053020.56-AIC-AU.PSA00.00.BHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053020.56-AIC-AU.PSA00.00.BHZ.snr
+00:49:36 [debug] adding  Pick         20170824.053021.71-AIC-AU.PSAC1.00.BHZ
+00:49:36 [debug] process pick 20170824.053021.71-AIC-AU.PSAC1.00.BHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053021.71-AIC-AU.PSAC1.00.BHZ.snr
+00:49:36 [debug] adding  Pick         20170824.053034.56-AIC-AU.MANU..BHZ
+00:49:36 [debug] process pick 20170824.053034.56-AIC-AU.MANU..BHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053034.56-AIC-AU.MANU..BHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.053008.21-AIC-AU.PSA00.00.BHZ.mb
+00:49:36 [info] 2017-08-24 05:30:08.2 AU PSA00  BHZ 00   13.3    262.974  0.8 A 20170824.053008.21-AIC-AU.PSA00.00.BHZ
+00:49:36 [info] process pick 20170824.053008.21-AIC-AU.PSA00.00.BHZ
+00:49:36 [debug] adding  Amplitude    20170824.052941.40-AIC-AU.GD1S.00.SHZ.mB
+00:49:36 [debug] adding  Amplitude    20170824.053008.91-AIC-AU.PSAC1.00.BHZ.mb
+00:49:36 [info] 2017-08-24 05:30:08.9 AU PSAC1  BHZ 00    7.0    290.366  0.8 A 20170824.053008.91-AIC-AU.PSAC1.00.BHZ
+00:49:36 [info] process pick 20170824.053008.91-AIC-AU.PSAC1.00.BHZ
+00:49:36 [debug] adding  Amplitude    20170824.053020.56-AIC-AU.PSA00.00.BHZ.mb
+00:49:36 [info] 2017-08-24 05:30:20.5 AU PSA00  BHZ 00   24.2    262.904  0.8 A 20170824.053020.56-AIC-AU.PSA00.00.BHZ
+00:49:36 [info] process pick 20170824.053020.56-AIC-AU.PSA00.00.BHZ
+00:49:36 [debug] adding  Amplitude    20170824.053021.71-AIC-AU.PSAC1.00.BHZ.mb
+00:49:36 [info] 2017-08-24 05:30:21.7 AU PSAC1  BHZ 00   25.8    289.917  0.8 A 20170824.053021.71-AIC-AU.PSAC1.00.BHZ
+00:49:36 [info] process pick 20170824.053021.71-AIC-AU.PSAC1.00.BHZ
+00:49:36 [debug] adding  Amplitude    20170824.053013.03-AIC-AU.BN2S.00.SHZ.mb
+00:49:36 [info] 2017-08-24 05:30:13.0 AU BN2S   SHZ 00    4.2      0.804  0.7 A 20170824.053013.03-AIC-AU.BN2S.00.SHZ
+00:49:36 [info] process pick 20170824.053013.03-AIC-AU.BN2S.00.SHZ
+00:49:36 [debug] GridSearch: setting up station AU.BN2S
+00:49:36 [debug] adding  Amplitude    20170824.052817.14-AIC-AU.TV2S.00.SHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.053034.56-AIC-AU.MANU..BHZ.mb
+00:49:36 [debug] _tooManyRecentPicks: 20170824.053034.56-AIC-AU.MANU..BHZ      4.67 < 4.83
+00:49:36 [debug] adding  Pick         20170824.053037.09-AIC-AU.TWOA.00.SHZ
+00:49:36 [debug] process pick 20170824.053037.09-AIC-AU.TWOA.00.SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053037.09-AIC-AU.TWOA.00.SHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.053008.91-AIC-AU.PSAC1.00.BHZ.mB
+00:49:36 [debug] adding  Amplitude    20170824.053008.21-AIC-AU.PSA00.00.BHZ.mB
+00:49:36 [debug] adding  Pick         20170824.053116.24-AIC-AU.MORW..BHZ
+00:49:36 [debug] process pick 20170824.053116.24-AIC-AU.MORW..BHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053116.24-AIC-AU.MORW..BHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.053021.71-AIC-AU.PSAC1.00.BHZ.mB
+00:49:36 [debug] adding  Amplitude    20170824.053020.56-AIC-AU.PSA00.00.BHZ.mB
+00:49:36 [debug] adding  Pick         20170824.053115.42-AIC-AU.GC2F.00.SHZ
+00:49:36 [debug] process pick 20170824.053115.42-AIC-AU.GC2F.00.SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053115.42-AIC-AU.GC2F.00.SHZ.snr
+00:49:36 [debug] adding  Pick         20170824.053103.63-AIC-AU.TW1H.00.SHZ
+00:49:36 [debug] process pick 20170824.053103.63-AIC-AU.TW1H.00.SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053103.63-AIC-AU.TW1H.00.SHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.053013.03-AIC-AU.BN2S.00.SHZ.mB
+00:49:36 [debug] adding  Amplitude    20170824.052852.54-AIC-AU.GVL.00.SHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.053037.09-AIC-AU.TWOA.00.SHZ.mb
+00:49:36 [info] 2017-08-24 05:30:37.0 AU TWOA   SHZ 00   20.2    194.352  0.8 A 20170824.053037.09-AIC-AU.TWOA.00.SHZ
+00:49:36 [info] process pick 20170824.053037.09-AIC-AU.TWOA.00.SHZ
+00:49:36 [debug] adding  Pick         20170824.053130.36-AIC-AU.BLDU..BHZ
+00:49:36 [debug] process pick 20170824.053130.36-AIC-AU.BLDU..BHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053130.36-AIC-AU.BLDU..BHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.052854.49-AIC-AU.TV2S.00.SHZ.MLv
+00:49:36 [debug] adding  Pick         20170824.053127.16-AIC-AU.MORW..BHZ
+00:49:36 [debug] process pick 20170824.053127.16-AIC-AU.MORW..BHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053127.16-AIC-AU.MORW..BHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.053116.24-AIC-AU.MORW..BHZ.mb
+00:49:36 [info] 2017-08-24 05:31:16.2 AU MORW   BHZ __   11.5   1150.953  0.8 A 20170824.053116.24-AIC-AU.MORW..BHZ
+00:49:36 [info] process pick 20170824.053116.24-AIC-AU.MORW..BHZ
+00:49:36 [debug] GridSearch: setting up station AU.MORW
+00:49:36 [debug] adding  Pick         20170824.053136.14-AIC-AU.TV2S.00.SHZ
+00:49:36 [debug] process pick 20170824.053136.14-AIC-AU.TV2S.00.SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053136.14-AIC-AU.TV2S.00.SHZ.snr
+00:49:36 [debug] adding  Pick         20170824.053148.16-S-AIC-AU.BLDU..BHN
+00:49:36 [debug] process pick 20170824.053148.16-S-AIC-AU.BLDU..BHN A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053115.42-AIC-AU.GC2F.00.SHZ.mb
+00:49:36 [info] 2017-08-24 05:31:15.4 AU GC2F   SHZ 00    3.7      9.975  0.7 A 20170824.053115.42-AIC-AU.GC2F.00.SHZ
+00:49:36 [info] process pick 20170824.053115.42-AIC-AU.GC2F.00.SHZ
+00:49:36 [debug] GridSearch: setting up station AU.GC2F
+00:49:36 [debug] adding  Amplitude    20170824.053103.63-AIC-AU.TW1H.00.SHZ.mb
+00:49:36 [info] 2017-08-24 05:31:03.6 AU TW1H   SHZ 00   18.7     23.688  1.2 A 20170824.053103.63-AIC-AU.TW1H.00.SHZ
+00:49:36 [info] process pick 20170824.053103.63-AIC-AU.TW1H.00.SHZ
+00:49:36 [debug] adding  Amplitude    20170824.053127.16-AIC-AU.MORW..BHZ.mb
+00:49:36 [info] 2017-08-24 05:31:27.1 AU MORW   BHZ __   45.0   1151.479  0.8 A 20170824.053127.16-AIC-AU.MORW..BHZ
+00:49:36 [info] process pick 20170824.053127.16-AIC-AU.MORW..BHZ
+00:49:36 [debug] Autoloc3::_tryNucleate A  candidate origins: 1
+00:49:36 [debug] adding  Amplitude    20170824.053130.36-AIC-AU.BLDU..BHZ.mb
+00:49:36 [info] 2017-08-24 05:31:30.3 AU BLDU   BHZ __    5.2    202.093  0.9 A 20170824.053130.36-AIC-AU.BLDU..BHZ
+00:49:36 [info] process pick 20170824.053130.36-AIC-AU.BLDU..BHZ
+00:49:36 [debug] GridSearch: setting up station AU.BLDU
+00:49:36 [debug] adding  Pick         20170824.053147.99-AIC-AU.BLDU..BHZ
+00:49:36 [debug] process pick 20170824.053147.99-AIC-AU.BLDU..BHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053147.99-AIC-AU.BLDU..BHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.053037.09-AIC-AU.TWOA.00.SHZ.mB
+00:49:36 [debug] adding  Amplitude    20170824.052933.94-AIC-AU.KNRA..BHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.052941.40-AIC-AU.GD1S.00.SHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.052946.36-AIC-AU.MANU..BHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.053147.99-AIC-AU.BLDU..BHZ.mb
+00:49:36 [info] 2017-08-24 05:31:47.9 AU BLDU   BHZ __    9.1    202.138  0.9 A 20170824.053147.99-AIC-AU.BLDU..BHZ
+00:49:36 [info] process pick 20170824.053147.99-AIC-AU.BLDU..BHZ
+00:49:36 [debug] adding  Amplitude    20170824.053136.14-AIC-AU.TV2S.00.SHZ.mb
+00:49:36 [info] 2017-08-24 05:31:36.1 AU TV2S   SHZ 00   16.4     20.646  0.3 A 20170824.053136.14-AIC-AU.TV2S.00.SHZ
+00:49:36 [info] process pick 20170824.053136.14-AIC-AU.TV2S.00.SHZ
+00:49:36 [debug] adding  Amplitude    20170824.053116.24-AIC-AU.MORW..BHZ.mB
+00:49:36 [debug] adding  Amplitude    20170824.053115.42-AIC-AU.GC2F.00.SHZ.mB
+00:49:36 [debug] adding  Amplitude    20170824.053127.16-AIC-AU.MORW..BHZ.mB
+00:49:36 [debug] adding  Pick         20170824.053203.63-AIC-AU.TW1H.00.SHZ
+00:49:36 [debug] process pick 20170824.053203.63-AIC-AU.TW1H.00.SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053203.63-AIC-AU.TW1H.00.SHZ.snr
+00:49:36 [debug] adding  Pick         20170824.053224.24-AIC-AU.TV2S.00.SHZ
+00:49:36 [debug] process pick 20170824.053224.24-AIC-AU.TV2S.00.SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053224.24-AIC-AU.TV2S.00.SHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.053008.21-AIC-AU.PSA00.00.BHZ.MLv
+00:49:36 [debug] adding  Pick         20170824.053221.46-AIC-AU.KLBR..SHZ
+00:49:36 [debug] process pick 20170824.053221.46-AIC-AU.KLBR..SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053221.46-AIC-AU.KLBR..SHZ.snr
+00:49:36 [debug] adding  Pick         20170824.053236.16-AIC-AU.KLBR..SHZ
+00:49:36 [debug] process pick 20170824.053236.16-AIC-AU.KLBR..SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053236.16-AIC-AU.KLBR..SHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.053008.91-AIC-AU.PSAC1.00.BHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.053136.14-AIC-AU.TV2S.00.SHZ.mB
+00:49:36 [debug] adding  Pick         20170824.053244.66-AIC-AU.MUN..BHZ
+00:49:36 [debug] process pick 20170824.053244.66-AIC-AU.MUN..BHZ  A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053244.66-AIC-AU.MUN..BHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.053221.46-AIC-AU.KLBR..SHZ.mb
+00:49:36 [info] 2017-08-24 05:32:21.4 AU KLBR   SHZ __    3.2    172.374  1.0 A 20170824.053221.46-AIC-AU.KLBR..SHZ
+00:49:36 [info] process pick 20170824.053221.46-AIC-AU.KLBR..SHZ
+00:49:36 [debug] GridSearch: setting up station AU.KLBR
+00:49:36 [debug] adding  Amplitude    20170824.053021.71-AIC-AU.PSAC1.00.BHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.053020.56-AIC-AU.PSA00.00.BHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.053224.24-AIC-AU.TV2S.00.SHZ.mb
+00:49:36 [info] 2017-08-24 05:32:24.2 AU TV2S   SHZ 00   14.8     41.834  0.4 A 20170824.053224.24-AIC-AU.TV2S.00.SHZ
+00:49:36 [info] process pick 20170824.053224.24-AIC-AU.TV2S.00.SHZ
+00:49:36 [debug] adding  Amplitude    20170824.053203.63-AIC-AU.TW1H.00.SHZ.mb
+00:49:36 [info] 2017-08-24 05:32:03.6 AU TW1H   SHZ 00    9.1     20.420  0.8 A 20170824.053203.63-AIC-AU.TW1H.00.SHZ
+00:49:36 [info] process pick 20170824.053203.63-AIC-AU.TW1H.00.SHZ
+00:49:36 [debug] adding  Amplitude    20170824.053034.56-AIC-AU.MANU..BHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.053013.03-AIC-AU.BN2S.00.SHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.053244.66-AIC-AU.MUN..BHZ.mb
+00:49:36 [info] 2017-08-24 05:32:44.6 AU MUN    BHZ __    6.0     58.890  1.2 A 20170824.053244.66-AIC-AU.MUN..BHZ
+00:49:36 [info] process pick 20170824.053244.66-AIC-AU.MUN..BHZ
+00:49:36 [debug] GridSearch: setting up station AU.MUN
+00:49:36 [debug] adding  Amplitude    20170824.053236.16-AIC-AU.KLBR..SHZ.mb
+00:49:36 [info] 2017-08-24 05:32:36.1 AU KLBR   SHZ __    7.9    172.812  1.0 A 20170824.053236.16-AIC-AU.KLBR..SHZ
+00:49:36 [info] process pick 20170824.053236.16-AIC-AU.KLBR..SHZ
+00:49:36 [debug] Autoloc3::_tryNucleate A  candidate origins: 1
+00:49:36 [debug] adding  Pick         20170824.053318.27-AIC-AU.NWAO..BHZ
+00:49:36 [debug] process pick 20170824.053318.27-AIC-AU.NWAO..BHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053318.27-AIC-AU.NWAO..BHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.053221.46-AIC-AU.KLBR..SHZ.mB
+00:49:36 [debug] adding  Amplitude    20170824.053037.09-AIC-AU.TWOA.00.SHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.053224.24-AIC-AU.TV2S.00.SHZ.mB
+00:49:36 [debug] adding  Amplitude    20170824.053236.16-AIC-AU.KLBR..SHZ.mB
+00:49:36 [debug] adding  Amplitude    20170824.053103.63-AIC-AU.TW1H.00.SHZ.MLv
+00:49:36 [debug] adding  Pick         20170824.053303.63-AIC-AU.TW1H.00.SHZ
+00:49:36 [debug] process pick 20170824.053303.63-AIC-AU.TW1H.00.SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053303.63-AIC-AU.TW1H.00.SHZ.snr
+00:49:36 [debug] adding  Amplitude    20170824.053303.63-AIC-AU.TW1H.00.SHZ.mb
+00:49:36 [info] 2017-08-24 05:33:03.6 AU TW1H   SHZ 00    7.8     22.757  0.9 A 20170824.053303.63-AIC-AU.TW1H.00.SHZ
+00:49:36 [info] process pick 20170824.053303.63-AIC-AU.TW1H.00.SHZ
+00:49:36 [debug] adding  Amplitude    20170824.053318.27-AIC-AU.NWAO..BHZ.mb
+00:49:36 [info] 2017-08-24 05:33:18.2 AU NWAO   BHZ __    5.1     49.563  1.3 A 20170824.053318.27-AIC-AU.NWAO..BHZ
+00:49:36 [info] process pick 20170824.053318.27-AIC-AU.NWAO..BHZ
+00:49:36 [debug] GridSearch: setting up station AU.NWAO
+00:49:36 [debug] adding  Amplitude    20170824.053116.24-AIC-AU.MORW..BHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.053115.42-AIC-AU.GC2F.00.SHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.053127.16-AIC-AU.MORW..BHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.053130.36-AIC-AU.BLDU..BHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.053136.14-AIC-AU.TV2S.00.SHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.053147.99-AIC-AU.BLDU..BHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.053203.63-AIC-AU.TW1H.00.SHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.053221.46-AIC-AU.KLBR..SHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.053224.24-AIC-AU.TV2S.00.SHZ.MLv
+00:49:36 [debug] adding  Amplitude    20170824.053236.16-AIC-AU.KLBR..SHZ.MLv
+00:49:36 [debug] adding  Pick         20170824.053503.78-AIC-AU.BN2S.00.SHZ
+00:49:36 [debug] process pick 20170824.053503.78-AIC-AU.BN2S.00.SHZ A   waiting for amplitude
+00:49:36 [debug] adding  Amplitude    20170824.053503.78-AIC-AU.BN2S.00.SHZ.snr
+00:49:36 [info] shutting down autoloc
+00:49:36 [info] reset requested
+00:49:36 [debug] Leaving ::done
+00:49:36 [info] Locator instance called 0 times
+00:49:36 [info] Locator instance called 19 times
