@@ -360,7 +360,7 @@ for service in service_dir_list:
         if len(seed_files) == 0:
             continue
 
-        print '\r Working on station: ', station_name, ' ----> ', new_station
+        print '\r Working on station: ', station_name, ' ----> ', new_station, "Latitude: ",station_latitude, "Longitude: ", station_longitude
 
         # dictionary for channel_location (keys) so that we can create an inventory to location level later
         channel_loc_dict = {}
