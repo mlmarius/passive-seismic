@@ -28,16 +28,16 @@ code_start_time = time.time()
 data_path = '/g/data/ha3/Passive/'
 
 # IRIS Virtual Ntework name
-virt_net = '_GA_ANUtest'
+virt_net = '_ANU'
 
 # FDSN network identifier
-FDSNnetwork = 'X5'
+FDSNnetwork = '7D(2012-2013)'
 
 # rough year of survey
-rough_year = 2016
+rough_year = 2013
 
 # flag weather to assign new station names (based on Aus grid or not)
-assign_station_names = False
+assign_station_names = True
 
 # tolerence (degrees) for latitude and longitude when working out if two stations should have the same name
 # i.e. 100m = 0.001 degrees - if two stations are seperated by less than this then they are the same station
@@ -374,7 +374,7 @@ for service in service_dir_list:
                 # Read the stream
                 st = read(filename)
 
-            except (TypeError, StructError) as e:
+            except (TypeError, StructError, IOError) as e:
                 # the file is not miniseed
                 ASDF_log_file.write(filename + '\t' + "TypeError\n")
 
@@ -447,8 +447,8 @@ for service in service_dir_list:
                     ASDF_log_file.write(filename + '\t' + ASDF_tag + '\t' + "ASDFDuplicateError\n")
             # make iventory for channel
 
-            keys_list.append(str(ASDF_tag))
-            info_list.append(temp_dict)
+                keys_list.append(str(ASDF_tag))
+                info_list.append(temp_dict)
 
         # list for channel inventories
         channel_inventory_list = []
