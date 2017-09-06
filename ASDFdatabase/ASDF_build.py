@@ -167,6 +167,10 @@ for service in service_dir_list:
     for station_path in station_dir_list:
         station_name = basename(station_path)
 
+        # if not station_name in ["SQ1B3", "SQ1C3", "SQ1C4"]:
+        #     continue
+
+        # print(station_name)
         # get the logfile
         anu_logfile = glob.glob(join(station_path, '*.dat'))
 
@@ -187,6 +191,7 @@ for service in service_dir_list:
         except:
             # something went wrong with the decoding
             ASDF_log_file.write(anu_logfile[0]+ '\t' + "DecodeError\n")
+            continue
 
         lat_list = logfile_dict['GPS']['LATITUDE']
         lng_list = logfile_dict['GPS']['LONGITUDE']
@@ -220,17 +225,21 @@ for service in service_dir_list:
             aus_lat = AUS_grid_latitude[min_index]
             aus_lng = AUS_grid_longitude[min_index]
 
+            # print("GRID AUs", aus_station)
+
             found_match = False
+            found_duplicate = False
 
             # if the dictionary is empty, no stations have been added in yet
             if not station_name_paras:
-                new_station = aus_station
-                station_name_paras[aus_station] = {'stored_lat': av_lat, 'stored_lng': av_lng, 'stored_alt': av_alt}
-                station_latitude = av_lat
-                station_longitude = av_lng
-                station_altitude = av_alt
+                pass
+            #     new_station = aus_station
+            #     station_name_paras[aus_station] = {'stored_lat': av_lat, 'stored_lng': av_lng, 'stored_alt': av_alt}
+            #     station_latitude = av_lat
+            #     station_longitude = av_lng
+            #     station_altitude = av_alt
 
-                found_match = True
+                # found_match = True
 
             else:
                 # check if the station has already been analysed
@@ -238,37 +247,52 @@ for service in service_dir_list:
                     # print(aus_station, key, key[:-1])
                     if aus_station == key[:-1] or aus_station == key:
                         # print("station in dict")
+                        found_match = True
                         # check if it is within coordinates tolerance
                         # i.e. roughly within 100m same station
                         if abs(av_lat - station_name_paras[key]['stored_lat']) <= tol and abs(
                                         av_lng - station_name_paras[key]['stored_lng']) <= tol:
                             # print('station matches')
-                            found_match = True
+                            found_duplicate = True
                             new_station = key
                             station_latitude = station_name_paras[key]['stored_lat']
                             station_longitude = station_name_paras[key]['stored_lng']
                             station_altitude = station_name_paras[key]['stored_alt']
-                    else:
-                        # print("station not in dict")
-                        # the station is not in the dictionary yet
-                        new_station = aus_station
-                        station_name_paras[aus_station] = {'stored_lat': av_lat, 'stored_lng': av_lng, 'stored_alt': av_alt}
-                        station_latitude = av_lat
-                        station_longitude = av_lng
-                        station_altitude = av_alt
-
-                        found_match = True
+                        # else:
+                        #     print("station is in dict but coordinates dont match")
+                    #
+                    # else:
+                    #     print("station not in dict")
+                    #     # the station is not in the dictionary yet
+                    #     # new_station = aus_station
+                    #     # station_name_paras[new_station] = {'stored_lat': av_lat, 'stored_lng': av_lng, 'stored_alt': av_alt}
+                    #     # station_latitude = av_lat
+                    #     # station_longitude = av_lng
+                    #     # station_altitude = av_alt
+                    #     #
+                    #     # found_match = True
 
             # print(found_match)
 
             if not found_match:
-                station_name_counter[aus_station] += 1
-                new_station = aus_station + chr(ord('A') + (station_name_counter[aus_station] - 1))
-                # print("no matching station", new_station)
+                # the station is not in the dictionary yet
+                # print("station not in dict")
+                new_station = aus_station
                 station_name_paras[new_station] = {'stored_lat': av_lat, 'stored_lng': av_lng, 'stored_alt': av_alt}
                 station_latitude = av_lat
                 station_longitude = av_lng
                 station_altitude = av_alt
+
+            else:
+                if not found_duplicate:
+                    # print("station is in dict but coordinates dont match")
+                    station_name_counter[aus_station] += 1
+                    new_station = aus_station + chr(ord('A') + (station_name_counter[aus_station] - 1))
+                    # print("in same grid cell as existing station", new_station)
+                    station_name_paras[new_station] = {'stored_lat': av_lat, 'stored_lng': av_lng, 'stored_alt': av_alt}
+                    station_latitude = av_lat
+                    station_longitude = av_lng
+                    station_altitude = av_alt
 
 
         elif not assign_station_names:
@@ -361,6 +385,7 @@ for service in service_dir_list:
             continue
 
         print '\r Working on station: ', station_name, ' ----> ', new_station, "Latitude: ",station_latitude, "Longitude: ", station_longitude
+        # print ' Working on station: ', station_name, ' ----> ', new_station, "Latitude: ", station_latitude, "Longitude: ", station_longitude
 
         # dictionary for channel_location (keys) so that we can create an inventory to location level later
         channel_loc_dict = {}
@@ -402,6 +427,11 @@ for service in service_dir_list:
                 new_chan = orig_chan
                 orig_loc = tr.stats.location
                 new_loc = orig_loc
+
+                # check if the trace is longer than 1 sec (#ignore otherwise)
+                if endtime-starttime < 1:
+                    print(tr)
+                    continue
 
                 # add channel_loc to dict
                 channel_loc_dict[new_chan+'_'+new_loc] = {"samp": tr.stats.sampling_rate}
@@ -449,6 +479,7 @@ for service in service_dir_list:
 
                 keys_list.append(str(ASDF_tag))
                 info_list.append(temp_dict)
+            # break
 
         # list for channel inventories
         channel_inventory_list = []
