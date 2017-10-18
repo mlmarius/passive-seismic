@@ -28,6 +28,10 @@ windowSeconds       = 3600
 # == Output Path ==
 outputDir           = '/g/data1/ha3/Passive/_AusArray/OA/processing/test_xcor_ashby/'
 
+#decimation factor for temp stations data and refernece station data
+tempDecFactor       = 5
+refDecFactor        = 1
+
 
 # =========================================================================== #
 
@@ -102,6 +106,10 @@ def xcor_process(st, inv):
 
         temp_tr = temp_st[0]
         ref_tr = perm_st[0]
+
+        # decimate the traces
+        temp_tr.decimate(tempDecFactor)
+        ref_tr.decimate(refDecFactor)
 
         stationPair = ref_tr.stats.station + '.' + temp_tr.stats.station
 
@@ -196,7 +204,7 @@ for net_sta in net_sta_list:
 
 
 
-del new_ds
+
 
 del ds
 
@@ -264,7 +272,7 @@ for i, k in enumerate(tmp_results_dict.keys()):
     root_grp = Dataset(fn, 'w', format='NETCDF4')
     root_grp.description = 'Cross-correlation results for station-pair: %s' % (k)
 
-    print(tmp_results_dict[k].shape)
+    # print(tmp_results_dict[k].shape)
     # Dimensions
     root_grp.createDimension('time', tmp_results_dict[k].shape[0])
     root_grp.createDimension('lag', tmp_results_dict[k].shape[1])
@@ -281,3 +289,35 @@ for i, k in enumerate(tmp_results_dict.keys()):
     nsw[:] = tmp_windows_count_dict[k]
     xc[:, :] = tmp_results_dict[k][::-1, :]  # Flipping rows
     root_grp.close()
+
+
+    for day_array in tmp_results_dict[k][::-1, :]:
+        print(day_array)
+        print(day_array.shape)
+
+
+        print(x.shape)
+        print(tmp_results_dict[k][::-1, :].shape)
+
+
+
+    # full_array = np.column_stack(tmp_results_dict[k][::-1, :])
+
+
+
+    data_type = "XcorData"
+    data_path = k.split(".")[1].split("_")[0] + "/" + k.replace(".", "_")
+
+    # new_ds.add_auxiliary_data(data=tmp_results_dict[k][::-1, :], data_type=data_type, path=data_path, parameters={})
+
+    data = np.random.normal(size=(3,100))
+
+    # print(data)
+
+    # data = np.concatenate(tmp_results_dict[k][::-1, :], np.array(1))
+
+    # print(data.shape)
+    new_ds.add_auxiliary_data(data=tmp_results_dict[k][::-1, :], data_type=data_type, path=data_path, parameters={})
+
+
+del new_ds
