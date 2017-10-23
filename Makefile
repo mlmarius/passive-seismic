@@ -36,10 +36,16 @@ test: mpi
 	pytest --junit-xml=test_output/pytest/results.xml --cache-clear ./tests
 
 coverage: mpi
-	pytest --junit-xml=test_output/pytest/results.xml --cov \
-	    --cov-report=html:test_output/coverage \
-	    --cov-report=term-missing:skip-covered \
-	    --cov-fail-under=60 --cache-clear ./tests
+	coverage erase
+	coverage run -m pytest tests/
+	coverage combine 	# must be called in order to make coverage work in multiprocessing
+	coverage report -m
+	coverage html
+
+#	pytest --junit-xml=test_output/pytest/results.xml --cov \
+	    #--cov-report=html:test_output/coverage \
+	    #--cov-report=term-missing:skip-covered \
+	    #--cov-fail-under=60 --cache-clear ./tests
 
 mpi:
 	mpirun --allow-run-as-root -n 2 pytest tests/test_pyasdf.py
