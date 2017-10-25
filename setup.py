@@ -10,7 +10,7 @@ __version__ = "0.0.1"
 if python_version.major == 3 and python_version.minor == 3:
     NUMPY_VERSION = 'numpy >= 1.9.2, <= 1.10.1'
 else:
-    NUMPY_VERSION = 'numpy >= 1.9.2'
+    NUMPY_VERSION = 'numpy >= 1.7.0'
 
 
 class PyTest(TestCommand, object):
@@ -83,7 +83,7 @@ setup(
         'mpi4py == 2.0.0',
         'scipy >= 0.15.1',
         'PyYAML >= 3.11',
-        'matplotlib >= 1.4.3',  # nci version with python=3.4
+        'matplotlib >= 1.2.0',  # nci version 1.4.3 with python=3.4
         'joblib',
         'obspy >= 1.0.3',  # 1.0.3 does not have sc3ml read functionality
         'h5py >= 2.6.0',
@@ -91,8 +91,8 @@ setup(
         'pandas',
         'pyqtgraph',
         # 'phasepapy == 1.1.1',
-        'basemap == 1.1.0',
-        'netCDF4 >= 1.3.0',
+        'basemap == 1.0.7',
+        'netCDF4 >= 1.2.0',
     ],
     extras_require={
         'dev': [
