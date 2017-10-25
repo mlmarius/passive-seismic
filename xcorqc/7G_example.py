@@ -9,7 +9,7 @@ import json
 import numpy as np
 
 from ASDFdatabase.seisds import SeisDB
-from xcorqc import IntervalStackXCorr, xcorr2
+from xcorqc.xcorqc import IntervalStackXCorr, xcorr2
 
 # =========================== User Input Required =========================== #
 
