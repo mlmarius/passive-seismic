@@ -157,6 +157,22 @@ def setEventData(eventParser, arrivals, count):
    event.preferred_magnitude_id = magnitude.resource_id
    return event
 
+def validateArrival(arr):
+   if arr:
+      if arr.year and int(arr.year) <= 0:
+         return False
+      if arr.month and (int(arr.month) <= 0 or int(arr.month) > 12):
+         return False
+      if arr.day and (int(arr.day) <= 0 or int(arr.day) > 31):
+         return False
+      if arr.hour and (int(arr.hour) < 0 or int(arr.hour) > 24):
+         return False
+      if arr.minute and (int(arr.minute) < 0 or int(arr.minute) > 59):
+         return False
+      if arr.second and (int(arr.second.split('.')[0]) < 0 or int(arr.second.split('.')[0]) > 59):
+         return False
+   return True
+
 def getArrivalSections(hdfFile, outFile):
    with open(outFile, 'r') as of:
       with open(hdfFile, 'r') as hf:
@@ -171,7 +187,8 @@ def getArrivalSections(hdfFile, outFile):
                for groupline in value:
                   if len(groupline) == 133:
                      arrivalParser = ArrivalParser(groupline.rstrip('\n'))
-                     listOfArrivals.append(arrivalParser)
+                     if validateArrival(arrivalParser):
+                        listOfArrivals.append(arrivalParser)
                   elif len(groupline) == 115 and groupline.endswith('km'):
                      eventParser.seTime = groupline[groupline.substring('se h =   ') + 9 : groupline.substring(' sec     se lat')]
                      eventParser.seLat = groupline[groupline.substring('se lat =  ') + 10 : groupline.substring(' km     se lon')]
