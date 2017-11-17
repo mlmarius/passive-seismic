@@ -3,6 +3,7 @@ import httplib
 import datetime
 import obspy
 from obspy import read_events
+from obspy.core.event import ResourceIdentifier
 from StringIO import StringIO
 import os
 
@@ -49,7 +50,20 @@ def start_dump(start, end, runFailed=False):
 
          cat = read_events(StringIO(qmlResponse))
 
-         cat.write(targetDir+'/isc-event-'+start.strftime("%Y-%m-%d-%H:%M:%S")+'.xml', format='SC3ML')
+         # adding the preferred_magnitude to the isc events. this was initially thought un-necessary to have.
+         # but when querying the FDSN service, one of the filters is to > 5.5 and < 6.5 magnitude.
+         for evt in cat.events:
+            highestmag = 0.00
+            pref_id = ''
+            for mag in evt.magnitudes:
+               if mag.origin_id.id == evt.preferred_origin().resource_id.id and mag.mag > highestmag:
+                  pref_id = mag.resource_id.id
+                  highestmag = mag.mag
+            evt.preferred_magnitude_id = ResourceIdentifier(id=pref_id)
+            # writing individual event sc3ml files instead of an umbrella sc3ml for all events in an hour
+            evt.write(targetDir+'/isc-event-'+start.strftime("%Y-%m-%d-%H:%M:%S")+evt.resource_id.id.split('=')[-1]+'.xml', format='SC3ML')
+
+#         cat.write(targetDir+'/isc-event-'+start.strftime("%Y-%m-%d-%H:%M:%S")+'.xml', format='SC3ML')
 
          start = end
          end = end + tdelta
