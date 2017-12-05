@@ -30,6 +30,29 @@ c     parameter for regional study, all values in colat and colon
       common /model/ xlayer,xlayeri
       common /perturb/ xan(nunkn)
 
+C'source_block', 'station_block',
+C                'residual', 'event_number',
+C                'source_longitude', 'source_latitude',
+C                'source_depth', 'station_longitude', 'station_latitude',
+C                'observed_tt', 'locations2degrees', 'P_or_S'
+
+      TYPE :: ARRIVAL
+          INTEGER :: SOURCE_BLOCK
+          INTEGER :: STATION_BLOCK
+          REAL :: RESIDUAL
+          INTEGER (KIND=8) :: EVENT_NUMBER
+          REAL :: SOURCE_LONGITUDE
+          REAL :: SOURCE_LATITUDE
+          REAL :: SOURCE_DEPTH
+          REAL :: STATION_LONGITUDE
+          REAL :: STATTION_LATITUDE
+          REAL :: OBSERVED_TT
+          REAL :: DELTA
+          INTEGER :: P_OR_s
+      END TYPE ARRIVAL
+
+      TYPE(ARRIVAL) :: NEXT_ARRIVAL
+
 *-------------------- FILES AND PARAMETER DEFINITIONS ------------------
 
 c I have this local and global parmetrisations, example param2x2
@@ -199,11 +222,28 @@ c777   format(10f)
       depthmin=1000.
       depthmax=0.
 
-10    read(2,150,end=200)nblock,nst,res,jev
-     >,vlon,vlat,
-     >depth,
-     >slon,slat,
-     >delay,delta
+10    read(2, *) NEXT_ARRIVAL
+      nblock = NEXT_ARRIVAL%SOURCE_BLOCK
+      nst = NEXT_ARRIVAL%STATION_BLOCK
+      RES = NEXT_ARRIVAL%RESIDUAL
+      JEV = NEXT_ARRIVAL%EVENT_NUMBER
+      VLON = NEXT_ARRIVAL%SOURCE_LONGITUDE
+      VLAT = NEXT_ARRIVAL%SOURCE_LATITUDE
+      DEPTH = NEXT_ARRIVAL%SOURCE_DEPTH
+      SLON = NEXT_ARRIVAL%STATION_LONGITUDE
+      SLAT = NEXT_ARRIVAL%STATTION_LATITUDE
+      DELAY = NEXT_ARRIVAL%OBSERVED_TT
+      DELTA = NEXT_ARRIVAL%DELTA
+
+
+C QUESTION FOR ALEXEI: DELAY == OBSERVERD_TT?
+
+!    nblock,nst,res,jev
+!    >,vlon,vlat,
+!    >depth,
+!    >slon,slat,
+!    >delay,delta
+!     print *, NEXT_ARRIVAL
 c     if(delta.GT.95.0)goto 10
 
       if(deltamin.GT.delta)deltamin=delta
@@ -226,17 +266,9 @@ c  16092   17524   5.4  587486  125.588  78.790  23.1  134.351 -19.819 822.100  
      >f9.3,f8.3,
      >2f8.3)
 
-
-
-
-
-      if(nmdat.LE.15)then
-      write(*,150)nblock,nst,res,jev
-     >,vlon,vlat,
-     >depth,
-     >slon,slat,
-     >delay,delta 
-      endif
+!     if(nmdat.LE.15)then
+      write(*, *) 'ARRIVAL', NMDAT, ':', NEXT_ARRIVAL
+!     endif
 
 
       nmdat=nmdat+1
@@ -611,7 +643,6 @@ c      flim   = 1.e-2/10. = 0.001 sec
       r2d = 90./asin(1.)
 
 c      Check coordinates
-      print *, aas, 'latitude of source'
       if(aas.LT.-90.OR.aas.GT.90.)then
         write(*,*)'Latitude of source is out of range'
         stop
