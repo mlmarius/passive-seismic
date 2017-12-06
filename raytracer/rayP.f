@@ -4,9 +4,9 @@
 * P/S-wave and Bulk/Shear version for region/global inversions
 
       implicit real*8 (a-h, o-z)
-      parameter(npcom=440000,nlayer=100,nlayeri=100)
-      parameter(nunkn=500000)
-      parameter(P=1,S=2,Pdiff=1,SKS=3,PP=4)
+      integer, parameter :: npcom=440000,nlayer=100,nlayeri=100
+      integer, parameter :: nunkn=500000
+      integer, parameter :: P=1, S=2, Pdiff=1, SKS=3, PP=4
       integer iraygeometry
 c array of 2 elements each with 1 chars
       character*1 cmodel(2)
@@ -29,6 +29,7 @@ c     parameter for regional study, all values in colat and colon
      >r1,v1,d1,dz,dzsum
       common /model/ xlayer,xlayeri
       common /perturb/ xan(nunkn)
+      integer (kind=8) :: JEV, NBLOCK, NST
 
 C'source_block', 'station_block',
 C                'residual', 'event_number',
@@ -37,10 +38,10 @@ C                'source_depth', 'station_longitude', 'station_latitude',
 C                'observed_tt', 'locations2degrees', 'P_or_S'
 
       TYPE :: ARRIVAL
-          INTEGER :: SOURCE_BLOCK
-          INTEGER :: STATION_BLOCK
+          INTEGER(KIND=8) :: SOURCE_BLOCK
+          INTEGER(KIND=8) :: STATION_BLOCK
           REAL :: RESIDUAL
-          INTEGER (KIND=8) :: EVENT_NUMBER
+          INTEGER(KIND=8) :: EVENT_NUMBER
           REAL :: SOURCE_LONGITUDE
           REAL :: SOURCE_LATITUDE
           REAL :: SOURCE_DEPTH
@@ -48,7 +49,7 @@ C                'observed_tt', 'locations2degrees', 'P_or_S'
           REAL :: STATTION_LATITUDE
           REAL :: OBSERVED_TT
           REAL :: DELTA
-          INTEGER :: P_OR_s
+          INTEGER(KIND=1) :: P_OR_S
       END TYPE ARRIVAL
 
       TYPE(ARRIVAL) :: NEXT_ARRIVAL
@@ -229,7 +230,7 @@ c777   format(10f)
       JEV = NEXT_ARRIVAL%EVENT_NUMBER
       VLON = NEXT_ARRIVAL%SOURCE_LONGITUDE
       VLAT = NEXT_ARRIVAL%SOURCE_LATITUDE
-      DEPTH = NEXT_ARRIVAL%SOURCE_DEPTH
+      DEPTH = NEXT_ARRIVAL%SOURCE_DEPTH/1000.0
       SLON = NEXT_ARRIVAL%STATION_LONGITUDE
       SLAT = NEXT_ARRIVAL%STATTION_LATITUDE
       DELAY = NEXT_ARRIVAL%OBSERVED_TT
@@ -267,7 +268,9 @@ c  16092   17524   5.4  587486  125.588  78.790  23.1  134.351 -19.819 822.100  
      >2f8.3)
 
 !     if(nmdat.LE.15)then
-      write(*, *) 'ARRIVAL', NMDAT, ':', NEXT_ARRIVAL
+      write(*, *) 'ARRIVAL', NMDAT, ':', nblock, nst, res,
+     > NEXT_ARRIVAL%EVENT_NUMBER, JEV, vlon, vlat,
+     > depth, slon, slat, delay, delta, NEXT_ARRIVAL%P_or_S
 !     endif
 
 
@@ -307,7 +310,7 @@ c       write(*,*)'rp1= ',rp
 
         call cderiv( w, ni, dth2, dth3, dth4)
         dth1=1.0
-        write(11,120)nblock,dth1,dth2,dth3,dth4
+        write(11, *) nblock, dth1, dth2, dth3, dth4
 
         if(ichckr.EQ.2)delay=0.0e10
 
@@ -807,7 +810,7 @@ c              write(*,*)'Tut 1'
                   acosa=z2/r2
                   if(acosa.LT.-1.)acosa=-1.
                   if(acosa.GT.1)acosa=1.
-                  a2 = acos(acosa)                                  
+                  a2 = acos(acosa)
                   sina = sin(a2)                                    
                   cosa = cos(a2)                                    
                   acosa=x2/r2/sina

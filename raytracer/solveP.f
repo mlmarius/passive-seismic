@@ -51,19 +51,24 @@ c Last update: 12.11.2001 by Alex
 * should be located below same path as a file of parameterization
 * with extension '.volume' of the name of parameterization file
 * otherwise the generation of new file is forced automatically
-      data  fpar  /'/work/ifree/alexei/ASIA/param2asia'/
-      data  fvel  /'/work/ifree/alexei/ASIA/ak135.15.SKS'/
+      data fpar
+     >/'/home/sudipta/repos/passive-seismic/raytracer/params/param2x2'/
+      data fvel
+     > /'/home/sudipta/repos/passive-seismic/raytracer/params/ak135.15.SKS'/
       data fpergl
-     > /'/work/ifree/alexei/ASIA/Pglobsol-asia-rstst.chk.it1'/
-      data fperlc /'/work/ifree/alexei/ASIA/Plocsol-asia-rstst.chk.it1'/
-      data  frel  /'/work/ifree/alexei/ASIA/Preloc.chk.it2'/
-      data  fray  /'/work/ifree/alexei/ASIA/Praylength.chk.it2'/
-      data  fdel  /'/work/ifree/alexei/ASIA/Presiduals.chk.it2'/
+     >/'/home/sudipta/repos/passive-seismic/raytracer/params/perglob2x2.dat'/
+      data fperlc
+     >/'/home/sudipta/repos/passive-seismic/raytracer/params/perloc2x2.dat'/
+
+      data  frel  /'Preloc.chk.it2'/
+      data  fray  /'Praylength.chk.it2'/
+      data  fdel  /'Presiduals.chk.it2'/
+
 * OUTPUT FILES ---------------------------------------------------------
       data  frmsout 
-     > /'/work/ifree/alexei/ASIA/Prmsoutput-joint-asia-restest-chk.it2'/
-      data foutl /'/work/ifree/alexei/ASIA/Plocsol-asia-rstst.chk.it2'/
-      data foutg /'/work/ifree/alexei/ASIA/Pglobsol-asia-rstst.chk.it2'/
+     > /'Prmsoutput-joint-asia-restest-chk.it2'/
+      data foutl /'Plocsol-asia-rstst.chk.it2'/
+      data foutg /'Pglobsol-asia-rstst.chk.it2'/
 
       data  crmodel /'P'/
 *     Maximum RMS for time delay
@@ -80,7 +85,7 @@ c     data rlambda /0.040000000/ good for 3 or 4 iterations
 *     Damping for local model- horizontal and vertical
       data   fcoefh 
      &/'0.2 ,0.2 ,0.2 ,0.2 ,0.2 ,.2 ,.2 ,.2 ,.2 ,.2 ,.2 ,
-     &.2 ,.2 ,.2 ,.2,.2,.2,.2,.2 '/
+     &.2 ,.2 ,.2 ,.2,.2,.2,.2,.2,.2,.2,.2 '/
       data   fcoefv 
      &/'0.1,0.1,0.1,0.1,0.1,.1 ,.1 ,.1 ,.1 ,.1 ,.1 ,
      &.1 ,.1 ,.1 ,.1 ,.1 ,.1 ,.1 ,.1 ,.1 ,.1 ,.1  '/ 
@@ -127,8 +132,8 @@ c      12  13 14  15  16  17  18  19  20  21  22
       open(ifdel,file=fdel)
       open(ifrel,file=frel)
       open(ifray,file=fray)
-      read(ifdel,'(a1)')cmodel
-
+      read(ifdel,'(a1)') cmodel
+      print *, 'cmodel: ', cmodel
       if(cmodel.NE.crmodel)then
         write(*,*)
      >'The intended model is ',crmodel,' while loading ',cmodel
@@ -183,6 +188,7 @@ c      12  13 14  15  16  17  18  19  20  21  22
          write(ifrmsout,*)'Regional gradient smoothing omitted'
       endif
       if(globalsmooth.EQ.YES)then
+      dampglob=dampglobh+dampglobv
       write(ifrmsout,*)'Global damping: ',dampglob
       else
       write(ifrmsout,*)'Global gradient smoothing omitted'
@@ -270,6 +276,8 @@ c     goto 4
 
          read(ifdel,*,end=4)resid,iflag
          read(ifrel,120)ncl,rk1,rk2,rk3,rk4
+         print *, 'resid, iflag, ncl, rk1, rk2, rk3, rk4'
+         print *, resid, iflag, ncl, rk1, rk2, rk3, rk4
 120      format(i8,4f8.2)
 
        ieq=ieq+1
@@ -278,6 +286,10 @@ c      write(*,*)ieq
        i=1
 2      continue
        read(ifray,*)nbl(i),rlength(i)
+       print *, 'nbl'
+       print *, nbl
+       print *, 'rlength'
+       print *, rlength
        if(nbl(i).EQ.0.AND.rlength(i).LT.0.)then
        go to 3
        else
@@ -1060,7 +1072,7 @@ c               call bascan(ncm,irange)
                jamn=max(ia-irange,1)                                 
 c     .   .   .   ............. Back scan to search the same pair       
                newp=.true.                                           
-               do 220 ja=jamx,jamn,-1                                
+2               do 220 ja=jamx,jamn,-1
                   do 220 jr=jrmx,jrmn,-1                            
                      if(ja.eq.ia.and.jr.ge.ir) goto 220            
                      ib10=iblock(ja,io,jr)                         
