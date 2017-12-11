@@ -20,4 +20,4 @@ solveP: solveP.o
 	$(f77) -o $(BIN)$(SOLVEP) $(SOLVEP).o
 
 clean:
-	rm -f *.o *.so rayP
+	rm -f *.o *.so rayP solveP

@@ -52,13 +52,13 @@ c Last update: 12.11.2001 by Alex
 * with extension '.volume' of the name of parameterization file
 * otherwise the generation of new file is forced automatically
       data fpar
-     >/'/home/sudipta/repos/passive-seismic/raytracer/params/param2x2'/
+     >/'params/param2x2'/
       data fvel
-     > /'/home/sudipta/repos/passive-seismic/raytracer/params/ak135.15.SKS'/
+     > /'params/ak135.15.SKS'/
       data fpergl
-     >/'/home/sudipta/repos/passive-seismic/raytracer/params/perglob2x2.dat'/
+     >/'params/perglob2x2.dat'/
       data fperlc
-     >/'/home/sudipta/repos/passive-seismic/raytracer/params/perloc2x2.dat'/
+     >/'params/perloc2x2.dat'/
 
       data  frel  /'Preloc.chk.it2'/
       data  fray  /'Praylength.chk.it2'/
@@ -129,10 +129,10 @@ c      12  13 14  15  16  17  18  19  20  21  22
       scale=1000.
       yn(yes)='YES'
       yn(no)='NO'
-      open(ifdel,file=fdel)
-      open(ifrel,file=frel)
-      open(ifray,file=fray)
-      read(ifdel,'(a1)') cmodel
+      open(ifdel, file=fdel)
+      open(ifrel, file=frel)
+      open(ifray, file=fray)
+      read(ifdel, '(a1)') cmodel
       print *, 'cmodel: ', cmodel
       if(cmodel.NE.crmodel)then
         write(*,*)
@@ -285,18 +285,16 @@ c      write(*,*)ieq
 
        i=1
 2      continue
-       read(ifray,*)nbl(i),rlength(i)
-       print *, 'nbl'
-       print *, nbl
-       print *, 'rlength'
-       print *, rlength
+       read(ifray, *) nbl(i), rlength(i)
+       print *, 'nbl, rlength', nbl(i), rlength(i)
+
        if(nbl(i).EQ.0.AND.rlength(i).LT.0.)then
-       go to 3
+        go to 3
        else
-       i=i+1
-       go to 2
+        i=i+1
+        go to 2
        endif
-3      continue   
+3      continue
        i=i-1
 
 

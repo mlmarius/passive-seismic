@@ -58,21 +58,21 @@ C                'observed_tt', 'locations2degrees', 'P_or_S'
 
 c I have this local and global parmetrisations, example param2x2
       data fpar
-     >/'/home/sudipta/repos/passive-seismic/raytracer/params/param2x2'/
+     >/'params/param2x2'/
 
 c reference 1d velocity model for P and S
       data fvel
-     > /'/home/sudipta/repos/passive-seismic/raytracer/params/ak135.15.SKS'/
+     > /'params/ak135.15.SKS'/
 
 c perturbation of 1D velocity model in global grid, example is perglob2x2.dat
       data fpergl
-     >/'/home/sudipta/repos/passive-seismic/raytracer/params/perglob2x2.dat'/
+     >/'params/perglob2x2.dat'/
 c perturbation of 1D velocity model in local grid , example is perloc2x2.dat
       data fperlc 
-     >/'/home/sudipta/repos/passive-seismic/raytracer/params/perloc2x2.dat'/
+     >/'params/perloc2x2.dat'/
 c This is P or S arrivals
       data fdat
-     > /'/home/sudipta/repos/passive-seismic/raytracer/region_p.csv'/
+     > /'region_p_depth_km.csv'/
 
 c OUTPUTS
 c relocation terms
@@ -230,7 +230,7 @@ c777   format(10f)
       JEV = NEXT_ARRIVAL%EVENT_NUMBER
       VLON = NEXT_ARRIVAL%SOURCE_LONGITUDE
       VLAT = NEXT_ARRIVAL%SOURCE_LATITUDE
-      DEPTH = NEXT_ARRIVAL%SOURCE_DEPTH/1000.0
+      DEPTH = NEXT_ARRIVAL%SOURCE_DEPTH
       SLON = NEXT_ARRIVAL%STATION_LONGITUDE
       SLAT = NEXT_ARRIVAL%STATTION_LATITUDE
       DELAY = NEXT_ARRIVAL%OBSERVED_TT
