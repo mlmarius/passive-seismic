@@ -14,11 +14,60 @@ import pyasdf
 from pyasdf import ASDFDataSet
 from obspy.core import Stream
 
+import argparse
+
+data = os.path.join('data', '')
+invfile = data + '7D-inventory.xml'
+catfile = data + '7D-catalog.xml'
+datafile = data + '7D-rf_profile_data.h5'
+rffile = data + '7D-rf_profile_rfs.h5'
+profilefile = data + '7D-rf_profile_profile.h5'
+
+parser = argparse.ArgumentParser(
+    description="Calculation of receiver functions for all stations in a temporary survey.. ",
+)
+
+parser.add_argument(
+    'asdffile',
+    default='/g/data/ha3/Passive/_ANU/7D(2012-2013)/ASDF/7D(2012-2013).h5',
+    type=str,
+    help='filepath of the asdf input file .')
+
+parser.add_argument(
+    '--inv',
+    dest='inventory',
+    default=invfile,
+    type=str,
+    help='filepath of the station xml file.')
+
+parser.add_argument(
+    '--cat',
+    dest='catalog',
+    default=catfile,
+    type=str,
+    help='filepath of the event catalog xml file.')
+
+parser.add_argument(
+    '--outdata',
+    dest='data',
+    default=datafile,
+    type=str,
+    help='filepath of the desired output waveform file in asdf format.')
+
+parser.add_argument(
+    '--outrf',
+    dest='rff',
+    default=rffile,
+    type=str,
+    help='filepath of the desired output receiver function file in asdf format.')
+
+args = parser.parse_args()
+
 def custom_get_waveforms(network, station, location, channel, starttime,
                   endtime, quality=None, minimumlength=None,
                   longestonly=None, filename=None, attach_response=False,
                   **kwargs):
-    with pyasdf.ASDFDataSet('/g/data/ha3/Passive/_ANU/7D(2012-2013)/ASDF/7D(2012-2013).h5', mode='r') as asdfDataSet:
+    with pyasdf.ASDFDataSet(args.asdffile, mode='r') as asdfDataSet:
         st = Stream()
         #ignoring channel for now as all the 7D network waveforms have only BH? channels
         filteredList = [i for i in asdfDataSet.waveforms[network+'.'+station].list() if
@@ -29,20 +78,24 @@ def custom_get_waveforms(network, station, location, channel, starttime,
             st += asdfDataSet.waveforms[network+'.'+station][t]
         return st
 
-data = os.path.join('data', '')
-invfile = data + '7D-inventory.xml'
-catfile = data + '7D-catalog.xml'
-datafile = data + '7D-rf_profile_data.h5'
-rffile = data + '7D-rf_profile_rfs.h5'
-profilefile = data + '7D-rf_profile_profile.h5'
-
-inventory = read_inventory(invfile)
-catalog = read_events(catfile)
+inventory = read_inventory(args.inventory)
+catalog = read_events(args.catalog)
 
 stream = RFStream()
 with tqdm() as pbar:
     for s in iter_event_data(catalog, inventory, custom_get_waveforms, pbar=pbar):
         stream.extend(s)
 
-stream.write(datafile, 'H5')
+stream.write(args.data, 'H5')
+
+rfstream = RFStream()
+for stream3c in tqdm(IterMultipleComponents(stream, 'onset', 3)):
+    stream3c.filter('bandpass', freqmin=0.5, freqmax=2)
+    stream3c.trim2(-25, 75, 'onset')
+    if len(stream3c) != 3:
+        continue
+    stream3c.rf()
+    stream3c.moveout()
+    rfstream.extend(stream3c)
+rfstream.write(args.rff, 'H5')
 
