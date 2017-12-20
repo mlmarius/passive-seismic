@@ -1,3 +1,4 @@
+```
 $ python generate.py -h
 usage: generate.py [-h] [--inv INVENTORY] [--cat CATALOG] [--outdata DATA]
                    [--outrf RFF]
@@ -16,4 +17,4 @@ optional arguments:
                    format.
   --outrf RFF      filepath of the desired output receiver function file in
                    asdf format.
-
+```
