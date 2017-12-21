@@ -48,6 +48,20 @@ parser.add_argument(
     help='filepath of the event catalog xml file.')
 
 parser.add_argument(
+    '--bandpasslow',
+    dest='bpl',
+    default=0.5,
+    type=float,
+    help='lower threshold for the band pass filter.')
+
+parser.add_argument(
+    '--bandpasshigh',
+    dest='bph',
+    default=2,
+    type=float,
+    help='higher threshold for the band pass filter..')
+
+parser.add_argument(
     '--outdata',
     dest='data',
     default=datafile,
@@ -90,7 +104,7 @@ stream.write(args.data, 'H5')
 
 rfstream = RFStream()
 for stream3c in tqdm(IterMultipleComponents(stream, 'onset', 3)):
-    stream3c.filter('bandpass', freqmin=0.5, freqmax=2)
+    stream3c.filter('bandpass', freqmin=args.bpl, freqmax=args.bph)
     stream3c.trim2(-25, 75, 'onset')
     if len(stream3c) != 3:
         continue
